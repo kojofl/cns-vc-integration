@@ -1,0 +1,28 @@
+{
+    "debug": true,
+    "transportLibrary": {
+        "debug": true
+    },
+    "logging": {
+        "appenders": {
+            "consoleAppender": {
+                "type": "stdout",
+                "layout": { "type": "pattern", "pattern": "%[[%d] [%p] %c - %m%]" }
+            },
+            "console": {
+                "type": "logLevelFilter",
+                "level": "WARN",
+                "appender": "consoleAppender"
+            }
+        },
+
+        "categories": {
+            "default": {
+                "appenders": ["console"],
+                "level": "TRACE"
+            }
+        }
+    },
+    "infrastructure": { "httpServer": { "enabled": true } },
+    "modules": { "coreHttpApi": { "docs": { "enabled": true } } }
+}

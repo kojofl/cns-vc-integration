@@ -1,0 +1,72 @@
+image:
+  pullPolicy: IfNotPresent
+  tag: ""
+
+# a json or yaml config
+# see https://enmeshed.eu/integrate/connector-configuration for configuration options
+config: {}
+
+pod:
+  # securityContext for the pod deployed by the Deployment
+  # https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context
+  securityContext: {}
+
+  # the nodeSelector for the pod deployed by the Deployment
+  # https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
+  nodeSelector: {}
+
+  # the tolerations for the pod deployed by the Deployment
+  # https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
+  tolerations: []
+
+  # the affinity for the pod deployed by the Deployment
+  # https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#NodeAffinity
+  affinity: {}
+
+  connector:
+    # a list of environment variables
+    # see https://enmeshed.eu/integrate/connector-configuration for configuration options
+    # can be used for secrets
+    # see https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#environment-variables
+    environment: []
+
+    # securityContext for the Connector container
+    # https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context-1
+    securityContext: {}
+
+    # the resources for the Connector container
+    # https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources
+    resources: {}
+
+    containerPort: 80
+
+  # configuration for the FerretDB (https://docs.ferretdb.io) sidecar
+  ferretdb:
+    enabled: false
+
+    image: "ferretdb"
+
+    # see https://github.com/ferretdb/FerretDB/pkgs/container/ferretdb for available tags
+    tag: "latest"
+
+    # a list of environment variables
+    # see https://docs.ferretdb.io/flags/ for configuration options
+    # can be used for secrets
+    # see https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#environment-variables
+    environment: []
+
+    # securityContext for the Connector container
+    # https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#security-context-1
+    securityContext: {}
+
+    # the resources for the Connector container
+    # https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#resources
+    resources: {}
+
+service:
+  # the service type
+  # https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+  type: ClusterIP
+
+  # the service port
+  port: 80

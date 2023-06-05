@@ -1,0 +1,92 @@
+{
+    "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "envFilePostfix",
+            "type": "promptString",
+            "description": "Enter the postfix of the env file to use (e.g. '.dev' if you want to use '.env.dev')",
+            "default": ""
+        },
+        {
+            "id": "moreTasks",
+            "type": "pickString",
+            "description": "Select a task",
+            "options": [
+                {
+                    "label": "Restart",
+                    "value": "./.dev/scripts/restartContainers.sh"
+                },
+                {
+                    "label": "Drop Databases",
+                    "value": "./.dev/scripts/clearDb.ts"
+                },
+                {
+                    "label": "Sync Connector 1",
+                    "value": "./.dev/scripts/syncConnector1.sh"
+                },
+                {
+                    "label": "Sync Connector 2",
+                    "value": "./.dev/scripts/syncConnector2.sh"
+                }
+            ]
+        }
+    ],
+    "tasks": [
+        {
+            "label": "Compile",
+            "command": "npm run build:watch",
+            "type": "shell",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "never",
+                "focus": false
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            "label": "Clear",
+            "command": "docker compose -f .dev/docker-compose.yml down -v",
+            "type": "shell",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "Run 1",
+            "command": "docker compose -f .dev/docker-compose.yml --env-file .dev/.env${input:envFilePostfix} up connector-1",
+            "type": "shell",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "Run 2",
+            "command": "docker compose -f .dev/docker-compose.yml --env-file .dev/.env${input:envFilePostfix} up connector-1 connector-2",
+            "type": "shell",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "Tests",
+            "command": "npm run test:local",
+            "type": "shell",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "More Tasks",
+            "command": "${input:moreTasks}",
+            "type": "shell",
+            "presentation": {
+                "reveal": "silent"
+            }
+        }
+    ]
+}

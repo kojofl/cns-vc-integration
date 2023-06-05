@@ -1,0 +1,11 @@
+node_modules
+*.db
+dist
+*.log
+logs
+dist-test
+helmChart/charts
+
+.dev/.env
+.dev/.env.*
+!.dev/.env.example
