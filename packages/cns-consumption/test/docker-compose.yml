@@ -1,0 +1,28 @@
+services:
+  consumptionlib-mongo:
+    container_name: consumptionlib-mongo
+    image: mongo
+    logging:
+      driver: "none"
+    ports:
+      - 27027:27017
+
+  consumptionlib-postgres:
+    image: postgres
+    container_name: consumptionlib-ferretdb-postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ferretdb
+
+  consumptionlib-ferret:
+    image: ghcr.io/ferretdb/ferretdb:latest
+    container_name: consumptionlib-ferretdb
+    ports:
+      - "27028:27017"
+    environment:
+      FERRETDB_POSTGRESQL_URL: postgres://user:password@consumptionlib-ferretdb-postgres:5432/ferretdb
+      FERRETDB_TELEMETRY: disable
+      FERRETDB_LOG_LEVEL: error
+    depends_on:
+      - consumptionlib-postgres
