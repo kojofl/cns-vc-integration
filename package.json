@@ -1,0 +1,18 @@
+{
+  "name": "enmeshed-monorepo",
+  "version": "0.0.1",
+  "scripts": {
+    "clean": "./scripts/project.sh clean",
+    "build:node": "./scripts/project.sh build:node",
+    "build": "./scripts/project.sh build:notest",
+    "setup": "node ./scripts/setup.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nrwl/nx-cloud": "latest",
+    "nx": "latest",
+    "fs-extra": "^11.1.1"
+  }
+}

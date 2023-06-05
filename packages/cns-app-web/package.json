@@ -1,0 +1,57 @@
+{
+    "name": "@nmshd/app-web",
+    "version": "2.0.13",
+    "description": "The web sources for the Enmeshed App",
+    "repository": "github:nmshd/cns-app-web",
+    "license": "MIT",
+    "author": "j&s-soft GmbH",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "node ./.ci/build.js",
+        "lint": "npm run lint:eslint && npm run lint:prettier",
+        "lint:eslint": "eslint --ext .js ./webapp",
+        "lint:prettier": "prettier --check .",
+        "start": "NMSHD_APP_BASEURL='https://stage.enmeshed.eu' NMSHD_APP_CLIENTID='dev' NMSHD_APP_CLIENTSECRET='SY3nxukl6Xn8kGDk52EwBKXZMR9OR5' npx ui5 serve",
+        "test": "echo \"no test specified\"",
+        "versionBump": "node ./_tools/versionBump.js && npm i"
+    },
+    "dependencies": {
+        "@nmshd/app-runtime": "workspace:*",
+        "@nmshd/runtime": "workspace:*",
+        "@js-soft/native-cordova": "1.2.2",
+        "@js-soft/native-electron": "1.2.3",
+        "@js-soft/native-web": "1.2.3",
+        "bson": "^4.7.2",
+        "pako": "^2.1.0"
+    },
+    "devDependencies": {
+        "@js-soft/license-check": "^1.0.6",
+        "@prettier/plugin-xml": "^2.2.0",
+        "@types/jquery": "^3.5.16",
+        "@ui5/cli": "^2.14.17",
+        "cross-env": "^7.0.3",
+        "eslint": "^8.32.0",
+        "eslint-config-prettier": "^8.6.0",
+        "fs-extra": "^11.1.0",
+        "prettier": "^2.8.4",
+        "prompt": "^1.3.0",
+        "ui5-middleware-livereload": "^0.7.2",
+        "ui5-middleware-simpleproxy": "^0.9.3"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "ui5": {
+        "dependencies": [
+            "ui5-middleware-livereload",
+            "ui5-middleware-simpleproxy",
+            "@nmshd/runtime",
+            "@nmshd/app-runtime",
+            "@js-soft/native-cordova",
+            "@js-soft/native-web",
+            "@js-soft/native-electron"
+        ]
+    }
+}

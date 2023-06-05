@@ -1,0 +1,23 @@
+{
+    "transportLibrary": {
+        "platformClientId": "dev",
+        "platformClientSecret": "SY3nxukl6Xn8kGDk52EwBKXZMR9OR5"
+    },
+    "database": {
+        "connectionString": "mongodb://mongo:27017/?readPreference=primary&appname=connector&ssl=false"
+    },
+    "infrastructure": {
+        "httpServer": {
+            "apiKey": "xxx"
+        }
+    },
+    "modules": {
+        "coreHttpApi": {
+            "docs": {
+                "rapidoc": {
+                    "persistAuth": true
+                }
+            }
+        }
+    }
+}
