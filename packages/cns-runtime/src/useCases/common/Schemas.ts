@@ -204,6 +204,9 @@ export const CreateAttributeRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
+                },
+                {
+                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -766,6 +769,92 @@ export const CreateAttributeRequest: any = {
             "required": [
                 "@type",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "VerifiableCredentialJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "VerifiableCredential"
+                },
+                "@context": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "credentialSubject": {
+                    "type": "object"
+                },
+                "proof": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "created": {
+                            "type": "string"
+                        },
+                        "proofPurpose": {
+                            "type": "string"
+                        },
+                        "verificationMethod": {
+                            "type": "string"
+                        },
+                        "jws": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "created",
+                        "proofPurpose",
+                        "verificationMethod"
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "@context",
+                "type",
+                "issuer",
+                "validFrom",
+                "credentialSubject",
+                "proof"
             ],
             "additionalProperties": false
         },
@@ -2092,7 +2181,8 @@ export const ExecuteIdentityAttributeQueryRequest: any = {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website"
+                "Website",
+                "VerifiableCredential"
             ]
         },
         "AttributeValues.Identity.Uneditable.TypeName": {
@@ -4247,6 +4337,9 @@ export const CanCreateOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
+                },
+                {
+                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -4809,6 +4902,92 @@ export const CanCreateOutgoingRequestRequest: any = {
             "required": [
                 "@type",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "VerifiableCredentialJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "VerifiableCredential"
+                },
+                "@context": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "credentialSubject": {
+                    "type": "object"
+                },
+                "proof": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "created": {
+                            "type": "string"
+                        },
+                        "proofPurpose": {
+                            "type": "string"
+                        },
+                        "verificationMethod": {
+                            "type": "string"
+                        },
+                        "jws": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "created",
+                        "proofPurpose",
+                        "verificationMethod"
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "@context",
+                "type",
+                "issuer",
+                "validFrom",
+                "credentialSubject",
+                "proof"
             ],
             "additionalProperties": false
         },
@@ -5535,7 +5714,8 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website"
+                "Website",
+                "VerifiableCredential"
             ]
         },
         "AttributeValues.Identity.Uneditable.TypeName": {
@@ -6465,6 +6645,9 @@ export const CompleteOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
+                },
+                {
+                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -7027,6 +7210,92 @@ export const CompleteOutgoingRequestRequest: any = {
             "required": [
                 "@type",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "VerifiableCredentialJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "VerifiableCredential"
+                },
+                "@context": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "credentialSubject": {
+                    "type": "object"
+                },
+                "proof": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "created": {
+                            "type": "string"
+                        },
+                        "proofPurpose": {
+                            "type": "string"
+                        },
+                        "verificationMethod": {
+                            "type": "string"
+                        },
+                        "jws": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "created",
+                        "proofPurpose",
+                        "verificationMethod"
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "@context",
+                "type",
+                "issuer",
+                "validFrom",
+                "credentialSubject",
+                "proof"
             ],
             "additionalProperties": false
         },
@@ -8750,6 +9019,9 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
+                },
+                {
+                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -9312,6 +9584,92 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
             "required": [
                 "@type",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "VerifiableCredentialJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "VerifiableCredential"
+                },
+                "@context": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "credentialSubject": {
+                    "type": "object"
+                },
+                "proof": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "created": {
+                            "type": "string"
+                        },
+                        "proofPurpose": {
+                            "type": "string"
+                        },
+                        "verificationMethod": {
+                            "type": "string"
+                        },
+                        "jws": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "created",
+                        "proofPurpose",
+                        "verificationMethod"
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "@context",
+                "type",
+                "issuer",
+                "validFrom",
+                "credentialSubject",
+                "proof"
             ],
             "additionalProperties": false
         },
@@ -11612,6 +11970,9 @@ export const CreateOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
+                },
+                {
+                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -12174,6 +12535,92 @@ export const CreateOutgoingRequestRequest: any = {
             "required": [
                 "@type",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "VerifiableCredentialJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "VerifiableCredential"
+                },
+                "@context": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "credentialSubject": {
+                    "type": "object"
+                },
+                "proof": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "created": {
+                            "type": "string"
+                        },
+                        "proofPurpose": {
+                            "type": "string"
+                        },
+                        "verificationMethod": {
+                            "type": "string"
+                        },
+                        "jws": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "created",
+                        "proofPurpose",
+                        "verificationMethod"
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "@context",
+                "type",
+                "issuer",
+                "validFrom",
+                "credentialSubject",
+                "proof"
             ],
             "additionalProperties": false
         },
@@ -12900,7 +13347,8 @@ export const CreateOutgoingRequestRequest: any = {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website"
+                "Website",
+                "VerifiableCredential"
             ]
         },
         "AttributeValues.Identity.Uneditable.TypeName": {
@@ -14778,6 +15226,9 @@ export const ReceivedIncomingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
+                },
+                {
+                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -15340,6 +15791,92 @@ export const ReceivedIncomingRequestRequest: any = {
             "required": [
                 "@type",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "VerifiableCredentialJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "VerifiableCredential"
+                },
+                "@context": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "credentialSubject": {
+                    "type": "object"
+                },
+                "proof": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "created": {
+                            "type": "string"
+                        },
+                        "proofPurpose": {
+                            "type": "string"
+                        },
+                        "verificationMethod": {
+                            "type": "string"
+                        },
+                        "jws": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "created",
+                        "proofPurpose",
+                        "verificationMethod"
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "@context",
+                "type",
+                "issuer",
+                "validFrom",
+                "credentialSubject",
+                "proof"
             ],
             "additionalProperties": false
         },
@@ -16066,7 +16603,8 @@ export const ReceivedIncomingRequestRequest: any = {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website"
+                "Website",
+                "VerifiableCredential"
             ]
         },
         "AttributeValues.Identity.Uneditable.TypeName": {
@@ -16721,6 +17259,9 @@ export const SucceedAttributeRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
+                },
+                {
+                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -17283,6 +17824,92 @@ export const SucceedAttributeRequest: any = {
             "required": [
                 "@type",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "VerifiableCredentialJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "VerifiableCredential"
+                },
+                "@context": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "credentialSubject": {
+                    "type": "object"
+                },
+                "proof": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "created": {
+                            "type": "string"
+                        },
+                        "proofPurpose": {
+                            "type": "string"
+                        },
+                        "verificationMethod": {
+                            "type": "string"
+                        },
+                        "jws": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "created",
+                        "proofPurpose",
+                        "verificationMethod"
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "@context",
+                "type",
+                "issuer",
+                "validFrom",
+                "credentialSubject",
+                "proof"
             ],
             "additionalProperties": false
         },
@@ -18601,6 +19228,9 @@ export const UpdateAttributeRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
+                },
+                {
+                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -19163,6 +19793,92 @@ export const UpdateAttributeRequest: any = {
             "required": [
                 "@type",
                 "value"
+            ],
+            "additionalProperties": false
+        },
+        "VerifiableCredentialJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "VerifiableCredential"
+                },
+                "@context": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "credentialSubject": {
+                    "type": "object"
+                },
+                "proof": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string"
+                        },
+                        "created": {
+                            "type": "string"
+                        },
+                        "proofPurpose": {
+                            "type": "string"
+                        },
+                        "verificationMethod": {
+                            "type": "string"
+                        },
+                        "jws": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "created",
+                        "proofPurpose",
+                        "verificationMethod"
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "@context",
+                "type",
+                "issuer",
+                "validFrom",
+                "credentialSubject",
+                "proof"
             ],
             "additionalProperties": false
         },

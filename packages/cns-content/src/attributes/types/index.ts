@@ -1,3 +1,4 @@
+export * from "./verifiableCredential"
 export * from "./AbstractBoolean"
 export * from "./AbstractFloat"
 export * from "./AbstractInteger"

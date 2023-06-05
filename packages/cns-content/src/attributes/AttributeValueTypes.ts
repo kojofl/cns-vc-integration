@@ -84,6 +84,7 @@ import {
     IMiddleName,
     INationality,
     IPersonName,
+    IVerifiableCredential,
     IPhoneNumber,
     IPostOfficeBoxAddress,
     IProprietaryBoolean,
@@ -154,6 +155,8 @@ import {
     StreetJSON,
     Surname,
     SurnameJSON,
+    VerifiableCredential,
+    VerifiableCredentialJSON,
     Website,
     WebsiteJSON,
     ZipCode,
@@ -186,6 +189,7 @@ export module AttributeValues {
                 | SexJSON
                 | StreetAddressJSON
                 | WebsiteJSON
+                | VerifiableCredentialJSON
 
             export type Interface =
                 | IAffiliation
@@ -208,6 +212,7 @@ export module AttributeValues {
                 | ISex
                 | IStreetAddress
                 | IWebsite
+                | IVerifiableCredential
 
             export type Class =
                 | Affiliation
@@ -230,6 +235,7 @@ export module AttributeValues {
                 | Sex
                 | StreetAddress
                 | Website
+                | VerifiableCredential
 
             export const CLASSES = [
                 Affiliation,
@@ -251,7 +257,8 @@ export module AttributeValues {
                 Pseudonym,
                 Sex,
                 StreetAddress,
-                Website
+                Website,
+                VerifiableCredential
             ]
 
             export const TYPE_NAMES = [
@@ -274,7 +281,8 @@ export module AttributeValues {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website"
+                "Website",
+                "VerifiableCredential"
             ] as const
 
             export const TYPE_NAMES_STRINGIFIED = JSON.stringify(TYPE_NAMES)
