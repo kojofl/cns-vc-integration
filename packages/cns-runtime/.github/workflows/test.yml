@@ -1,0 +1,61 @@
+name: Test
+
+on:
+  push:
+    branches-ignore: [main, release/**]
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: bash .ci/runChecks.sh
+
+  test-loki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run build:schemas
+      - run: npm run test:ci:lokijs
+        env:
+          NMSHD_TEST_BASEURL: ${{ secrets.CNS_NMSHD_TEST_BASEURL }}
+          NMSHD_TEST_CLIENTID: ${{ secrets.CNS_NMSHD_TEST_CLIENTID }}
+          NMSHD_TEST_CLIENTSECRET: ${{ secrets.CNS_NMSHD_TEST_CLIENTSECRET }}
+
+  test-mongo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: supercharge/mongodb-github-action@1.6.0
+      - run: npm ci
+      - run: npm run build:schemas
+      - run: npm run test:ci:mongodb
+        env:
+          NMSHD_TEST_BASEURL: ${{ secrets.CNS_NMSHD_TEST_BASEURL }}
+          NMSHD_TEST_CLIENTID: ${{ secrets.CNS_NMSHD_TEST_CLIENTID }}
+          NMSHD_TEST_CLIENTSECRET: ${{ secrets.CNS_NMSHD_TEST_CLIENTSECRET }}
+
+  test-ferret:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: js-soft/ferretdb-github-action@1.0.2
+        with:
+          ferretdb-telemetry: "enabled"
+      - run: npm ci
+      - run: npm run build:schemas
+      - run: npm run test:ci:ferretdb
+        env:
+          NMSHD_TEST_BASEURL: ${{ secrets.CNS_NMSHD_TEST_BASEURL }}
+          NMSHD_TEST_CLIENTID: ${{ secrets.CNS_NMSHD_TEST_CLIENTID }}
+          NMSHD_TEST_CLIENTSECRET: ${{ secrets.CNS_NMSHD_TEST_CLIENTSECRET }}
