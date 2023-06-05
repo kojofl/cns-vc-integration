@@ -1,0 +1,125 @@
+[
+    {
+        "title": "{t>relationshipTemplate.private.title}",
+        "id": "vcard",
+        "description": "{t>relationshipTemplate.private.description}",
+        "key": "share.template",
+        "icon": "sap-icon://home",
+        "template": {
+            "@type": "RelationshipTemplateContent",
+            "title": "{t>relationshipTemplate.private.template.title}",
+            "onNewRelationship": {
+                "@type": "Request",
+                "items": [
+                    {
+                        "@type": "RequestItemGroup",
+                        "mustBeAccepted": true,
+                        "title": "Attribute von mir",
+                        "items": [
+                            { "valueType": "DisplayName" },
+                            { "valueType": "GivenName" },
+                            { "valueType": "Surname" },
+                            { "valueType": "StreetAddress" },
+                            { "valueType": "EMailAddress" },
+                            { "valueType": "CommunicationLanguage" },
+                            { "valueType": "Phone" }
+                        ]
+                    },
+                    {
+                        "@type": "RequestItemGroup",
+                        "mustBeAccepted": true,
+                        "title": "Attribute die ich von dir benötige",
+                        "items": [
+                            {
+                                "@type": "ReadAttributeRequestItem",
+                                "mustBeAccepted": true,
+                                "query": {
+                                    "@type": "IdentityAttributeQuery",
+                                    "valueType": "DisplayName"
+                                }
+                            },
+                            {
+                                "@type": "ReadAttributeRequestItem",
+                                "mustBeAccepted": true,
+                                "query": {
+                                    "@type": "IdentityAttributeQuery",
+                                    "valueType": "GivenName"
+                                }
+                            },
+                            {
+                                "@type": "ReadAttributeRequestItem",
+                                "mustBeAccepted": true,
+                                "query": {
+                                    "@type": "IdentityAttributeQuery",
+                                    "valueType": "Surname"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "title": "{t>relationshipTemplate.friends.title}",
+        "id": "vcard-family",
+        "description": "{t>relationshipTemplate.friends.description}",
+        "key": "share.template",
+        "icon": "sap-icon://family-protection",
+        "template": {
+            "@type": "RelationshipTemplateContent",
+            "title": "{t>relationshipTemplate.friends.template.title}",
+            "onNewRelationship": {
+                "@type": "Request",
+                "items": [
+                    {
+                        "@type": "RequestItemGroup",
+                        "mustBeAccepted": true,
+                        "title": "Attribute von uns",
+                        "items": [
+                            { "valueType": "DisplayName" },
+                            { "valueType": "GivenName" },
+                            { "valueType": "Surname" },
+                            { "valueType": "StreetAddress" },
+                            { "valueType": "EMailAddress" },
+                            { "valueType": "CommunicationLanguage" },
+                            { "valueType": "Phone" },
+                            { "valueType": "BirthDate" }
+                        ]
+                    },
+                    {
+                        "@type": "RequestItemGroup",
+                        "mustBeAccepted": true,
+                        "title": "Attribute die ich von dir benötige",
+                        "items": [
+                            {
+                                "@type": "ReadAttributeRequestItem",
+                                "mustBeAccepted": true,
+                                "query": {
+                                    "@type": "IdentityAttributeQuery",
+                                    "valueType": "DisplayName"
+                                }
+                            },
+                            {
+                                "@type": "ReadAttributeRequestItem",
+                                "mustBeAccepted": true,
+                                "query": {
+                                    "@type": "IdentityAttributeQuery",
+                                    "valueType": "GivenName"
+                                }
+                            },
+                            {
+                                "@type": "ReadAttributeRequestItem",
+                                "mustBeAccepted": true,
+                                "query": {
+                                    "@type": "IdentityAttributeQuery",
+                                    "valueType": "Surname"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+]

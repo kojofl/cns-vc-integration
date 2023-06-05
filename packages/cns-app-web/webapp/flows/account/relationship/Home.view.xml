@@ -1,0 +1,120 @@
+<mvc:View
+    controllerName="nmshd.app.flows.account.relationship.Home"
+    xmlns:m="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:controls="nmshd.app.core.controls"
+>
+
+	<semantic:DetailPage
+        id="page"
+        navButtonPress="onNavButtonPress"
+        showNavButton="{d>/system/phone}"
+        class="{v>/theme/fontStyle}"
+        title="{dvo>/name}"
+        showFooter="false"
+        busy="{v>/busy}"
+        busyIndicatorDelay="{v>/delay}"
+    >
+
+
+		<semantic:customHeaderContent>
+			<m:Button
+                text="{= ${d>/system/phone} ? '' : ${t>inbox.refresh}}"
+                icon="sap-icon://refresh"
+                visible="{= !${d>/system/phone}}"
+                press="refresh"
+            />
+		</semantic:customHeaderContent>
+
+		<semantic:subHeader>
+		</semantic:subHeader>
+
+		<semantic:content>
+
+			<m:PullToRefresh id="pullToRefresh" refresh="refresh" visible="{=${d>/system/phone}}" />
+
+			<l:VerticalLayout width="100%">
+				<m:List
+                    id="messageList"
+                    class="messageList"
+                    headerText="{t>relationship.home.messages.header}"
+                    noDataText="{parts:[{path:'t>relationship.home.messages.noDataText'},{path:'dvo>/name'}], formatter:'jQuery.sap.formatMessage'}"
+                    items="{path:'/items', sorter: { path: 'createdAt', group: false, descending: true}}"
+                    visible="{=!!${/items/0}}"
+                >
+					<m:items>
+
+						<controls:MessageRenderer
+                            type="Navigation"
+                            subject="{path:'name', formatter:'.formatter.toTranslated'}"
+                            time="{path:'createdAt',formatter:'.formatter.toRelativeDate'}"
+                            press="openItem"
+                        >
+							<m:FormattedText htmlText="{body}" class="sapUiTinyMarginTopBottom" visible="{=!!${body}}" />
+						</controls:MessageRenderer>
+					</m:items>
+				</m:List>
+				<m:VBox class="sapUiSmallMargin">
+					<controls:ContainerButton
+                        press="onNewMessage()"
+                        text="{t>relationship.home.navigation.newMessageTitle}"
+                        description="{parts:[{path:'t>relationship.home.navigation.newMessageDescription'},{path:'dvo>/name'}], formatter:'jQuery.sap.formatMessage'}"
+                    >
+						<controls:contentRight>
+							<m:Image src="/assets/icons/newmessage.svg" class="big" />
+						</controls:contentRight>
+					</controls:ContainerButton>
+
+					<controls:ContainerButton
+                        press="onInbox()"
+                        text="{t>relationship.home.navigation.inboxTitle}"
+                        description="{parts:[{path:'t>relationship.home.navigation.inboxDescription'},{path:'dvo>/name'}], formatter:'jQuery.sap.formatMessage'}"
+                    >
+						<controls:contentRight>
+							<m:Image src="/assets/icons/addprofile.svg" class="big" visible="false" />
+						</controls:contentRight>
+					</controls:ContainerButton>
+
+					<controls:ContainerButton
+                        press="onSent()"
+                        text="{t>relationship.home.navigation.sentTitle}"
+                        description="{parts:[{path:'t>relationship.home.navigation.sentDescription'},{path:'dvo>/name'}], formatter:'jQuery.sap.formatMessage'}"
+                    >
+						<controls:contentRight>
+							<m:Image src="/assets/icons/addprofile.svg" class="big" visible="false" />
+						</controls:contentRight>
+					</controls:ContainerButton>
+
+					<controls:ContainerButton
+                        press="onReceived()"
+                        text="{t>relationship.home.navigation.receivedTitle}"
+                        description="{parts:[{path:'t>relationship.home.navigation.receivedDescription'},{path:'dvo>/name'}], formatter:'jQuery.sap.formatMessage'}"
+                    >
+						<controls:contentRight>
+							<m:Image src="/assets/icons/addprofile.svg" class="big" visible="false" />
+						</controls:contentRight>
+					</controls:ContainerButton>
+
+					<controls:ContainerButton
+                        press="onRequests()"
+                        text="{t>relationship.home.navigation.requests}"
+                        description="{parts:[{path:'t>relationship.home.navigation.requestsDescription'},{path:'dvo>/name'}], formatter:'jQuery.sap.formatMessage'}"
+                    >
+						<controls:contentRight>
+							<m:Image src="/assets/icons/addprofile.svg" class="big" visible="false" />
+						</controls:contentRight>
+					</controls:ContainerButton>
+
+				</m:VBox>
+				
+			</l:VerticalLayout>
+
+		</semantic:content>
+	</semantic:DetailPage>
+
+</mvc:View>

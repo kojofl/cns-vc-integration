@@ -1,0 +1,98 @@
+<mvc:View
+    controllerName="nmshd.app.flows.accounts.OnboardOverview"
+    xmlns="sap.m"
+    xmlns:m="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:controls="nmshd.app.core.controls"
+>
+	<semantic:DetailPage
+        id="wizardContentPage"
+        navButtonPress="onNavButtonPress"
+        showNavButton="{d>/system/phone}"
+        title="{t>accounts.create.title}"
+        showFooter="false"
+        busy="{v>/busy}"
+        busyIndicatorDelay="{v>/delay}"
+    >
+
+
+		<semantic:customHeaderContent>
+
+		</semantic:customHeaderContent>
+
+		<semantic:subHeader>
+
+
+		</semantic:subHeader>
+
+		<semantic:content>
+			<m:VBox class="sapUiResponsiveMargin">
+				<m:HBox class="contentInfo sapUiSmallMargin" alignItems="Center">
+					<m:Avatar src="sap-icon://hint" backgroundColor="Accent10" class="sapUiSmallMarginEnd" />
+					<controls:Container class="sapUiTinyMargin">
+						<Text text="{t>onboardOverview.doAccept}" class="inlineText" />
+						<Link press="toPrivacy" text="{t>onboardOverview.privacy}" class="sapUiTinyMarginStart inlineText" />
+						<Text text="{t>onboardOverview.acceptByScan}" class="inlineText" />
+					</controls:Container>
+				</m:HBox>
+				<m:VBox class="sapUiSmallMargin">
+					<m:Title text="{t>onboardOverview.title}" class="bigTitle" />
+					<m:Text text="{t>onboardOverview.text}" class="inlineText" />
+				</m:VBox>
+				<m:VBox class="sapUiSmallMargin">
+					<controls:ContainerButton
+                        press="scan()"
+                        text="{t>onboardOverview.title1}"
+                        description="{t>onboardOverview.text1}"
+                        enabled="{v>/submitAvailable}"
+                    >
+						<controls:contentRight>
+							<m:Image src="/assets/icons/bird.svg" class="big" />
+						</controls:contentRight>
+						<m:Text text="{t>onboardOverview.text2}" class="sapUiTinyMarginTop" />
+					</controls:ContainerButton>
+
+					<controls:ContainerButton
+                        press="onNoCode()"
+                        text="{t>onboardOverview.title3}"
+                        description="{t>onboardOverview.text3}"
+                        enabled="{v>/submitAvailable}"
+                    >
+						<controls:contentRight>
+							<m:Image src="/assets/icons/addprofile.svg" class="big" />
+						</controls:contentRight>
+						<m:Text text="{t>onboardOverview.text2}" class="sapUiTinyMarginTop" />
+					</controls:ContainerButton>
+
+					<!--
+					<m:VBox class="contentBox">
+						<m:Title text="{t>onboardOverview.title1}" />
+						<m:Text text="{t>onboardOverview.text1}" class="sapUiTinyMarginBottom" />
+						<m:Text text="{t>onboardOverview.text2}" />
+						<m:Toolbar>
+							<m:ToolbarSpacer />
+							<m:Button text="{t>onboardOverview.scanButton}" type="Emphasized" press="scan" enabled="{v>/submitAvailable}" />
+						</m:Toolbar>
+					</m:VBox>
+					<m:VBox class="contentBox sapUiSmallMarginTop">
+						<m:Title text="{t>onboardOverview.title3}" />
+						<m:Text text="{t>onboardOverview.text3}" />
+						<m:Toolbar>
+							<m:ToolbarSpacer />
+							<m:Button text="{t>accounts.create.title1}" type="Emphasized" press="onNoCode" enabled="{v>/submitAvailable}" />
+						</m:Toolbar>
+					</m:VBox>
+					-->
+				</m:VBox>
+
+				
+
+
+
+			</m:VBox>
+		</semantic:content>
+	</semantic:DetailPage>
+</mvc:View>
