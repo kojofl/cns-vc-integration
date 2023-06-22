@@ -51,6 +51,7 @@
         "@nmshd/content": "workspace:*",
         "@nmshd/crypto": "workspace:*",
         "@nmshd/transport": "workspace:*",
+        "@blubi/vc": "workspace:*",
         "@js-soft/docdb-querytranslator": "1.1.0",
         "@js-soft/logging-abstractions": "1.0.0",
         "@js-soft/ts-serval": "2.0.7",

@@ -12,3 +12,6 @@ export * from "./GetSharedToPeerAttributes";
 export * from "./ShareAttribute";
 export * from "./SucceedAttribute";
 export * from "./UpdateAttribute";
+export * from "./CreateVerifiableAttribute";
+export * from "./CreateVerifiableCredential";
+

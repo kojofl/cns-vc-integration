@@ -4,6 +4,8 @@ import { LocalAttributeDTO, LocalRequestDTO } from "../../../types";
 import {
     CreateAttributeRequest,
     CreateAttributeUseCase,
+    CreateVerifiableCredentialRequest,
+    CreateVerifiableCredentialUseCase,
     CreateSharedAttributeCopyRequest,
     CreateSharedAttributeCopyUseCase,
     DeleteAttributeRequest,
@@ -34,6 +36,7 @@ export class AttributesFacade {
     public constructor(
         @Inject private readonly createAttributeUseCase: CreateAttributeUseCase,
         @Inject private readonly createSharedAttributeCopyUseCase: CreateSharedAttributeCopyUseCase,
+        @Inject private readonly createVerifiableCredentialUseCase: CreateVerifiableCredentialUseCase,
         @Inject private readonly deleteAttributeUseCase: DeleteAttributeUseCase,
         @Inject private readonly getPeerAttributesUseCase: GetPeerAttributesUseCase,
         @Inject private readonly getSharedToPeerAttributesUseCase: GetSharedToPeerAttributesUseCase,
@@ -53,6 +56,10 @@ export class AttributesFacade {
 
     public async createSharedAttributeCopy(request: CreateSharedAttributeCopyRequest): Promise<Result<LocalAttributeDTO>> {
         return await this.createSharedAttributeCopyUseCase.execute(request);
+    }
+
+    public async createVerifiableCredential(request: CreateVerifiableCredentialRequest): Promise<Result<any>> {
+        return await this.createVerifiableCredentialUseCase.execute(request);
     }
 
     public async deleteAttribute(request: DeleteAttributeRequest): Promise<Result<void>> {
