@@ -4,12 +4,14 @@ import { ContentJSON } from "../ContentJSON"
 
 export interface AbstractAttributeJSON extends ContentJSON {
     owner: string
+    proof?: object
     validFrom?: string
     validTo?: string
 }
 
 export interface IAbstractAttribute extends ICoreSerializable {
     owner: ICoreAddress
+    proof?: object
     validFrom?: ICoreDate
     validTo?: ICoreDate
 }
@@ -18,6 +20,10 @@ export abstract class AbstractAttribute extends CoreSerializable implements IAbs
     @validate()
     @serialize()
     public owner: CoreAddress
+
+    @serialize()
+    @validate({ nullable: true })
+    public proof?: object
 
     @serialize()
     @validate({ nullable: true })
