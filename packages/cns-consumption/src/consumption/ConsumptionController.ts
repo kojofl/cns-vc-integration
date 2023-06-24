@@ -5,6 +5,7 @@ import {
     ProposeAttributeRequestItem,
     ReadAttributeRequestItem,
     RegisterAttributeListenerRequestItem,
+    RequestVerifiableAttributeRequestItem,
     ShareAttributeRequestItem
 } from "@nmshd/content"
 import { AccountController, Transport } from "@nmshd/transport"
@@ -22,6 +23,7 @@ import {
     RegisterAttributeListenerRequestItemProcessor,
     RequestItemConstructor,
     RequestItemProcessorRegistry,
+    RequestVerifiableAttributeRequestItemProcessor,
     SettingsController,
     ShareAttributeRequestItemProcessor
 } from "../modules"
@@ -105,6 +107,7 @@ export class ConsumptionController {
             [CreateAttributeRequestItem, CreateAttributeRequestItemProcessor],
             [ReadAttributeRequestItem, ReadAttributeRequestItemProcessor],
             [ProposeAttributeRequestItem, ProposeAttributeRequestItemProcessor],
+            [RequestVerifiableAttributeRequestItem, RequestVerifiableAttributeRequestItemProcessor],
             [ConsentRequestItem, GenericRequestItemProcessor],
             [AuthenticationRequestItem, GenericRequestItemProcessor],
             [RegisterAttributeListenerRequestItem, RegisterAttributeListenerRequestItemProcessor]

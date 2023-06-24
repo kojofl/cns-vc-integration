@@ -13,8 +13,6 @@ import { CoreBuffer } from "@nmshd/crypto";
 export interface CreateVerifiableAttributeRequest {
     content: IdentityAttributeJSON | RelationshipAttributeJSON;
     subjectDid: string;
-    publicKey: string;
-    privateKey: string;
 }
 
 class Validator extends SchemaValidator<CreateVerifiableAttributeRequest> {
@@ -34,17 +32,16 @@ export class CreateVerifiableAttributeUseCase extends UseCase<CreateVerifiableAt
 
     protected async executeInternal(request: CreateVerifiableAttributeRequest): Promise<Result<LocalAttributeDTO>> {
         const multikeyPublic = `z${CoreBuffer.from([0xed, 0x01]).append(this["accountController"].identity.identity.publicKey.publicKey).toBase58()}`;
-        const identityPrivateKey = (await this["accountController"].activeDevice.secrets.loadSecret(DeviceSecretType.IdentitySignature) as any)!.secret["privateKey"];
+        const identityPrivateKey = ((await this["accountController"].activeDevice.secrets.loadSecret(DeviceSecretType.IdentitySignature)) as any)!.secret["privateKey"];
         const multikeyPrivate = `z${CoreBuffer.from([0x80, 0x26]).append(identityPrivateKey).toBase58()}`;
         const params = CreateLocalAttributeParams.from({
             content: request.content
         });
         const vc = await VerifiableCredentialController.initialize();
-        const credential = buildCredential(params.content.value, request.subjectDid, request.publicKey);
+        const credential = buildCredential(params.content.value, request.subjectDid, multikeyPublic);
         const signedCredential = vc.sign(credential, multikeyPublic, multikeyPrivate);
-        params.content.metadata = {
-            verifiableCredentials: [signedCredential]
-        }
+        params.content.proof = signedCredential;
+
         const createdAttribute = await this.attributeController.createLocalAttribute(params);
         await this.accountController.syncDatawallet();
 

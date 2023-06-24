@@ -17,6 +17,8 @@ export * from "./itemProcessors/IRequestItemProcessor"
 export * from "./itemProcessors/ProcessorConstructor"
 export * from "./itemProcessors/proposeAttribute/AcceptProposeAttributeRequestItemParameters"
 export * from "./itemProcessors/proposeAttribute/ProposeAttributeRequestItemProcessor"
+export * from "./itemProcessors/requestVerifiableAttribute/AcceptVerifiableAttributeRequestItemParameters"
+export * from "./itemProcessors/requestVerifiableAttribute/RequestVerifiableAttributeRequestItemProcessor"
 export {
     AcceptReadAttributeRequestItemParametersJSON,
     AcceptReadAttributeRequestItemParametersWithExistingAttributeJSON,

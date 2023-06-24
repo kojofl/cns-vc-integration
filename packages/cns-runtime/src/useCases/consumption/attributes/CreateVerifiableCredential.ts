@@ -4,7 +4,6 @@ import { AccountController, DeviceSecretType } from "@nmshd/transport";
 import { Inject } from "typescript-ioc";
 import { LocalAttributeDTO } from "../../../types";
 import { SchemaRepository, SchemaValidator, UseCase } from "../../common";
-import { buildCredential } from "../verifiableCredentials/core.js";
 import { VerifiableCredentialController } from "@blubi/vc";
 import { CoreBuffer } from "@nmshd/crypto";
 
@@ -30,10 +29,10 @@ export class CreateVerifiableCredentialUseCase extends UseCase<CreateVerifiableC
 
     protected async executeInternal(request: CreateVerifiableCredentialRequest): Promise<Result<any>> {
         const multikeyPublic = `z${CoreBuffer.from([0xed, 0x01]).append(this["accountController"].identity.identity.publicKey.publicKey).toBase58()}`;
-        const identityPrivateKey = (await this["accountController"].activeDevice.secrets.loadSecret(DeviceSecretType.IdentitySignature) as any)!.secret["privateKey"];
+        const identityPrivateKey = ((await this["accountController"].activeDevice.secrets.loadSecret(DeviceSecretType.IdentitySignature)) as any)!.secret["privateKey"];
         const multikeyPrivate = `z${CoreBuffer.from([0x80, 0x26]).append(identityPrivateKey).toBase58()}`;
 
-        const credential = buildCredential(request.content,  request.subjectDid, multikeyPublic);
+        const credential = buildCredential(request.content, request.subjectDid, multikeyPublic);
         const vc = await VerifiableCredentialController.initialize();
 
         console.log(credential);
@@ -44,4 +43,18 @@ export class CreateVerifiableCredentialUseCase extends UseCase<CreateVerifiableC
 
         return Result.ok(signedCredential);
     }
+}
+
+function buildCredential(data: any, subjectDid: string, publicKey: string) {
+    const now = new Date().toJSON();
+    const issuanceDate = `${now.substring(0, now.length - 5)}Z`;
+    const credentialSubject = { ...data };
+    credentialSubject["id"] = subjectDid;
+    return {
+        "@context": ["https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1"],
+        type: ["VerifiableCredential"],
+        issuer: `did:key:${publicKey}`,
+        issuanceDate,
+        credentialSubject
+    };
 }

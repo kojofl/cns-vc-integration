@@ -110,7 +110,7 @@ export const CreateAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -1416,7 +1416,7 @@ export const CreateAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -3512,6 +3512,9 @@ export const CanCreateOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/SucceedAttributeRequestItemJSON"
+                },
+                {
+                    "$ref": "#/definitions/RequestVerifiableAttributeRequestItemJSON"
                 }
             ]
         },
@@ -3621,7 +3624,7 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -4252,7 +4255,7 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -6136,6 +6139,57 @@ export const CanCreateOutgoingRequestRequest: any = {
             ],
             "additionalProperties": false
         },
+        "RequestVerifiableAttributeRequestItemJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "RequestVerifiableAttributeRequestItem"
+                },
+                "@context": {
+                    "type": "string"
+                },
+                "@version": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The human-readable title of this item."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The human-readable description of this item."
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "This property can be used to add some arbitrary metadata to this item. The content of this property will be copied into the response on the side of the recipient, so the sender can use it to identify the group content as they receive the response."
+                },
+                "mustBeAccepted": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the recipient has to accept this group if he wants to accept the Request. If set to `false`, the recipient can decide whether he wants to accept it or not.\n\nCaution: this setting does not take effect in case it is inside of a\n {@link  RequestItemGroupJSON RequestItemGroup } , which is not accepted by the recipient, since a  {@link  RequestItemJSON RequestItem }  can only be accepted if the parent group is accepted as well."
+                },
+                "requireManualDecision": {
+                    "type": "boolean",
+                    "description": "If set to `true`, it advices the recipient of this RequestItem to carefully consider their decision and especially do not decide based on some automation rules."
+                },
+                "attribute": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IdentityAttributeJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/RelationshipAttributeJSON"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "attribute",
+                "mustBeAccepted"
+            ],
+            "additionalProperties": false
+        },
         "AddressString": {
             "type": "string",
             "pattern": "id1[A-Za-z0-9]{32,33}"
@@ -6563,7 +6617,7 @@ export const CompleteOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -7869,7 +7923,7 @@ export const CompleteOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -8943,7 +8997,7 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -10249,7 +10303,7 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -11163,6 +11217,9 @@ export const CreateOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/SucceedAttributeRequestItemJSON"
+                },
+                {
+                    "$ref": "#/definitions/RequestVerifiableAttributeRequestItemJSON"
                 }
             ]
         },
@@ -11272,7 +11329,7 @@ export const CreateOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -11903,7 +11960,7 @@ export const CreateOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -13784,6 +13841,57 @@ export const CreateOutgoingRequestRequest: any = {
                 "newAttribute",
                 "succeededAttribute",
                 "succeededId"
+            ],
+            "additionalProperties": false
+        },
+        "RequestVerifiableAttributeRequestItemJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "RequestVerifiableAttributeRequestItem"
+                },
+                "@context": {
+                    "type": "string"
+                },
+                "@version": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The human-readable title of this item."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The human-readable description of this item."
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "This property can be used to add some arbitrary metadata to this item. The content of this property will be copied into the response on the side of the recipient, so the sender can use it to identify the group content as they receive the response."
+                },
+                "mustBeAccepted": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the recipient has to accept this group if he wants to accept the Request. If set to `false`, the recipient can decide whether he wants to accept it or not.\n\nCaution: this setting does not take effect in case it is inside of a\n {@link  RequestItemGroupJSON RequestItemGroup } , which is not accepted by the recipient, since a  {@link  RequestItemJSON RequestItem }  can only be accepted if the parent group is accepted as well."
+                },
+                "requireManualDecision": {
+                    "type": "boolean",
+                    "description": "If set to `true`, it advices the recipient of this RequestItem to carefully consider their decision and especially do not decide based on some automation rules."
+                },
+                "attribute": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IdentityAttributeJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/RelationshipAttributeJSON"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "attribute",
+                "mustBeAccepted"
             ],
             "additionalProperties": false
         },
@@ -14425,6 +14533,9 @@ export const ReceivedIncomingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/SucceedAttributeRequestItemJSON"
+                },
+                {
+                    "$ref": "#/definitions/RequestVerifiableAttributeRequestItemJSON"
                 }
             ]
         },
@@ -14534,7 +14645,7 @@ export const ReceivedIncomingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -15165,7 +15276,7 @@ export const ReceivedIncomingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -17049,6 +17160,57 @@ export const ReceivedIncomingRequestRequest: any = {
             ],
             "additionalProperties": false
         },
+        "RequestVerifiableAttributeRequestItemJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "RequestVerifiableAttributeRequestItem"
+                },
+                "@context": {
+                    "type": "string"
+                },
+                "@version": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The human-readable title of this item."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The human-readable description of this item."
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "This property can be used to add some arbitrary metadata to this item. The content of this property will be copied into the response on the side of the recipient, so the sender can use it to identify the group content as they receive the response."
+                },
+                "mustBeAccepted": {
+                    "type": "boolean",
+                    "description": "If set to `true`, the recipient has to accept this group if he wants to accept the Request. If set to `false`, the recipient can decide whether he wants to accept it or not.\n\nCaution: this setting does not take effect in case it is inside of a\n {@link  RequestItemGroupJSON RequestItemGroup } , which is not accepted by the recipient, since a  {@link  RequestItemJSON RequestItem }  can only be accepted if the parent group is accepted as well."
+                },
+                "requireManualDecision": {
+                    "type": "boolean",
+                    "description": "If set to `true`, it advices the recipient of this RequestItem to carefully consider their decision and especially do not decide based on some automation rules."
+                },
+                "attribute": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IdentityAttributeJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/RelationshipAttributeJSON"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "@type",
+                "attribute",
+                "mustBeAccepted"
+            ],
+            "additionalProperties": false
+        },
         "MessageIdString": {
             "type": "string",
             "pattern": "MSG[A-Za-z0-9]{17}"
@@ -17201,7 +17363,7 @@ export const SucceedAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -18507,7 +18669,7 @@ export const SucceedAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -19176,7 +19338,7 @@ export const UpdateAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -20482,7 +20644,7 @@ export const UpdateAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -21119,19 +21281,11 @@ export const CreateVerifiableAttributeRequest: any = {
                 },
                 "subjectDid": {
                     "type": "string"
-                },
-                "publicKey": {
-                    "type": "string"
-                },
-                "privateKey": {
-                    "type": "string"
                 }
             },
             "required": [
                 "content",
-                "subjectDid",
-                "publicKey",
-                "privateKey"
+                "subjectDid"
             ],
             "additionalProperties": false
         },
@@ -21151,7 +21305,7 @@ export const CreateVerifiableAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {
@@ -22457,7 +22611,7 @@ export const CreateVerifiableAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "metadata": {
+                "proof": {
                     "type": "object"
                 },
                 "validFrom": {

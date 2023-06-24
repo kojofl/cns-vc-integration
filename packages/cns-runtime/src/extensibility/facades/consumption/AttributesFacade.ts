@@ -29,7 +29,9 @@ import {
     SucceedAttributeRequest,
     SucceedAttributeUseCase,
     UpdateAttributeRequest,
-    UpdateAttributeUseCase
+    UpdateAttributeUseCase,
+    CreateVerifiableAttributeRequest,
+    CreateVerifiableAttributeUseCase
 } from "../../../useCases";
 
 export class AttributesFacade {
@@ -37,6 +39,7 @@ export class AttributesFacade {
         @Inject private readonly createAttributeUseCase: CreateAttributeUseCase,
         @Inject private readonly createSharedAttributeCopyUseCase: CreateSharedAttributeCopyUseCase,
         @Inject private readonly createVerifiableCredentialUseCase: CreateVerifiableCredentialUseCase,
+        @Inject private readonly createVerifiableAttributeUseCase: CreateVerifiableAttributeUseCase,
         @Inject private readonly deleteAttributeUseCase: DeleteAttributeUseCase,
         @Inject private readonly getPeerAttributesUseCase: GetPeerAttributesUseCase,
         @Inject private readonly getSharedToPeerAttributesUseCase: GetSharedToPeerAttributesUseCase,
@@ -56,6 +59,10 @@ export class AttributesFacade {
 
     public async createSharedAttributeCopy(request: CreateSharedAttributeCopyRequest): Promise<Result<LocalAttributeDTO>> {
         return await this.createSharedAttributeCopyUseCase.execute(request);
+    }
+
+    public async createVerifiableAttribute(request: CreateVerifiableAttributeRequest): Promise<Result<any>> {
+        return await this.createVerifiableAttributeUseCase.execute(request);
     }
 
     public async createVerifiableCredential(request: CreateVerifiableCredentialRequest): Promise<Result<any>> {
