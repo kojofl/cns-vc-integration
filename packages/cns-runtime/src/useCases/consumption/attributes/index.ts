@@ -14,4 +14,4 @@ export * from "./SucceedAttribute";
 export * from "./UpdateAttribute";
 export * from "./CreateVerifiableAttribute";
 export * from "./CreateVerifiableCredential";
-
+export * from "./VerifyVerifiableCredential";
