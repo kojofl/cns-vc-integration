@@ -8,17 +8,18 @@ import {
     Request,
     ResponseItemResult
 } from "@nmshd/content"
-import { CoreAddress, CoreErrors as TransportCoreErrors, CoreId } from "@nmshd/transport"
+import { CoreAddress, CoreErrors as TransportCoreErrors, CoreId, DeviceSecretType } from "@nmshd/transport"
 import { CoreErrors } from "../../../../consumption"
 import { LocalAttribute } from "../../../attributes/local/LocalAttribute"
 import { GenericRequestItemProcessor } from "../GenericRequestItemProcessor"
 import { LocalRequestInfo } from "../IRequestItemProcessor"
-import validateQuery from "../utility/validateQuery"
+import { VerifiableCredentialController } from "@blubi/vc"
 import { ValidationResult } from "../ValidationResult"
 import {
     AcceptVerifiableAttributeRequestItemParameters,
     AcceptVerifiableAttributeRequestItemParametersJSON
 } from "./AcceptVerifiableAttributeRequestItemParameters"
+import { CoreBuffer } from "@nmshd/crypto"
 
 export class RequestVerifiableAttributeRequestItemProcessor extends GenericRequestItemProcessor<
     RequestVerifiableAttributeRequestItem,
@@ -49,42 +50,47 @@ export class RequestVerifiableAttributeRequestItemProcessor extends GenericReque
 
     public override async canAccept(
         _requestItem: RequestVerifiableAttributeRequestItem,
-        params: AcceptVerifiableAttributeRequestItemParametersJSON,
+        _params: AcceptVerifiableAttributeRequestItemParametersJSON,
         requestInfo: LocalRequestInfo
     ): Promise<ValidationResult> {
-        const parsedParams: AcceptVerifiableAttributeRequestItemParameters =
-            AcceptVerifiableAttributeRequestItemParameters.from(params)
-
-        let attribute = parsedParams.attribute
-
-        const ownerIsEmpty = attribute!.owner.equals("")
-        const ownerIsCurrentIdentity = attribute!.owner.equals(this.currentIdentityAddress)
-        if (!ownerIsEmpty && !ownerIsCurrentIdentity) {
-            return ValidationResult.error(
-                CoreErrors.requests.invalidRequestItem(
-                    "The given Attribute belongs to someone else. You can only share own Attributes."
-                )
-            )
-        }
-
-        if (!attribute.proof) {
-            return ValidationResult.error(CoreErrors.requests.invalidRequestItem("The attribute has to be verifiable."))
-        }
-
         return ValidationResult.success()
     }
 
     public override async accept(
-        _requestItem: RequestVerifiableAttributeRequestItem,
-        params: AcceptVerifiableAttributeRequestItemParametersJSON,
+        requestItem: RequestVerifiableAttributeRequestItem,
+        _params: AcceptVerifiableAttributeRequestItemParametersJSON,
         requestInfo: LocalRequestInfo
     ): Promise<RequestVerifiableAttributeAcceptResponseItem> {
-        const parsedParams: AcceptVerifiableAttributeRequestItemParameters =
-            AcceptVerifiableAttributeRequestItemParameters.from(params)
+        const multikeyPublic = `z${CoreBuffer.from([0xed, 0x01])
+            .append(this["accountController"].identity.identity.publicKey.publicKey)
+            .toBase58()}`
+        const identityPrivateKey = ((await this["accountController"].activeDevice.secrets.loadSecret(
+            DeviceSecretType.IdentitySignature
+        )) as any)!.secret["privateKey"]
+        const multikeyPrivate = `z${CoreBuffer.from([0x80, 0x26]).append(identityPrivateKey).toBase58()}`
+
+        const vc = await VerifiableCredentialController.initialize()
+        const credential = buildCredential(requestItem.attribute.value, requestItem.did, multikeyPublic)
+        const signedCredential = vc.sign(credential, multikeyPublic, multikeyPrivate)
+        requestItem.attribute.proof = signedCredential
 
         return RequestVerifiableAttributeAcceptResponseItem.from({
             result: ResponseItemResult.Accepted,
-            attribute: parsedParams.attribute
+            attribute: requestItem.attribute
         })
+    }
+}
+
+function buildCredential(data: any, subjectDid: string, publicKey: string) {
+    const now = new Date().toJSON()
+    const issuanceDate = `${now.substring(0, now.length - 5)}Z`
+    const credentialSubject = { ...data }
+    credentialSubject["id"] = subjectDid
+    return {
+        "@context": ["https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1"],
+        type: ["VerifiableCredential"],
+        issuer: `did:key:${publicKey}`,
+        issuanceDate,
+        credentialSubject
     }
 }

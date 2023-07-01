@@ -12,10 +12,12 @@ import { IRequestItem, RequestItem, RequestItemJSON } from "../../RequestItem"
 export interface RequestVerifiableAttributeRequestItemJSON extends RequestItemJSON {
     "@type": "RequestVerifiableAttributeRequestItem"
     attribute: IdentityAttributeJSON | RelationshipAttributeJSON
+    did: string
 }
 
 export interface IRequestVerifiableAttributeRequestItem extends IRequestItem {
     attribute: IIdentityAttribute | IRelationshipAttribute
+    did: string
 }
 
 @type("RequestVerifiableAttributeRequestItem")
@@ -26,6 +28,9 @@ export class RequestVerifiableAttributeRequestItem
     @serialize({ unionTypes: [IdentityAttribute, RelationshipAttribute] })
     @validate()
     public attribute: IdentityAttribute | RelationshipAttribute
+
+    @validate()
+    public did: string
 
     public static from(
         value: IRequestVerifiableAttributeRequestItem | Omit<RequestVerifiableAttributeRequestItemJSON, "@type">
