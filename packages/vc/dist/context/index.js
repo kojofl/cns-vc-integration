@@ -2,7 +2,9 @@
  * Copyright (c) 2019 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
+
 const credentialsContext = require('credentials-context');
+
 module.exports = new Map([
     ...credentialsContext.contexts,
     [
@@ -20,5 +22,9 @@ module.exports = new Map([
     [
         'https://w3id.org/security/data-integrity/v1',
         require('./data-integrity')
+    ],
+    [
+        'https://enmeshed.eu/schema',
+        require("./enmeshed")
     ]
 ]);

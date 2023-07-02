@@ -11,12 +11,12 @@ import { IdentityAttributeJSON, RelationshipAttributeJSON } from "@nmshd/content
 
 export interface VerifyVerifiableCredentialRequest {
     attribute: IdentityAttributeJSON | RelationshipAttributeJSON;
-    issuerValidator: (issuerDid: string) => Promise<boolean>;
+    validIssuers?: string[];
 }
 
 class Validator extends SchemaValidator<VerifyVerifiableCredentialRequest> {
     public constructor(@Inject schemaRepository: SchemaRepository) {
-        super(schemaRepository.getSchema("CreateVerifiableCredentialRequest"));
+        super(schemaRepository.getSchema("VerifyVerifiableCredentialRequest"));
     }
 }
 
@@ -47,16 +47,17 @@ export class VerifyVerifiableCredentialUseCase extends UseCase<VerifyVerifiableC
         const vc = await VerifiableCredentialController.initialize();
 
         const validationResult = await vc.verify(request.attribute.proof);
-
-        if (!(await request.issuerValidator((request.attribute.proof as any).issuer))) {
-            return Result.ok({
-                success: false,
-                message: "The issuer is not trusted"
-            });
+        if (request.validIssuers) {
+            if (!request.validIssuers.includes((request.attribute.proof as any).issuer)) {
+                return Result.ok({
+                    success: false,
+                    message: "The issuer is not trusted"
+                });
+            }
         }
 
         return Result.ok({
-            success: validationResult.result
+            success: validationResult.verified
         });
     }
 }

@@ -6,6 +6,7 @@ import { LocalAttributeDTO } from "../../../types";
 import { SchemaRepository, SchemaValidator, UseCase } from "../../common";
 import { VerifiableCredentialController } from "@blubi/vc";
 import { CoreBuffer } from "@nmshd/crypto";
+import { buildCredential } from "../verifiableCredentials/core";
 
 export interface CreateVerifiableCredentialRequest {
     content: any;
@@ -43,18 +44,4 @@ export class CreateVerifiableCredentialUseCase extends UseCase<CreateVerifiableC
 
         return Result.ok(signedCredential);
     }
-}
-
-function buildCredential(data: any, subjectDid: string, publicKey: string) {
-    const now = new Date().toJSON();
-    const issuanceDate = `${now.substring(0, now.length - 5)}Z`;
-    const credentialSubject = { ...data };
-    credentialSubject["id"] = subjectDid;
-    return {
-        "@context": ["https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1"],
-        type: ["VerifiableCredential"],
-        issuer: `did:key:${publicKey}`,
-        issuanceDate,
-        credentialSubject
-    };
 }

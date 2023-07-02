@@ -61,6 +61,7 @@ export class RequestVerifiableAttributeRequestItemProcessor extends GenericReque
         _params: AcceptVerifiableAttributeRequestItemParametersJSON,
         requestInfo: LocalRequestInfo
     ): Promise<RequestVerifiableAttributeAcceptResponseItem> {
+        const parsedRequestAttribute = JSON.parse(JSON.stringify(requestItem.attribute))
         const multikeyPublic = `z${CoreBuffer.from([0xed, 0x01])
             .append(this["accountController"].identity.identity.publicKey.publicKey)
             .toBase58()}`
@@ -70,8 +71,8 @@ export class RequestVerifiableAttributeRequestItemProcessor extends GenericReque
         const multikeyPrivate = `z${CoreBuffer.from([0x80, 0x26]).append(identityPrivateKey).toBase58()}`
 
         const vc = await VerifiableCredentialController.initialize()
-        const credential = buildCredential(requestItem.attribute.value, requestItem.did, multikeyPublic)
-        const signedCredential = vc.sign(credential, multikeyPublic, multikeyPrivate)
+        const credential = buildCredential(parsedRequestAttribute.value, requestItem.did, multikeyPublic)
+        const signedCredential = await vc.sign(credential, multikeyPublic, multikeyPrivate)
         requestItem.attribute.proof = signedCredential
 
         return RequestVerifiableAttributeAcceptResponseItem.from({
@@ -84,10 +85,17 @@ export class RequestVerifiableAttributeRequestItemProcessor extends GenericReque
 function buildCredential(data: any, subjectDid: string, publicKey: string) {
     const now = new Date().toJSON()
     const issuanceDate = `${now.substring(0, now.length - 5)}Z`
-    const credentialSubject = { ...data }
+    const type = data["@type"]
+    delete data["@type"]
+    const credentialSubject: any = {}
+    credentialSubject[`${type}`] = { ...data }
     credentialSubject["id"] = subjectDid
     return {
-        "@context": ["https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1"],
+        "@context": [
+            "https://www.w3.org/2018/credentials/v1",
+            "https://www.w3.org/2018/credentials/examples/v1",
+            "https://enmeshed.eu/schema"
+        ],
         type: ["VerifiableCredential"],
         issuer: `did:key:${publicKey}`,
         issuanceDate,

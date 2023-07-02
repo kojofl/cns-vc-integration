@@ -113,6 +113,9 @@ export const CreateAttributeRequest: any = {
                 "proof": {
                     "type": "object"
                 },
+                "test": {
+                    "type": "string"
+                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -1418,6 +1421,9 @@ export const CreateAttributeRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -3627,6 +3633,9 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "proof": {
                     "type": "object"
                 },
+                "test": {
+                    "type": "string"
+                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -4257,6 +4266,9 @@ export const CanCreateOutgoingRequestRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -6181,11 +6193,15 @@ export const CanCreateOutgoingRequestRequest: any = {
                             "$ref": "#/definitions/RelationshipAttributeJSON"
                         }
                     ]
+                },
+                "did": {
+                    "type": "string"
                 }
             },
             "required": [
                 "@type",
                 "attribute",
+                "did",
                 "mustBeAccepted"
             ],
             "additionalProperties": false
@@ -6619,6 +6635,9 @@ export const CompleteOutgoingRequestRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -7925,6 +7944,9 @@ export const CompleteOutgoingRequestRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -9000,6 +9022,9 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
                 "proof": {
                     "type": "object"
                 },
+                "test": {
+                    "type": "string"
+                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -10305,6 +10330,9 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -11332,6 +11360,9 @@ export const CreateOutgoingRequestRequest: any = {
                 "proof": {
                     "type": "object"
                 },
+                "test": {
+                    "type": "string"
+                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -11962,6 +11993,9 @@ export const CreateOutgoingRequestRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -13886,11 +13920,15 @@ export const CreateOutgoingRequestRequest: any = {
                             "$ref": "#/definitions/RelationshipAttributeJSON"
                         }
                     ]
+                },
+                "did": {
+                    "type": "string"
                 }
             },
             "required": [
                 "@type",
                 "attribute",
+                "did",
                 "mustBeAccepted"
             ],
             "additionalProperties": false
@@ -14648,6 +14686,9 @@ export const ReceivedIncomingRequestRequest: any = {
                 "proof": {
                     "type": "object"
                 },
+                "test": {
+                    "type": "string"
+                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -15278,6 +15319,9 @@ export const ReceivedIncomingRequestRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -17202,11 +17246,15 @@ export const ReceivedIncomingRequestRequest: any = {
                             "$ref": "#/definitions/RelationshipAttributeJSON"
                         }
                     ]
+                },
+                "did": {
+                    "type": "string"
                 }
             },
             "required": [
                 "@type",
                 "attribute",
+                "did",
                 "mustBeAccepted"
             ],
             "additionalProperties": false
@@ -17365,6 +17413,9 @@ export const SucceedAttributeRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -18671,6 +18722,9 @@ export const SucceedAttributeRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -19341,6 +19395,9 @@ export const UpdateAttributeRequest: any = {
                 "proof": {
                     "type": "object"
                 },
+                "test": {
+                    "type": "string"
+                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -20646,6 +20703,9 @@ export const UpdateAttributeRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -21308,6 +21368,9 @@ export const CreateVerifiableAttributeRequest: any = {
                 "proof": {
                     "type": "object"
                 },
+                "test": {
+                    "type": "string"
+                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -22613,6 +22676,9 @@ export const CreateVerifiableAttributeRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -23266,6 +23332,12 @@ export const VerifyVerifiableCredentialRequest: any = {
                             "$ref": "#/definitions/RelationshipAttributeJSON"
                         }
                     ]
+                },
+                "validIssuers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "required": [
@@ -23291,6 +23363,9 @@ export const VerifyVerifiableCredentialRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
@@ -24597,6 +24672,9 @@ export const VerifyVerifiableCredentialRequest: any = {
                 },
                 "proof": {
                     "type": "object"
+                },
+                "test": {
+                    "type": "string"
                 },
                 "validFrom": {
                     "type": "string"
