@@ -83,6 +83,48 @@ describe("VC", () => {
         expect(verificationResult.value.success).toBeTruthy();
     });
 
+    test("Fail verification of normal attribute", async function () {
+        const identityAttribute = await sender.consumption.attributes.getAttribute({
+            id
+        });
+
+        const verificationResult = await sender.consumption.attributes.verifyVerifiableCredential({
+            attribute: identityAttribute.value.content
+        });
+
+        expect(verificationResult).toBeSuccessful();
+
+        expect(verificationResult.value.success).toBeFalsy();
+    });
+
+    test("Fail verification of invalid proof", async function () {
+        const creationResult = await sender.consumption.attributes.createVerifiableAttribute({
+            content: {
+                "@type": "IdentityAttribute",
+                value: {
+                    "@type": "BirthDate",
+                    day: 23,
+                    month: 11,
+                    year: 1998
+                },
+                owner: sender.address
+            },
+            subjectDid: "did:key:sender"
+        });
+
+        const invalid = creationResult.value.content;
+
+        invalid.proof.proof.proofValue = "abc";
+
+        const verificationResult = await sender.consumption.attributes.verifyVerifiableCredential({
+            attribute: invalid
+        });
+
+        expect(verificationResult).toBeSuccessful();
+
+        expect(verificationResult.value.success).toBeFalsy();
+    });
+
     test("Request verifiable attribute user story", async function () {
         const identityAttribute = await sender.consumption.attributes.getAttribute({
             id

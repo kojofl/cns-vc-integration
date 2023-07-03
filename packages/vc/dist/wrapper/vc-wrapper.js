@@ -7,6 +7,7 @@ const { sign } = require('jsonld-signatures');
 const jsigs = require('jsonld-signatures');
 let driver;
 const { purposes: { AssertionProofPurpose } } = jsigs;
+const jsonld = require('jsonld');
 
 let initialized = false;
 
@@ -19,6 +20,7 @@ async function init() {
     DataIntegrityProof = middle.DataIntegrityProof;
     const mod = await import('@digitalbazaar/eddsa-2022-cryptosuite');
     eddsa2022CryptoSuite = mod.cryptosuite;
+    eddsa2022CryptoSuite.canonize = canonize;
     suiteContext = await import("ed25519-signature-2020-context");
     let driver_mod = await import("@digitalbazaar/did-method-key");
     driver = driver_mod.driver();
@@ -46,8 +48,22 @@ async function verify(credential) {
     });
 }
 
+function canonize(input, options) {
+    return jsonld.canonize(input, {
+      algorithm: 'URDNA2015',
+      format: 'application/n-quads',
+      safe: false,
+      ...options
+    });
+  }
+
 function prepareVerify() {
     const suite = new DataIntegrityProof({ cryptosuite: eddsa2022CryptoSuite });
+
+    driver.use({
+        multibaseMultikeyHeader: 'z6Mk',
+        fromMultibase: Ed25519Multikey.from
+    });
 
     const loader = async (url) => {
         if (url.startsWith("did:key:")) {

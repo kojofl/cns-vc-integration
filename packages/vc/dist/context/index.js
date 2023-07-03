@@ -22,9 +22,5 @@ module.exports = new Map([
     [
         'https://w3id.org/security/data-integrity/v1',
         require('./data-integrity')
-    ],
-    [
-        'https://enmeshed.eu/schema',
-        require("./enmeshed")
     ]
 ]);
