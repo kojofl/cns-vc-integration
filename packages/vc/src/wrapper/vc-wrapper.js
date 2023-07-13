@@ -47,7 +47,7 @@ async function verify(credential) {
         documentLoader: loader
     });
 }
-
+ // Disable safe mode of canonization
 function canonize(input, options) {
     return jsonld.canonize(input, {
       algorithm: 'URDNA2015',
