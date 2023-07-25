@@ -6,6 +6,10 @@ export class AccountEndpoint extends Endpoint {
         return await this.get("/api/v2/Account/IdentityInfo");
     }
 
+    public async getDid(): Promise<ConnectorResponse<string>> {
+        return await this.get("/did");
+    }
+
     public async sync(): Promise<ConnectorResponse<ConnectorSyncResult>> {
         return await this.post("/api/v2/Account/Sync", undefined, 200);
     }
