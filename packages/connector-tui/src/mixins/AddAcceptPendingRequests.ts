@@ -39,10 +39,17 @@ export function AddAcceptPendingRequests<TBase extends ConnectorTUIBaseConstruct
             }
             items.push({ items: acceptItems })
           } else {
-            items.push({ accept: true })
+            if (item["@type"] === "ReadAttributeRequestItem") {
+              const attribute = await this.selectVerifiableAttribute("Select Attribute to respond")
+              const response: any = { accept: true, existingAttributeId: attribute! }
+              items.push(response)
+            } else {
+              items.push({ accept: true })
+            }
           }
         }
         const canAcceptResult = await this.connectorClient.incomingRequests.canAccept(request.id, { items: items })
+        console.log(canAcceptResult.result)
         if (canAcceptResult.isError) {
           console.log(canAcceptResult.error)
           return
@@ -52,6 +59,7 @@ export function AddAcceptPendingRequests<TBase extends ConnectorTUIBaseConstruct
           console.log(acceptResult.error)
           return
         }
+        console.log(acceptResult.result)
       }
     }
   }

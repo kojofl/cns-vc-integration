@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@nmshd/connector-sdk": "workspace:*",
+    "@nmshd/content": "workspace:*",
+    "@blubi/vc": "workspace:*",
     "axios": "*",
     "chalk": "^5.2.0",
     "dotenv": "^16.0.3",

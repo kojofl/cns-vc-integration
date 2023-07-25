@@ -9,8 +9,10 @@ export class ConnectorTUI extends ConnectorTUIBaseWithMixins {
   public static async create(baseUrl: string, apiKey: string) {
     const client = ConnectorClient.create({ baseUrl, apiKey })
     const address = (await client.account.getIdentityInfo()).result.address
+    const didResult = await client.account.getDid()
+    const did = didResult.result
 
-    return new ConnectorTUI(client, address)
+    return new ConnectorTUI(client, address, did)
   }
 
   public async run() {
@@ -61,6 +63,10 @@ export class ConnectorTUI extends ConnectorTUIBaseWithMixins {
     console.log(`TUI Version: ${chalk.yellow(packageJson.version)}`)
     console.log(`Connector version: ${chalk.yellow(connectorVersionInfo.version)}`)
     console.log(`Connector Address: ${chalk.yellow(this.connectorAddress)}`)
+    if (process.env.ROLE) {
+      console.log(`Identity DID: ${chalk.yellow(this.did)}`)
+      console.log(`Identity Role: ${chalk.yellow(process.env.ROLE)}`)
+    }
     console.log("")
   }
 }
