@@ -11,3 +11,8 @@ services:
     environment:
       - NODE_CONFIG_ENV=stage
       - DATABASE_NAME=stage-2
+  bc-3:
+    container_name: bc-3-stage
+    environment:
+      - NODE_CONFIG_ENV=stage
+      - DATABASE_NAME=stage-3

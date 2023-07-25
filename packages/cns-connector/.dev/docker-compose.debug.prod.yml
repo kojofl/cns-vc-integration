@@ -10,3 +10,8 @@ services:
     environment:
       - NODE_CONFIG_ENV=prod
       - DATABASE_NAME=prod-2
+  bc-3:
+    container_name: bc-3-prod
+    environment:
+      - NODE_CONFIG_ENV=prod
+      - DATABASE_NAME=prod-3

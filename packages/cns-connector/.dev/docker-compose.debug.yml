@@ -6,7 +6,7 @@ services:
       dockerfile: ./Dockerfile.debug
     ports:
       - "3000:80" # Webserver
-      - "9229:9229" # Debugger
+      #- "9229:9229" # Debugger
     environment:
       - CUSTOM_CONFIG_LOCATION=/config.json
       - SYNC_ENABLED
@@ -25,7 +25,7 @@ services:
       dockerfile: ./Dockerfile.debug
     ports:
       - "3001:80" # Webserver
-      - "9231:9229" # Debugger
+      #- "9231:9229" # Debugger
     environment:
       - CUSTOM_CONFIG_LOCATION=/config.json
       - SYNC_ENABLED

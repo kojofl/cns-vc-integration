@@ -58,8 +58,34 @@
       }
     },
     {
-      "label": "Start Connector",
-      "command": "export SYNC_ENABLED=true && docker compose -f .dev/docker-compose.local.debug.yml -f .dev/docker-compose.debug.stage.yml up bc-1",
+      "label": "Start Connector One",
+      "command": "docker compose -f .dev/docker-compose.local.debug.yml -f .dev/docker-compose.debug.stage.yml up bc-1",
+      "type": "shell",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "close": false
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/packages/cns-connector"
+      }
+    },
+    {
+      "label": "Start Connector Two",
+      "command": "docker compose -f .dev/docker-compose.local.debug.yml -f .dev/docker-compose.debug.stage.yml up bc-2",
+      "type": "shell",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "close": false
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/packages/cns-connector"
+      }
+    },
+    {
+      "label": "Start Connector Three",
+      "command": "docker compose -f .dev/docker-compose.local.debug.yml -f .dev/docker-compose.debug.stage.yml up bc-3",
       "type": "shell",
       "isBackground": true,
       "presentation": {
@@ -72,7 +98,27 @@
     },
     {
       "label": "Connector TUI",
-      "command": "cd packages/connector-tui/ && npm run start",
+      "command": "cd packages/connector-tui/ && export ROLE=Student && npm run start",
+      "type": "shell",
+      "isBackground": false,
+      "presentation": {
+        "reveal": "always",
+        "close": true
+      }
+    },
+    {
+      "label": "Connector TUI two",
+      "command": "cd packages/connector-tui/ && export BASE_URL=http://localhost:3001/ && export ROLE=TrustedParty && npm run start",
+      "type": "shell",
+      "isBackground": false,
+      "presentation": {
+        "reveal": "always",
+        "close": true
+      }
+    },
+    {
+      "label": "Connector TUI three",
+      "command": "cd packages/connector-tui/ && export BASE_URL=http://localhost:3002/ && export ROLE=RelyingParty && npm run start",
       "type": "shell",
       "isBackground": false,
       "presentation": {

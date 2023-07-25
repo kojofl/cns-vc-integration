@@ -11,3 +11,8 @@ services:
     environment:
       - NODE_CONFIG_ENV=dev
       - DATABASE_NAME=dev-2
+  bc-3:
+    container_name: bc-3-dev
+    environment:
+      - NODE_CONFIG_ENV=dev
+      - DATABASE_NAME=dev-3
