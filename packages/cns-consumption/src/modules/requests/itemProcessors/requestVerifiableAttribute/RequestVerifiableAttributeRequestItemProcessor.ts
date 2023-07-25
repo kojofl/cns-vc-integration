@@ -6,9 +6,10 @@ import {
     RelationshipAttribute,
     RelationshipAttributeQuery,
     Request,
-    ResponseItemResult
+    ResponseItemResult,
+    ResponseItem
 } from "@nmshd/content"
-import { CoreAddress, CoreErrors as TransportCoreErrors, CoreId, DeviceSecretType } from "@nmshd/transport"
+import { CoreAddress, CoreId, DeviceSecretType, MessageController } from "@nmshd/transport"
 import { CoreErrors } from "../../../../consumption"
 import { LocalAttribute } from "../../../attributes/local/LocalAttribute"
 import { GenericRequestItemProcessor } from "../GenericRequestItemProcessor"
@@ -20,6 +21,7 @@ import {
     AcceptVerifiableAttributeRequestItemParametersJSON
 } from "./AcceptVerifiableAttributeRequestItemParameters"
 import { CoreBuffer } from "@nmshd/crypto"
+import { should } from "chai"
 
 export class RequestVerifiableAttributeRequestItemProcessor extends GenericRequestItemProcessor<
     RequestVerifiableAttributeRequestItem,
@@ -28,7 +30,7 @@ export class RequestVerifiableAttributeRequestItemProcessor extends GenericReque
     public override canCreateOutgoingRequestItem(
         requestItem: RequestVerifiableAttributeRequestItem,
         _request: Request,
-        recipient?: CoreAddress
+        _recipient?: CoreAddress
     ): ValidationResult {
         const attributeValidationResult = this.validateAttribute(requestItem.attribute)
         if (attributeValidationResult.isError()) {
@@ -48,11 +50,11 @@ export class RequestVerifiableAttributeRequestItemProcessor extends GenericReque
         return ValidationResult.success()
     }
 
-    public override async canAccept(
+    public override canAccept(
         _requestItem: RequestVerifiableAttributeRequestItem,
         _params: AcceptVerifiableAttributeRequestItemParametersJSON,
-        requestInfo: LocalRequestInfo
-    ): Promise<ValidationResult> {
+        _requestInfo: LocalRequestInfo
+    ): ValidationResult {
         return ValidationResult.success()
     }
 
@@ -74,10 +76,32 @@ export class RequestVerifiableAttributeRequestItemProcessor extends GenericReque
         const credential = buildCredential(parsedRequestAttribute.value, requestItem.did, multikeyPublic)
         const signedCredential = await vc.sign(credential, multikeyPublic, multikeyPrivate)
         requestItem.attribute.proof = signedCredential
+        const peerAttribute = await this.consumptionController.attributes.createPeerLocalAttribute({
+            content: requestItem.attribute,
+            peer: requestInfo.peer,
+            requestReference: requestInfo.id
+        })
 
         return RequestVerifiableAttributeAcceptResponseItem.from({
             result: ResponseItemResult.Accepted,
-            attribute: requestItem.attribute
+            attribute: requestItem.attribute,
+            attributeId: peerAttribute.id
+        })
+    }
+
+    public override async applyIncomingResponseItem(
+        responseItem: RequestVerifiableAttributeAcceptResponseItem,
+        _requestItem: RequestVerifiableAttributeRequestItem,
+        requestInfo: LocalRequestInfo
+    ): Promise<void> {
+        const creationResult = await this.consumptionController.attributes.createLocalAttribute({
+            content: responseItem.attribute
+        })
+        await this.consumptionController.attributes.createSharedLocalAttributeCopy({
+            peer: requestInfo.peer,
+            sourceAttributeId: creationResult.id,
+            requestReference: requestInfo.id,
+            attributeId: responseItem.attributeId
         })
     }
 }
@@ -86,9 +110,6 @@ function buildCredential(data: any, subjectDid: string, publicKey: string) {
     const now = new Date().toJSON()
     const issuanceDate = `${now.substring(0, now.length - 5)}Z`
     const credentialSubject: any = data
-    // const type = data["@type"]
-    // delete data["@type"]
-    // credentialSubject[`${type}`] = { ...data }
     credentialSubject["id"] = subjectDid
     return {
         "@context": ["https://www.w3.org/2018/credentials/v1", "https://www.w3.org/2018/credentials/examples/v1"],
