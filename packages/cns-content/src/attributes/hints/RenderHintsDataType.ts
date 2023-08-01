@@ -7,6 +7,7 @@ export enum RenderHintsDataType {
     PhoneNumber = "PhoneNumber",
     URL = "URL",
     FileReference = "FileReference",
+    SchematizedXML = "SchematizedXML",
     Date = "Date",
     DatePeriod = "DatePeriod",
     DateTime = "DateTime",
@@ -15,5 +16,6 @@ export enum RenderHintsDataType {
     TimePeriod = "TimePeriod",
     Day = "Day",
     Month = "Month",
-    Year = "Year"
+    Year = "Year",
+    XML = "XML"
 }
