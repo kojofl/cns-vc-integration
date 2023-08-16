@@ -18,7 +18,10 @@ export interface GetQRCodeForTokenResponse {
 }
 
 export class GetQRCodeForTokenUseCase extends UseCase<GetQRCodeForTokenRequest, GetQRCodeForTokenResponse> {
-    public constructor(@Inject private readonly tokenController: TokenController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly tokenController: TokenController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

@@ -4,14 +4,14 @@ import { LocalAttributeDTO, LocalRequestDTO } from "../../../types";
 import {
     CreateAttributeRequest,
     CreateAttributeUseCase,
-    CreateVerifiableCredentialRequest,
-    CreateVerifiableCredentialUseCase,
     CreateSharedAttributeCopyRequest,
     CreateSharedAttributeCopyUseCase,
     DeleteAttributeRequest,
     DeleteAttributeUseCase,
     ExecuteIdentityAttributeQueryRequest,
     ExecuteIdentityAttributeQueryUseCase,
+    ExecuteIQLQueryRequest,
+    ExecuteIQLQueryUseCase,
     ExecuteRelationshipAttributeQueryRequest,
     ExecuteRelationshipAttributeQueryUseCase,
     ExecuteThirdPartyRelationshipAttributeQueryRequest,
@@ -30,19 +30,15 @@ import {
     SucceedAttributeUseCase,
     UpdateAttributeRequest,
     UpdateAttributeUseCase,
-    CreateVerifiableAttributeRequest,
-    CreateVerifiableAttributeUseCase,
-    VerifyVerifiableCredentialRequest,
-    VerifyVerifiableCredentialUseCase
+    ValidateIQLQueryRequest,
+    ValidateIQLQueryResponse,
+    ValidateIQLQueryUseCase
 } from "../../../useCases";
 
 export class AttributesFacade {
     public constructor(
         @Inject private readonly createAttributeUseCase: CreateAttributeUseCase,
         @Inject private readonly createSharedAttributeCopyUseCase: CreateSharedAttributeCopyUseCase,
-        @Inject private readonly createVerifiableCredentialUseCase: CreateVerifiableCredentialUseCase,
-        @Inject private readonly createVerifiableAttributeUseCase: CreateVerifiableAttributeUseCase,
-        @Inject private readonly verifyVerifiableAttributeUseCase: VerifyVerifiableCredentialUseCase,
         @Inject private readonly deleteAttributeUseCase: DeleteAttributeUseCase,
         @Inject private readonly getPeerAttributesUseCase: GetPeerAttributesUseCase,
         @Inject private readonly getSharedToPeerAttributesUseCase: GetSharedToPeerAttributesUseCase,
@@ -53,6 +49,8 @@ export class AttributesFacade {
         @Inject private readonly executeIdentityAttributeQueryUseCase: ExecuteIdentityAttributeQueryUseCase,
         @Inject private readonly executeRelationshipAttributeQueryUseCase: ExecuteRelationshipAttributeQueryUseCase,
         @Inject private readonly executeThirdPartyRelationshipAttributeQueryUseCase: ExecuteThirdPartyRelationshipAttributeQueryUseCase,
+        @Inject private readonly executeIQLQueryUseCase: ExecuteIQLQueryUseCase,
+        @Inject private readonly validateIQLQueryUseCase: ValidateIQLQueryUseCase,
         @Inject private readonly shareAttributeUseCase: ShareAttributeUseCase
     ) {}
 
@@ -62,18 +60,6 @@ export class AttributesFacade {
 
     public async createSharedAttributeCopy(request: CreateSharedAttributeCopyRequest): Promise<Result<LocalAttributeDTO>> {
         return await this.createSharedAttributeCopyUseCase.execute(request);
-    }
-
-    public async createVerifiableAttribute(request: CreateVerifiableAttributeRequest): Promise<Result<any>> {
-        return await this.createVerifiableAttributeUseCase.execute(request);
-    }
-
-    public async createVerifiableCredential(request: CreateVerifiableCredentialRequest): Promise<Result<any>> {
-        return await this.createVerifiableCredentialUseCase.execute(request);
-    }
-
-    public async verifyVerifiableCredential(request: VerifyVerifiableCredentialRequest): Promise<Result<any>> {
-        return await this.verifyVerifiableAttributeUseCase.execute(request);
     }
 
     public async deleteAttribute(request: DeleteAttributeRequest): Promise<Result<void>> {
@@ -106,6 +92,14 @@ export class AttributesFacade {
 
     public async executeThirdPartyRelationshipAttributeQuery(request: ExecuteThirdPartyRelationshipAttributeQueryRequest): Promise<Result<LocalAttributeDTO[]>> {
         return await this.executeThirdPartyRelationshipAttributeQueryUseCase.execute(request);
+    }
+
+    public async executeIQLQuery(request: ExecuteIQLQueryRequest): Promise<Result<LocalAttributeDTO[]>> {
+        return await this.executeIQLQueryUseCase.execute(request);
+    }
+
+    public async validateIQLQuery(request: ValidateIQLQueryRequest): Promise<Result<ValidateIQLQueryResponse>> {
+        return await this.validateIQLQueryUseCase.execute(request);
     }
 
     public async succeedAttribute(request: SucceedAttributeRequest): Promise<Result<LocalAttributeDTO>> {

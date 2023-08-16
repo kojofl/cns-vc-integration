@@ -17,7 +17,11 @@ class Validator extends SchemaValidator<CreateDeviceOnboardingTokenRequest> {
 }
 
 export class CreateDeviceOnboardingTokenUseCase extends UseCase<CreateDeviceOnboardingTokenRequest, TokenDTO> {
-    public constructor(@Inject private readonly devicesController: DevicesController, @Inject private readonly tokenController: TokenController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly devicesController: DevicesController,
+        @Inject private readonly tokenController: TokenController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

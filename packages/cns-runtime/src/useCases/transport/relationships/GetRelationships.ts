@@ -39,7 +39,10 @@ export class GetRelationshipsUseCase extends UseCase<GetRelationshipsRequest, Re
         }
     });
 
-    public constructor(@Inject private readonly relationshipsController: RelationshipsController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly relationshipsController: RelationshipsController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

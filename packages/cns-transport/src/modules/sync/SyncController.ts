@@ -576,7 +576,10 @@ function descending(modification1: BackboneDatawalletModification, modification2
 }
 
 class LocalSyncRun {
-    public constructor(public readonly promise: Promise<ChangedItems | void>, public readonly whatToSync: WhatToSync) {}
+    public constructor(
+        public readonly promise: Promise<ChangedItems | void>,
+        public readonly whatToSync: WhatToSync
+    ) {}
 
     public includes(whatToSync: WhatToSync) {
         if (this.whatToSync === "Everything") {

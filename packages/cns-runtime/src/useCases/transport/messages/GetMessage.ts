@@ -16,7 +16,11 @@ class Validator extends SchemaValidator<GetMessageRequest> {
 }
 
 export class GetMessageUseCase extends UseCase<GetMessageRequest, MessageWithAttachmentsDTO> {
-    public constructor(@Inject private readonly messageController: MessageController, @Inject private readonly fileController: FileController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly messageController: MessageController,
+        @Inject private readonly fileController: FileController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

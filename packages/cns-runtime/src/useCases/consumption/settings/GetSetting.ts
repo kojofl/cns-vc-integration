@@ -17,7 +17,10 @@ class Validator extends SchemaValidator<GetSettingRequest> {
 }
 
 export class GetSettingUseCase extends UseCase<GetSettingRequest, SettingDTO> {
-    public constructor(@Inject private readonly settingController: SettingsController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly settingController: SettingsController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

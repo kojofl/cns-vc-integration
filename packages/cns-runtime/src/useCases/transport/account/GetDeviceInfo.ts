@@ -12,6 +12,6 @@ export class GetDeviceInfoUseCase extends UseCase<void, DeviceDTO> {
 
     protected executeInternal(): Result<DeviceDTO> {
         const device = this.deviceController.device;
-        return Result.ok(DeviceMapper.toDeviceDTO(device));
+        return Result.ok(DeviceMapper.toDeviceDTO(device, true));
     }
 }

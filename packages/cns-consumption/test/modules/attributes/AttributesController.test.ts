@@ -15,9 +15,10 @@ import {
     Country,
     EMailAddress,
     HouseNumber,
-    IdentityAttribute,
+    IIQLQuery,
     IIdentityAttributeQuery,
     IRelationshipAttributeQuery,
+    IdentityAttribute,
     Nationality,
     PhoneNumber,
     RelationshipAttribute,
@@ -528,6 +529,26 @@ export class AttributesControllerTest extends IntegrationTest {
                 const attributesId = attributes.map((v) => v.id.toString())
                 expect(attributesId).to.not.include(relationshipAttribute.id.toString())
                 expect(attributesId).to.include(identityAttribute.id.toString())
+            })
+
+            it("should successfully execute IQL queries", async function () {
+                const identityAttributeParams: ICreateLocalAttributeParams = {
+                    content: IdentityAttribute.from({
+                        value: {
+                            "@type": "Nationality",
+                            value: "DE"
+                        },
+                        owner: testAccount.identity.address
+                    })
+                }
+                const identityAttribute = await consumptionController.attributes.createLocalAttribute(
+                    identityAttributeParams
+                )
+
+                const iqlQuery: IIQLQuery = { queryString: "Nationality=DE" }
+                const matchedAttributes = await consumptionController.attributes.executeIQLQuery(iqlQuery)
+                const matchedAttributeIds = matchedAttributes.map((v) => v.id.toString())
+                expect(matchedAttributeIds).to.include(identityAttribute.id.toString())
             })
 
             it("should only return repository attributes on IdentityAttributeQuery", async function () {

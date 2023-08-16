@@ -1,0 +1,39 @@
+<mvc:View
+    controllerName="nmshd.app.flows.account.relationships.OutgoingRequest"
+    xmlns:m="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:requests="nmshd.app.core.controls.requests"
+>
+
+	<semantic:DetailPage
+        id="page"
+        navButtonPress="onNavButtonPress"
+        showNavButton="true"
+        title="{t>newRelationship.outgoingRequestTo} {name}"
+        busy="{v>/busy}"
+        busyIndicatorDelay="{v>/delay}"
+    >
+
+		<semantic:content>
+			<form:SimpleForm>
+				<m:Label text="{t>relationship.request.outgoing.sent}" />
+				<m:Text text="{path:'rel>/relationship/date',formatter:'.formatter.toRelativeDate'}" />
+				<m:Label text="{t>relationship.request.outgoing.name}" />
+				<m:Text text="{rel>/name}" />
+				<m:Label text="{t>relationship.request.outgoing.address}" />
+				<m:Text text="{rel>/id}" />
+			</form:SimpleForm>
+            <m:Panel headerText="{t>relationship.request.outgoing.content}">
+                <requests:RequestRenderer id="request" binding="{}" change="onChange" visible="{=!!${/items}}">
+                </requests:RequestRenderer>
+            </m:Panel>
+		</semantic:content>
+		<semantic:customFooterContent>
+			<m:Toolbar>
+				<m:ToolbarSpacer />
+			</m:Toolbar>
+		</semantic:customFooterContent>
+	</semantic:DetailPage>
+</mvc:View>

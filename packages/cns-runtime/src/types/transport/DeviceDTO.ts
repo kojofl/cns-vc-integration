@@ -10,4 +10,5 @@ export interface DeviceDTO {
     lastLoginAt?: string;
     type: string;
     username: string;
+    isCurrentDevice: boolean;
 }

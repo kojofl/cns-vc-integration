@@ -2,7 +2,10 @@ import { type } from "@js-soft/ts-serval"
 import {
     CreateAttributeAcceptResponseItem,
     CreateAttributeAcceptResponseItemJSON,
+    FreeTextAcceptResponseItem,
+    FreeTextAcceptResponseItemJSON,
     ICreateAttributeAcceptResponseItem,
+    IFreeTextAcceptResponseItem,
     IProposeAttributeAcceptResponseItem,
     IReadAttributeAcceptResponseItem,
     IRegisterAttributeListenerAcceptResponseItem,
@@ -34,6 +37,7 @@ export type AcceptResponseItemJSONDerivations =
     | ReadAttributeAcceptResponseItemJSON
     | RegisterAttributeListenerAcceptResponseItemJSON
     | SucceedAttributeAcceptResponseItemJSON
+    | FreeTextAcceptResponseItemJSON
 
 export interface IAcceptResponseItem extends IResponseItem {
     result: ResponseItemResult.Accepted
@@ -47,6 +51,7 @@ export type IAcceptResponseItemDerivations =
     | IReadAttributeAcceptResponseItem
     | IRegisterAttributeListenerAcceptResponseItem
     | ISucceedAttributeAcceptResponseItem
+    | IFreeTextAcceptResponseItem
 
 @type("AcceptResponseItem")
 export class AcceptResponseItem extends ResponseItem implements IAcceptResponseItem {
@@ -72,3 +77,4 @@ export type AcceptResponseItemDerivations =
     | ReadAttributeAcceptResponseItem
     | RegisterAttributeListenerAcceptResponseItem
     | SucceedAttributeAcceptResponseItem
+    | FreeTextAcceptResponseItem

@@ -1,27 +1,18 @@
-import {
-  ConnectorIdentityAttribute,
-  ConnectorRelationshipTemplateContent,
-  ConnectorRequestContent,
-} from "@nmshd/connector-sdk";
-import { DateTime } from "luxon";
-import qrcode from "qrcode-terminal";
-import { ConnectorTUIBaseConstructor } from "../ConnectorTUIBase";
+import { ConnectorIdentityAttribute, ConnectorRelationshipTemplateContent, ConnectorRequestContent } from "@nmshd/connector-sdk"
+import { DateTime } from "luxon"
+import qrcode from "qrcode-terminal"
+import { ConnectorTUIBaseConstructor } from "../ConnectorTUIBase"
 
-export function AddShareRequestByTemplate<
-  TBase extends ConnectorTUIBaseConstructor
->(Base: TBase) {
+export function AddShareRequestByTemplate<TBase extends ConnectorTUIBaseConstructor>(Base: TBase) {
   return class Sync extends Base {
     public constructor(...args: any[]) {
-      super(...args);
-      this.choices.push({
-        title: "Share Request By Template",
-        value: this.shareRequestByTemplate,
-      });
+      super(...args)
+      this.choices.push({ title: "Share Request By Template", value: this.shareRequestByTemplate })
     }
 
     public async shareRequestByTemplate() {
-      const name = process.env.CONNECTOR_DISPLAY_NAME ?? "ConnectorV2 Demo";
-      const displayName = await this.getOrCreateConnectorDisplayName(name);
+      const name = process.env.CONNECTOR_DISPLAY_NAME ?? "ConnectorV2 Demo"
+      const displayName = await this.getOrCreateConnectorDisplayName(name)
 
       const request: ConnectorRequestContent = {
         items: [
@@ -70,49 +61,43 @@ export function AddShareRequestByTemplate<
             ],
           },
         ],
-      };
+      }
 
-      await this.createQRCodeForRelationshipTemplate(request, name);
+      await this.createQRCodeForRelationshipTemplate(request, name)
     }
 
     private async getOrCreateConnectorDisplayName(displayName: string) {
-      const response = await this.connectorClient.attributes.getValidAttributes(
-        {
-          content: {
-            owner: this.connectorAddress,
-            value: {
-              "@type": "DisplayName",
-            },
+      const response = await this.connectorClient.attributes.getValidAttributes({
+        content: {
+          owner: this.connectorAddress,
+          value: {
+            "@type": "DisplayName",
           },
-          shareInfo: {
-            peer: "!",
-          },
-        }
-      );
+        },
+        shareInfo: {
+          peer: "!",
+        },
+      })
 
       if (response.result.length > 0) {
-        return response.result[0];
+        return response.result[0]
       }
 
-      const createAttributeResponse =
-        await this.connectorClient.attributes.createAttribute({
-          content: {
-            "@type": "IdentityAttribute",
-            owner: this.connectorAddress,
-            value: {
-              "@type": "DisplayName",
-              value: displayName,
-            },
-          } as ConnectorIdentityAttribute,
-        });
+      const createAttributeResponse = await this.connectorClient.attributes.createAttribute({
+        content: {
+          "@type": "IdentityAttribute",
+          owner: this.connectorAddress,
+          value: {
+            "@type": "DisplayName",
+            value: displayName,
+          },
+        } as ConnectorIdentityAttribute,
+      })
 
-      return createAttributeResponse.result;
+      return createAttributeResponse.result
     }
 
-    private async createQRCodeForRelationshipTemplate(
-      request: ConnectorRequestContent,
-      name: string
-    ) {
+    private async createQRCodeForRelationshipTemplate(request: ConnectorRequestContent, name: string) {
       const content: ConnectorRelationshipTemplateContent = {
         "@type": "RelationshipTemplateContent",
         title: `Kontaktanfrage mit ${name}`,
@@ -120,24 +105,18 @@ export function AddShareRequestByTemplate<
           webSessionId: "12345",
         },
         onNewRelationship: request,
-      };
+      }
 
-      const template =
-        await this.connectorClient.relationshipTemplates.createOwnRelationshipTemplate(
-          {
-            content,
-            expiresAt: DateTime.now().plus({ days: 2 }).toISO() as string,
-          }
-        );
+      const template = await this.connectorClient.relationshipTemplates.createOwnRelationshipTemplate({
+        content,
+        expiresAt: DateTime.now().plus({ days: 2 }).toISO()!,
+      })
 
-      const templateId = template.result.id;
-      const tokenResponse =
-        await this.connectorClient.relationshipTemplates.createTokenForOwnRelationshipTemplate(
-          templateId
-        );
-      const url = `nmshd://tr#${tokenResponse.result.truncatedReference}`;
-      console.log(url);
-      qrcode.generate(url, { small: true });
+      const templateId = template.result.id
+      const tokenResponse = await this.connectorClient.relationshipTemplates.createTokenForOwnRelationshipTemplate(templateId)
+      const url = `nmshd://tr#${tokenResponse.result.truncatedReference}`
+      console.log(url)
+      qrcode.generate(url, { small: true })
     }
-  };
+  }
 }

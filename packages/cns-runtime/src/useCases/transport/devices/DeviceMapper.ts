@@ -3,7 +3,7 @@ import { CoreAddress, CoreDate, CoreId, Device, DeviceSharedSecret, Realm } from
 import { DeviceDTO, DeviceOnboardingInfoDTO } from "../../../types";
 
 export class DeviceMapper {
-    public static toDeviceDTO(device: Device): DeviceDTO {
+    public static toDeviceDTO(device: Device, isCurrentDevice: boolean): DeviceDTO {
         return {
             id: device.id.toString(),
             createdAt: device.createdAt.toString(),
@@ -15,7 +15,8 @@ export class DeviceMapper {
             description: device.description,
             lastLoginAt: device.lastLoginAt?.toString(),
             operatingSystem: device.operatingSystem,
-            publicKey: device.publicKey?.toBase64(false)
+            publicKey: device.publicKey?.toBase64(false),
+            isCurrentDevice: isCurrentDevice
         };
     }
 

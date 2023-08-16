@@ -7,13 +7,15 @@ import {
     ConsentRequestItemJSON,
     CreateAttributeRequestItem,
     CreateAttributeRequestItemJSON,
+    FreeTextRequestItem,
+    FreeTextRequestItemJSON,
     IAuthenticationRequestItem,
     IConsentRequestItem,
     ICreateAttributeRequestItem,
+    IFreeTextRequestItem,
     IProposeAttributeRequestItem,
     IReadAttributeRequestItem,
     IRegisterAttributeListenerRequestItem,
-    IRequestVerifiableAttributeRequestItem,
     IShareAttributeRequestItem,
     ISucceedAttributeRequestItem,
     ProposeAttributeRequestItem,
@@ -22,8 +24,6 @@ import {
     ReadAttributeRequestItemJSON,
     RegisterAttributeListenerRequestItem,
     RegisterAttributeListenerRequestItemJSON,
-    RequestVerifiableAttributeRequestItem,
-    RequestVerifiableAttributeRequestItemJSON,
     ShareAttributeRequestItem,
     ShareAttributeRequestItemJSON,
     SucceedAttributeRequestItem,
@@ -75,9 +75,9 @@ export type RequestItemJSONDerivations =
     | ReadAttributeRequestItemJSON
     | ConsentRequestItemJSON
     | AuthenticationRequestItemJSON
+    | FreeTextRequestItemJSON
     | RegisterAttributeListenerRequestItemJSON
     | SucceedAttributeRequestItemJSON
-    | RequestVerifiableAttributeRequestItemJSON
 
 export interface IRequestItem extends ISerializable {
     /**
@@ -124,9 +124,9 @@ export type IRequestItemDerivations =
     | IReadAttributeRequestItem
     | IConsentRequestItem
     | IAuthenticationRequestItem
+    | IFreeTextRequestItem
     | IRegisterAttributeListenerRequestItem
     | ISucceedAttributeRequestItem
-    | IRequestVerifiableAttributeRequestItem
 
 export abstract class RequestItem extends Serializable {
     @serialize()
@@ -162,6 +162,6 @@ export type RequestItemDerivations =
     | ReadAttributeRequestItem
     | ConsentRequestItem
     | AuthenticationRequestItem
+    | FreeTextRequestItem
     | RegisterAttributeListenerRequestItem
     | SucceedAttributeRequestItem
-    | RequestVerifiableAttributeRequestItem

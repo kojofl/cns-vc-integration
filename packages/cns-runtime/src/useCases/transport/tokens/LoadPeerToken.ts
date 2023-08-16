@@ -63,7 +63,11 @@ class Validator extends SchemaValidator<LoadPeerTokenRequest> {
 }
 
 export class LoadPeerTokenUseCase extends UseCase<LoadPeerTokenRequest, TokenDTO> {
-    public constructor(@Inject private readonly tokenController: TokenController, @Inject private readonly accountController: AccountController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly tokenController: TokenController,
+        @Inject private readonly accountController: AccountController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

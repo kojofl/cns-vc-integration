@@ -2,9 +2,7 @@ import path from "path";
 import swaggerUi, { SwaggerUiOptions } from "swagger-ui-express";
 import YAML from "yamljs";
 import { ConnectorRuntimeModule, ConnectorRuntimeModuleConfiguration } from "../../ConnectorRuntimeModule";
-import { Envelope, HttpMethod } from "../../infrastructure";
-import { CoreBuffer } from "@nmshd/crypto";
-import { Result } from "@js-soft/ts-utils";
+import { HttpMethod } from "../../infrastructure";
 
 export interface CoreHttpApiModuleConfiguration extends ConnectorRuntimeModuleConfiguration {
     docs: {
@@ -30,10 +28,6 @@ export default class CoreHttpApiModule extends ConnectorRuntimeModule<CoreHttpAp
                     break;
             }
         }
-        this.runtime.infrastructure.httpServer.addEndpoint(HttpMethod.Get, "/did", false, (_req, res) => {
-            const multikeyPublic = `z${CoreBuffer.from([0xed, 0x01]).append(this.runtime["accountController"].identity.identity.publicKey.publicKey).toBase58()}`;
-            res.send(Envelope.ok(`did:key:${multikeyPublic}`));
-        });
 
         this.runtime.infrastructure.httpServer.addControllers(["controllers/*.js", "controllers/*.ts", "!controllers/*.d.ts"], this.baseDirectory);
     }

@@ -19,7 +19,10 @@ export interface CompleteOutgoingRequestRequest {
 // }
 
 export class CompleteOutgoingRequestUseCase extends UseCase<CompleteOutgoingRequestRequest, LocalRequestDTO> {
-    public constructor(@Inject private readonly outgoingRequestsController: OutgoingRequestsController, @Inject private readonly messageController: MessageController) {
+    public constructor(
+        @Inject private readonly outgoingRequestsController: OutgoingRequestsController,
+        @Inject private readonly messageController: MessageController
+    ) {
         super();
     }
 

@@ -11,7 +11,7 @@ export interface GenericValueTestParameters {
     valueJSON: object
     valueVerboseJSON: object
     valueInterface: object
-    valueString: string
+    valueString?: string
 }
 
 abstract class SerializableHelperStatic {
@@ -25,12 +25,14 @@ export class GenericValueTest extends AbstractTest {
 
     public runParametrized(testParameters: GenericValueTestParameters): void {
         describe(`${testParameters.testName}`, function () {
-            it("serializes as String", function () {
-                const deserialized = testParameters.typeClass.fromAny(testParameters.valueJSON)
-                expect(deserialized).to.be.instanceOf(AbstractAttributeValue)
-                expect(deserialized).to.be.instanceOf(testParameters.typeClass)
-                expect(`${deserialized}`).to.equal(testParameters.valueString)
-            })
+            if (typeof testParameters.valueString !== "undefined") {
+                it("serializes as String", function () {
+                    const deserialized = testParameters.typeClass.fromAny(testParameters.valueJSON)
+                    expect(deserialized).to.be.instanceOf(AbstractAttributeValue)
+                    expect(deserialized).to.be.instanceOf(testParameters.typeClass)
+                    expect(`${deserialized}`).to.equal(testParameters.valueString)
+                })
+            }
 
             it("deserializes by JSON", function () {
                 const deserialized = testParameters.typeClass.fromAny(testParameters.valueJSON)

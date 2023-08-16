@@ -18,7 +18,10 @@ export interface CreateQrCodeForOwnTemplateResponse {
 }
 
 export class CreateQrCodeForOwnTemplateUseCase extends UseCase<CreateQrCodeForOwnTemplateRequest, CreateQrCodeForOwnTemplateResponse> {
-    public constructor(@Inject private readonly templateController: RelationshipTemplateController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly templateController: RelationshipTemplateController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

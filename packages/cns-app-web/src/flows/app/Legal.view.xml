@@ -1,0 +1,76 @@
+<mvc:View
+    controllerName="nmshd.app.flows.app.Legal"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:controls="nmshd.app.core.controls"
+>
+
+	<semantic:DetailPage
+        id="wizardContentPage"
+        navButtonPress="onNavButtonPress"
+        showNavButton="{d>/system/phone}"
+        title="{t>legal.title}"
+        showFooter="false"
+        busy="{v>/busy}"
+        busyIndicatorDelay="{v>/delay}"
+    >
+
+
+
+		<semantic:content>
+			<f:DynamicPage class="sapUiSmallContentPadding">
+				<f:title>
+					<f:DynamicPageTitle>
+
+						<f:snappedContent>
+							<HBox alignItems="Center" justifyContent="SpaceBetween">
+								<Text text="{v>/legalVersion}" />
+								<Text text="{path:'v>/legalChanged', formatter:'.formatter.toAbsoluteDate'}" class="sapUiSmallMarginStart" />
+							</HBox>
+						</f:snappedContent>
+						<f:expandedContent>
+							<form:SimpleForm class="sapUiNoContentPadding">
+								<Label text="{t>legal.version}" />
+								<Text text="{v>/legalVersion}" />
+								<Label text="{t>legal.changed}" />
+								<Text text="{path:'v>/legalChanged', formatter:'.formatter.toAbsoluteDate'}" />
+							</form:SimpleForm>
+
+						</f:expandedContent>
+
+						<f:actions>
+
+						</f:actions>
+					</f:DynamicPageTitle>
+				</f:title>
+				<f:content>
+					<VBox>
+					<Title text="{t>legal.thirdparty.title}" class="bigTitle" />
+					<Text text="{t>legal.thirdparty.description1}" />
+					<Text text="{t>legal.thirdparty.description2}" />
+
+					<controls:Container class="sapUiNoMargin">
+						<Text text="{t>legal.thirdparty.description3}" class="inlineText" />
+						<Link
+                                href="mailto://{t>legal.thirdparty.contactlink}"
+                                text="{t>legal.thirdparty.contactlink}"
+                                class="sapUiTinyMarginBegin inlineText"
+                            />
+						<Text text="." class="inlineText" />
+					</controls:Container>
+					<Title text="{t>legal.deps.title}" class="bigTitle sapUiLargeMarginTop" />
+					<Text text="{t>legal.deps.description1}" />
+					<FormattedText htmlText="{v>/deps}" />
+					<Title text="{t>legal.devdeps.title}" class="bigTitle sapUiLargeMarginTop" />
+					<Text text="{t>legal.devdeps.description1}" />
+					<Text text="{t>legal.devdeps.description2}" />
+					<FormattedText htmlText="{v>/devdeps}" />
+					</VBox>
+				</f:content>
+			</f:DynamicPage>
+		</semantic:content>
+	</semantic:DetailPage>
+</mvc:View>

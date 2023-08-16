@@ -18,7 +18,11 @@ class Validator extends SchemaValidator<CreateDeviceRequest> {
 }
 
 export class CreateDeviceUseCase extends UseCase<CreateDeviceRequest, DeviceDTO> {
-    public constructor(@Inject private readonly devicesController: DevicesController, @Inject private readonly accountController: AccountController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly devicesController: DevicesController,
+        @Inject private readonly accountController: AccountController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 
@@ -26,6 +30,6 @@ export class CreateDeviceUseCase extends UseCase<CreateDeviceRequest, DeviceDTO>
         const device = await this.devicesController.sendDevice(request);
         await this.accountController.syncDatawallet();
 
-        return Result.ok(DeviceMapper.toDeviceDTO(device));
+        return Result.ok(DeviceMapper.toDeviceDTO(device, false));
     }
 }

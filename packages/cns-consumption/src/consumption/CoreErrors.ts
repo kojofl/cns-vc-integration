@@ -31,6 +31,13 @@ class Requests {
         )
     }
 
+    public invalidAcceptParameters(): ApplicationError {
+        return new ApplicationError(
+            "error.consumption.requests.canAccept.invalidAcceptParameters",
+            "The RequestItemGroup was answered as a RequestItem."
+        )
+    }
+
     public invalidRequestItem(message: string) {
         return new CoreError("error.consumption.requests.invalidRequestItem", message)
     }

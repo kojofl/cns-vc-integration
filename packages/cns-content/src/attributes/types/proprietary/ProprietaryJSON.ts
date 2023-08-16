@@ -64,7 +64,7 @@ function validateValue(value: any) {
     try {
         const string = JSON.stringify(value)
         if (string.length > 4096) {
-            return "stringified value must not be longer than 1000 characters"
+            return "stringified value must not be longer than 4096 characters"
         }
     } catch (e) {
         if (e instanceof SyntaxError) {

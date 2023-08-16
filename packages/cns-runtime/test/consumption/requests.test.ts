@@ -1,7 +1,7 @@
 import { EventBus } from "@js-soft/ts-utils";
 import { LocalRequestStatus } from "@nmshd/consumption";
 import { IResponse, RelationshipCreationChangeRequestContent, RelationshipCreationChangeRequestContentJSON } from "@nmshd/content";
-import { DateTime } from "luxon";
+import { CoreDate } from "@nmshd/transport";
 import {
     ConsumptionServices,
     LocalRequestDTO,
@@ -69,7 +69,7 @@ describe("Requests", () => {
                             mustBeAccepted: false
                         }
                     ],
-                    expiresAt: DateTime.now().plus({ hour: 1 }).toISO()
+                    expiresAt: CoreDate.utc().add({ hour: 1 }).toISOString()
                 },
                 peer: (await rTransportServices.account.getIdentityInfo()).value.address
             });
@@ -364,10 +364,10 @@ describe("Requests", () => {
                                 mustBeAccepted: false
                             }
                         ],
-                        expiresAt: DateTime.now().plus({ hour: 1 }).toISO()
+                        expiresAt: CoreDate.utc().add({ hour: 1 }).toISOString()
                     }
                 },
-                expiresAt: DateTime.now().plus({ hour: 1 }).toISO()
+                expiresAt: CoreDate.utc().add({ hour: 1 }).toISOString()
             });
 
             expect(result).toBeSuccessful();

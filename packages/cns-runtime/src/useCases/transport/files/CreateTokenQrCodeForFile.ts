@@ -19,7 +19,11 @@ class Validator extends SchemaValidator<CreateTokenQrCodeForFileRequest> {
 }
 
 export class CreateTokenQrCodeForFileUseCase extends UseCase<CreateTokenQrCodeForFileRequest, CreateTokenQrCodeForFileResponse> {
-    public constructor(@Inject private readonly fileController: FileController, @Inject private readonly tokenController: TokenController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly fileController: FileController,
+        @Inject private readonly tokenController: TokenController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

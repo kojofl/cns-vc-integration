@@ -21,7 +21,10 @@ export interface DownloadFileResponse {
 }
 
 export class DownloadFileUseCase extends UseCase<DownloadFileRequest, DownloadFileResponse> {
-    public constructor(@Inject private readonly fileController: FileController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly fileController: FileController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

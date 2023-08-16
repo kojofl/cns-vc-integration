@@ -14,7 +14,11 @@ class Validator extends SchemaValidator<DeleteDeviceRequest> {
 }
 
 export class DeleteDeviceUseCase extends UseCase<DeleteDeviceRequest, void> {
-    public constructor(@Inject private readonly devicesController: DevicesController, @Inject private readonly accountController: AccountController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly devicesController: DevicesController,
+        @Inject private readonly accountController: AccountController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

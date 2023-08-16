@@ -21,7 +21,10 @@ import { MessageDeliveredEvent, MessageReceivedEvent, MessageSentEvent, PeerRela
 export class EventProxy {
     private readonly subscriptionIds: number[] = [];
 
-    public constructor(private readonly targetEventBus: EventBus, private readonly sourceEventBus: EventBus) {}
+    public constructor(
+        private readonly targetEventBus: EventBus,
+        private readonly sourceEventBus: EventBus
+    ) {}
 
     public start(): this {
         if (this.subscriptionIds.length > 0) throw new Error("EventProxy is already started");

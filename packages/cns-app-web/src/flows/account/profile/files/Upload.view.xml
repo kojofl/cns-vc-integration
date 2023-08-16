@@ -1,0 +1,41 @@
+<mvc:View
+    controllerName="nmshd.app.flows.account.profile.files.Upload"
+    xmlns:m="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:form="sap.ui.layout.form"
+>
+
+	<semantic:DetailPage
+        id="page"
+        navButtonPress="onNavButtonPress"
+        showNavButton="true"
+        title="{t>files.upload}"
+        busy="{v>/busy}"
+        busyIndicatorDelay="{v>/delay}"
+    >
+		<semantic:subHeader>
+		</semantic:subHeader>
+		<semantic:content>
+			<m:MessageStrip id="message" visible="false" class="sapUiTinyMargin" />
+
+			<form:SimpleForm editable="true">
+				<m:Label text="{t>file}" />
+				<m:Button id="fileBrowser" text="{t>inbox.new.browse}" press="doChoose" />
+
+				<m:Label text="{t>attribute.Thing.name}" />
+				<m:Input id="name" />
+
+
+			</form:SimpleForm>
+
+		</semantic:content>
+		<semantic:customFooterContent>
+			<m:Toolbar>
+				<m:ToolbarSpacer />
+				<m:Button text="{t>files.submit}" id="submit" press="doUpload" type="Emphasized" enabled="{v>/submitEnabled}" />
+			</m:Toolbar>
+		</semantic:customFooterContent>
+	</semantic:DetailPage>
+
+</mvc:View>

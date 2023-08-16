@@ -19,7 +19,10 @@ export interface SyncEverythingRequest {
 
 export class SyncEverythingUseCase extends UseCase<SyncEverythingRequest, SyncEverythingResponse> {
     private readonly logger: ILogger;
-    public constructor(@Inject private readonly accountController: AccountController, @Inject loggerFactory: RuntimeLoggerFactory) {
+    public constructor(
+        @Inject private readonly accountController: AccountController,
+        @Inject loggerFactory: RuntimeLoggerFactory
+    ) {
         super();
 
         this.logger = loggerFactory.getLogger(SyncEverythingUseCase);

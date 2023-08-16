@@ -1,5 +1,6 @@
 import { IDatabaseConnection } from "@js-soft/docdb-access-abstractions"
 import { ILoggerFactory } from "@js-soft/logging-abstractions"
+import { sleep } from "@js-soft/ts-utils"
 import { AccountController, IConfigOverwrite } from "@nmshd/transport"
 import { expect } from "chai"
 import _ from "lodash"
@@ -34,6 +35,8 @@ export class SyncControllerCallbackTest extends AbstractTest {
                 await TestUtil.sendMessage(a1, b1)
 
                 const events: CallbackObject[] = []
+
+                await sleep(1000)
 
                 await b2.syncEverything((percentage: number, process: string) => {
                     events.push({ percentage, process })

@@ -107,7 +107,10 @@ export class GetMessagesUseCase extends UseCase<GetMessagesRequest, MessageDTO[]
         }
     });
 
-    public constructor(@Inject private readonly messageController: MessageController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly messageController: MessageController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

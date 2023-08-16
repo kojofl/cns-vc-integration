@@ -38,7 +38,10 @@ export class GetSettingsUseCase extends UseCase<GetSettingsRequest, SettingDTO[]
         }
     });
 
-    public constructor(@Inject private readonly settingController: SettingsController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly settingController: SettingsController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

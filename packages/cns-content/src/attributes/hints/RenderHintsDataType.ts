@@ -15,5 +15,6 @@ export enum RenderHintsDataType {
     TimePeriod = "TimePeriod",
     Day = "Day",
     Month = "Month",
-    Year = "Year"
+    Year = "Year",
+    XML = "XML"
 }

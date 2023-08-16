@@ -31,7 +31,10 @@ export interface GetSharedToPeerAttributesRequestQuery {
 }
 
 export class GetSharedToPeerAttributesUseCase extends UseCase<GetSharedToPeerAttributesRequest, LocalAttributeDTO[]> {
-    public constructor(@Inject private readonly attributeController: AttributesController, @Inject private readonly identityController: IdentityController) {
+    public constructor(
+        @Inject private readonly attributeController: AttributesController,
+        @Inject private readonly identityController: IdentityController
+    ) {
         super();
     }
 

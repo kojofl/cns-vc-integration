@@ -17,7 +17,11 @@ class Validator extends SchemaValidator<GetAttachmentMetadataRequest> {
 }
 
 export class GetAttachmentMetadataUseCase extends UseCase<GetAttachmentMetadataRequest, FileDTO> {
-    public constructor(@Inject private readonly messageController: MessageController, @Inject private readonly fileController: FileController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly messageController: MessageController,
+        @Inject private readonly fileController: FileController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

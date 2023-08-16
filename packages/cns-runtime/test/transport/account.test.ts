@@ -1,3 +1,4 @@
+import { CoreDate } from "@nmshd/transport";
 import { DateTime } from "luxon";
 import { TransportServices } from "../../src";
 import { RuntimeServiceProvider, uploadFile } from "../lib";
@@ -110,7 +111,7 @@ describe("LoadItemFromTruncatedReference", () => {
             const relationshipTemplate = (
                 await sTransportServices.relationshipTemplates.createOwnRelationshipTemplate({
                     content: {},
-                    expiresAt: DateTime.utc().plus({ days: 1 }).toISO()
+                    expiresAt: CoreDate.utc().add({ days: 1 }).toISOString()
                 })
             ).value;
             relationshipTemplateReference = relationshipTemplate.truncatedReference;
@@ -135,7 +136,7 @@ describe("LoadItemFromTruncatedReference", () => {
         let tokenReference: string;
 
         beforeAll(async () => {
-            const token = (await sTransportServices.tokens.createOwnToken({ content: {}, expiresAt: DateTime.utc().plus({ days: 1 }).toISO(), ephemeral: true })).value;
+            const token = (await sTransportServices.tokens.createOwnToken({ content: {}, expiresAt: CoreDate.utc().add({ days: 1 }).toISOString(), ephemeral: true })).value;
             tokenReference = token.truncatedReference;
         });
 

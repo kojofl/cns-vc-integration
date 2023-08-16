@@ -1,0 +1,85 @@
+<mvc:View
+    controllerName="nmshd.app.flows.account.profile.attributes.ShareAttribute"
+    xmlns:m="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:attributeControls="nmshd.app.core.controls.attributes"
+>
+
+	<semantic:DetailPage
+        id="page"
+        navButtonPress="onNavButtonPress"
+        showNavButton="true"
+        title="{t>attributes.share.title}"
+        showFooter="false"
+        busy="{v>/busy}"
+        busyIndicatorDelay="{v>/delay}"
+    >
+
+
+		<semantic:subHeader>
+		</semantic:subHeader>
+
+		<semantic:content>
+			<m:Panel headerText="{t>attribute.title.categorization}">
+				<m:Text
+                    text="{parts:[{path:'t>attribute.info.identityAttributeOwn'},{path:'name',formatter:'.formatter.toTranslated'}], formatter:'jQuery.sap.formatMessage'}"
+                    visible="{= ${content/@type} === 'IdentityAttribute' &amp;&amp; ${type} !== 'PeerAttributeDVO'}"
+                />
+				<m:Text
+                    text="{parts:[{path:'t>attribute.info.identityAttributePeer'},{path:'name',formatter:'.formatter.toTranslated'},{path:'peer>/name'}], formatter:'jQuery.sap.formatMessage'}"
+                    visible="{= ${content/@type} === 'IdentityAttribute' &amp;&amp; ${type} === 'PeerAttributeDVO'}"
+                />
+				<m:Text text="{path:'description',formatter:'.formatter.toTranslated'}" class="sapUiSmallMarginTop" />
+
+				<form:SimpleForm class="sapUiNoContentPadding sapUiSmallMarginTopBottom">
+					<m:Label text="{t>attribute.type}" />
+					<m:Text text="{content/@type}" />
+					<m:Label text="{t>attribute.valueType}" />
+					<m:Text text="{path:'name',formatter:'.formatter.toTranslated'}" />
+					<m:Label text="{t>attribute.value}" />
+					<attributeControls:ValueRenderer binding="{}" />
+
+				</form:SimpleForm>
+			</m:Panel>
+
+			<m:Panel headerText="{t>attribute.share.title}" visible="{=${type} === 'RepositoryAttributeDVO'}">
+
+
+				<m:Text text="{t>attribute.share.description}" visible="{=${peers>/items/length} > 0}" />
+				<m:Text text="{t>attribute.share.nocontacts}" visible="{=${peers>/items/length} === 0}" />
+				<m:List
+                    id="possiblePeers"
+                    items="{peers>/items}"
+                    noDataText="{t>attribute.sharedWithNobody}"
+                    class="sapUiNoContentPadding"
+                    mode="MultiSelect"
+                    visible="{=${peers>/items/length} > 0}"
+                >
+					<m:StandardListItem title="{peers>name}" />
+				</m:List>
+				<form:SimpleForm
+                    class="sapUiNoContentPadding sapUiSmallMarginTop"
+                    visible="{=${peers>/items/length} > 0}"
+                    editable="true"
+                >
+                    <m:Text text="{t>attribute.share.optional}" />
+					<m:Label text="{t>attribute.share.sendtitle}" />
+					<m:Input id="title" width="100%" />
+					<m:Label text="{t>attribute.share.senddescription}" />
+					<m:TextArea id="description" width="100%" />
+
+				</form:SimpleForm>
+
+				<m:Button
+                    text="{t>attribute.share.action}"
+                    press="shareAttribute"
+                    enabled="{v>/submitEnabled}"
+                    icon="sap-icon://share-2"
+                    visible="{=${peers>/items/length} > 0}"
+                />
+			</m:Panel>
+		</semantic:content>
+	</semantic:DetailPage>
+</mvc:View>

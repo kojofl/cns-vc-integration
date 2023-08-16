@@ -16,7 +16,10 @@ class Validator extends SchemaValidator<GetDeviceOnboardingInfoRequest> {
 }
 
 export class GetDeviceOnboardingInfoUseCase extends UseCase<GetDeviceOnboardingInfoRequest, DeviceOnboardingInfoDTO> {
-    public constructor(@Inject private readonly devicesController: DevicesController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly devicesController: DevicesController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

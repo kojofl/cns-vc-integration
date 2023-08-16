@@ -43,8 +43,6 @@ import {
     EMailAddressJSON,
     FaxNumber,
     FaxNumberJSON,
-    FileReference,
-    FileReferenceJSON,
     GivenName,
     GivenNameJSON,
     HonorificPrefix,
@@ -72,19 +70,20 @@ import {
     IConsent,
     ICountry,
     IDeliveryBoxAddress,
+    IdentityFileReference,
+    IdentityFileReferenceJSON,
     IDisplayName,
     IEMailAddress,
     IFaxNumber,
-    IFileReference,
     IGivenName,
     IHonorificPrefix,
     IHonorificSuffix,
     IHouseNumber,
+    IIdentityFileReference,
     IJobTitle,
     IMiddleName,
     INationality,
     IPersonName,
-    IVerifiableCredential,
     IPhoneNumber,
     IPostOfficeBoxAddress,
     IProprietaryBoolean,
@@ -99,9 +98,12 @@ import {
     IProprietaryPhoneNumber,
     IProprietaryString,
     IProprietaryURL,
+    IProprietaryXML,
     IPseudonym,
+    ISchematizedXML,
     ISex,
     IState,
+    IStatement,
     IStreet,
     IStreetAddress,
     ISurname,
@@ -143,20 +145,24 @@ import {
     ProprietaryStringJSON,
     ProprietaryURL,
     ProprietaryURLJSON,
+    ProprietaryXML,
+    ProprietaryXMLJSON,
     Pseudonym,
     PseudonymJSON,
+    SchematizedXML,
+    SchematizedXMLJSON,
     Sex,
     SexJSON,
     State,
     StateJSON,
+    Statement,
+    StatementJSON,
     Street,
     StreetAddress,
     StreetAddressJSON,
     StreetJSON,
     Surname,
     SurnameJSON,
-    VerifiableCredential,
-    VerifiableCredentialJSON,
     Website,
     WebsiteJSON,
     ZipCode,
@@ -179,7 +185,7 @@ export module AttributeValues {
                 | DisplayNameJSON
                 | EMailAddressJSON
                 | FaxNumberJSON
-                | FileReferenceJSON
+                | IdentityFileReferenceJSON
                 | JobTitleJSON
                 | NationalityJSON
                 | PersonNameJSON
@@ -189,7 +195,6 @@ export module AttributeValues {
                 | SexJSON
                 | StreetAddressJSON
                 | WebsiteJSON
-                | VerifiableCredentialJSON
 
             export type Interface =
                 | IAffiliation
@@ -202,7 +207,7 @@ export module AttributeValues {
                 | IDisplayName
                 | IEMailAddress
                 | IFaxNumber
-                | IFileReference
+                | IIdentityFileReference
                 | IJobTitle
                 | INationality
                 | IPersonName
@@ -212,7 +217,6 @@ export module AttributeValues {
                 | ISex
                 | IStreetAddress
                 | IWebsite
-                | IVerifiableCredential
 
             export type Class =
                 | Affiliation
@@ -225,7 +229,7 @@ export module AttributeValues {
                 | DisplayName
                 | EMailAddress
                 | FaxNumber
-                | FileReference
+                | IdentityFileReference
                 | JobTitle
                 | Nationality
                 | PersonName
@@ -235,7 +239,6 @@ export module AttributeValues {
                 | Sex
                 | StreetAddress
                 | Website
-                | VerifiableCredential
 
             export const CLASSES = [
                 Affiliation,
@@ -248,7 +251,8 @@ export module AttributeValues {
                 DisplayName,
                 EMailAddress,
                 FaxNumber,
-                FileReference,
+                IdentityFileReference,
+                SchematizedXML,
                 JobTitle,
                 Nationality,
                 PersonName,
@@ -257,8 +261,7 @@ export module AttributeValues {
                 Pseudonym,
                 Sex,
                 StreetAddress,
-                Website,
-                VerifiableCredential
+                Website
             ]
 
             export const TYPE_NAMES = [
@@ -272,7 +275,8 @@ export module AttributeValues {
                 "DisplayName",
                 "EMailAddress",
                 "FaxNumber",
-                "FileReference",
+                "IdentityFileReference",
+                "SchematizedXML",
                 "JobTitle",
                 "Nationality",
                 "PersonName",
@@ -281,8 +285,7 @@ export module AttributeValues {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website",
-                "VerifiableCredential"
+                "Website"
             ] as const
 
             export const TYPE_NAMES_STRINGIFIED = JSON.stringify(TYPE_NAMES)
@@ -307,7 +310,9 @@ export module AttributeValues {
                 | HonorificSuffixJSON
                 | HouseNumberJSON
                 | MiddleNameJSON
+                | SchematizedXMLJSON
                 | StateJSON
+                | StatementJSON
                 | StreetJSON
                 | SurnameJSON
                 | ZipCodeJSON
@@ -329,7 +334,9 @@ export module AttributeValues {
                 | IHonorificSuffix
                 | IHouseNumber
                 | IMiddleName
+                | ISchematizedXML
                 | IState
+                | IStatement
                 | IStreet
                 | ISurname
                 | IZipCode
@@ -351,7 +358,9 @@ export module AttributeValues {
                 | HonorificSuffix
                 | HouseNumber
                 | MiddleName
+                | SchematizedXML
                 | State
+                | Statement
                 | Street
                 | Surname
                 | ZipCode
@@ -373,7 +382,9 @@ export module AttributeValues {
                 HonorificSuffix,
                 HouseNumber,
                 MiddleName,
+                SchematizedXML,
                 State,
+                Statement,
                 Street,
                 Surname,
                 ZipCode
@@ -396,7 +407,9 @@ export module AttributeValues {
                 "HonorificSuffix",
                 "HouseNumber",
                 "MiddleName",
+                "SchematizedXML",
                 "State",
+                "Statement",
                 "Street",
                 "Surname",
                 "ZipCode"
@@ -429,6 +442,7 @@ export module AttributeValues {
             | ProprietaryStringJSON
             | ProprietaryURLJSON
             | ProprietaryJSONJSON
+            | ProprietaryXMLJSON
             | ConsentJSON
 
         export type Interface =
@@ -444,6 +458,7 @@ export module AttributeValues {
             | IProprietaryString
             | IProprietaryURL
             | IProprietaryJSON
+            | IProprietaryXML
             | IConsent
 
         export type Class =
@@ -459,6 +474,7 @@ export module AttributeValues {
             | ProprietaryString
             | ProprietaryURL
             | ProprietaryJSON
+            | ProprietaryXML
             | Consent
 
         export const CLASSES = [
@@ -474,6 +490,7 @@ export module AttributeValues {
             ProprietaryString,
             ProprietaryURL,
             ProprietaryJSON,
+            ProprietaryXML,
             Consent
         ]
 
@@ -490,6 +507,7 @@ export module AttributeValues {
             "ProprietaryString",
             "ProprietaryURL",
             "ProprietaryJSON",
+            "ProprietaryXML",
             "Consent"
         ] as const
 

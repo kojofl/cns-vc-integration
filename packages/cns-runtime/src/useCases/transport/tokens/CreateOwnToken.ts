@@ -37,7 +37,11 @@ class Validator extends SchemaValidator<CreateOwnTokenRequest> {
 }
 
 export class CreateOwnTokenUseCase extends UseCase<CreateOwnTokenRequest, TokenDTO> {
-    public constructor(@Inject private readonly tokenController: TokenController, @Inject private readonly accountController: AccountController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly tokenController: TokenController,
+        @Inject private readonly accountController: AccountController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

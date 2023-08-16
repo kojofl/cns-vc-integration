@@ -12,7 +12,10 @@ export interface SentOutgoingRequestRequest {
 }
 
 export class SentOutgoingRequestUseCase extends UseCase<SentOutgoingRequestRequest, LocalRequestDTO> {
-    public constructor(@Inject private readonly outgoingRequestsController: OutgoingRequestsController, @Inject private readonly messageController: MessageController) {
+    public constructor(
+        @Inject private readonly outgoingRequestsController: OutgoingRequestsController,
+        @Inject private readonly messageController: MessageController
+    ) {
         super();
     }
 

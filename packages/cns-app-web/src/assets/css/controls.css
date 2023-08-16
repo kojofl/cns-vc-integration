@@ -1,0 +1,298 @@
+.textSelectAll {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
+
+.boxItemRenderer {
+    background-color: transparent;
+    margin: 0px 3px;
+
+    cursor: pointer;
+    border-bottom: 1px solid #dddce5;
+    display: flex;
+    align-items: center;
+}
+
+html.sapUiMedia-Std-Desktop .boxItemRenderer,
+html.sapUiMedia-Std-Tablet .boxItemRenderer {
+    border: none;
+    border-radius: 6px;
+    background-color: #eeedf2;
+    margin: 3px 3px;
+}
+
+html.sapUiMedia-Std-Desktop .boxItemRenderer:hover,
+html.sapUiMedia-Std-Tablet .boxItemRenderer:hover {
+    background-color: #d9d8e2;
+}
+
+.boxItemRendererHeader {
+    border-radius: 2px;
+    background-color: #ffffff;
+    padding: 5px 8px;
+    font-size: 1.1rem;
+}
+
+.personItemRenderer {
+    background-color: transparent;
+    margin: 0px 3px;
+
+    cursor: pointer;
+    border-bottom: 1px solid #dddce5;
+    display: flex;
+    align-items: center;
+}
+
+.personItemRendererHeader {
+    font-weight: bold;
+}
+
+.personItemRendererAvatar {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 6px;
+    margin: 0.5rem;
+    padding: 3px;
+}
+
+.personItemRendererAvatarImage {
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.personItemRendererInitials {
+    width: 4rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin: 0.2rem 0.2rem;
+}
+
+.personItemRendererInitialsText {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 0.675rem;
+}
+
+.personItemRendererChildContainer {
+    display: flex;
+    flex-flow: row;
+}
+
+.orgItemRenderer {
+    border-radius: 4px;
+    background-color: #ffffff;
+    padding: 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.orgItemRenderer.statusRejected,
+.orgItemRenderer.statusRevoked,
+.personItemRenderer.statusRejected,
+.personItemRenderer.statusRevoked {
+    background-color: #f2f2f2;
+}
+
+.orgItemRendererHeader {
+    border-radius: 2px;
+    background-color: #ffffff;
+    padding: 5px 8px;
+    font-size: 1.1rem;
+}
+
+.orgItemRendererContent,
+.personItemRendererContent {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    padding-left: 8px;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.orgItemRenderer.sapMLIBActive,
+.orgItemRenderer.sapMLIBActive div,
+.orgItemRenderer.sapMLIBActive .orgItemRendererContent * {
+    color: inherit;
+}
+
+body .listBox {
+    margin-bottom: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+body .listBox .sapMText {
+    font-size: 0.8rem;
+}
+
+body .messageList {
+    margin-bottom: 2rem;
+}
+
+body .messageList .sapMListNoDataText {
+    font-size: 0.8rem;
+}
+
+body .messageList header {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.messageRenderer {
+    background-color: transparent;
+    margin: 0px 3px;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    min-height: 4.5rem;
+
+    cursor: pointer;
+    border-bottom: 1px solid #dddce5;
+    display: flex;
+    align-items: center;
+}
+
+.messageRendererBegin {
+    margin-left: 0.5rem;
+}
+
+.messageRendererBegin .sapUiIcon {
+    margin-left: 6px;
+}
+
+.messageRendererHead {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.messageRendererContent {
+    padding-left: 8px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    flex-grow: 1;
+}
+
+.messageRendererAuthor {
+    color: #888888;
+    font-size: 0.8rem;
+    margin-right: 0.25rem;
+}
+
+.messageRendererTime {
+    color: #888888;
+    font-size: 0.8rem;
+}
+
+.messageRendererSubject {
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+/* ====================================== */
+
+.requestItemGroupRenderer {
+    margin-top: 1rem;
+}
+
+.requestItemGroupRenderer,
+.requestItemRenderer {
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+}
+
+.readAttributeRequestItemRenderer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.proposeAttributeRequestItemRenderer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.requestItemRendererChildContainer,
+.requestItemGroupRendererChildContainer {
+    width: calc(100% - 3rem);
+}
+
+.requestItemRendererDecided .requestItemRendererChildContainer,
+.requestItemRendererDecided .requestItemGroupRendererChildContainer {
+    width: 100%;
+}
+
+.readAttributeRequestItemRendererLabel {
+    min-width: 8rem;
+}
+
+.requestItemRenderer {
+    border-top: 1px solid #eeeeee;
+}
+
+.attributeRenderer {
+    display: flex;
+}
+
+.attributeRendererLabel {
+    padding-top: 2px;
+    padding-right: 5px;
+}
+
+.attributeRendererLabel::after {
+    content: ":";
+    color: #6a6d70;
+    font-size: 0.875rem;
+    font-family: Inter, "72fallback", "72", "72full", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    display: inline-block;
+    white-space: nowrap;
+    cursor: text;
+    overflow: hidden;
+}
+
+.attributeRendererButton .sapMBtn,
+.attributeRendererButton .sapMBtn .sapMBtnInner {
+    margin-top: -0.15em;
+    margin-left: 0.2em;
+    padding: 0px;
+    line-height: normal !important;
+    height: auto !important;
+    min-width: auto !important;
+    width: auto !important;
+}
+
+.attributeRendererButton .sapMBtn .sapMBtnIcon {
+    padding: 4px 1px;
+    line-height: 1em !important;
+    min-width: 0.5em !important;
+    width: 1em !important;
+    height: 1em !important;
+}
+
+.requestItemRendererTitle {
+    font-weight: bold;
+    margin-bottom: 0.125rem;
+    margin-top: 0.6rem;
+}
+
+.requestItemRendererDescription {
+    margin-bottom: 0.6rem;
+}
+
+.requestItemRendererErrorContainer {
+    margin-bottom: 0.4rem;
+}
+
+.requestItemRendererErrorContainer .sapMMsgStrip {
+    border-style: none !important;
+}

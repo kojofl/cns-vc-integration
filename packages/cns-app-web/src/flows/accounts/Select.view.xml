@@ -1,0 +1,31 @@
+<mvc:View
+    controllerName="nmshd.app.flows.accounts.Select"
+    xmlns:m="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+	<m:Page
+        title="{t>select.title}"
+        showHeader="true"
+        showNavButton="false"
+        navButtonPress="onNavButtonPress"
+        id="selectPage"
+    >
+		<m:headerContent>
+
+		</m:headerContent>
+		<m:subHeader>
+		</m:subHeader>
+		<m:List items="{v>/items}" itemPress="onItemPress" id="AccountsList" noDataText="{t>select.noDataText}">
+			<m:StandardListItem title="{v>name}" icon="{v>icon}" type="Navigation" />
+		</m:List>
+		<m:VBox alignItems="Center" alignContent="Center">
+			<m:Button
+                text="{t>select.newProfileButton}"
+                id="accountsCreateAccount"
+                icon="sap-icon://add"
+                press="onCreate"
+                type="Emphasized"
+            />
+		</m:VBox>
+	</m:Page>
+</mvc:View>

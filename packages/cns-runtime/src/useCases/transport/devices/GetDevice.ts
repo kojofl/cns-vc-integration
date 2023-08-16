@@ -1,5 +1,5 @@
 import { Result } from "@js-soft/ts-utils";
-import { CoreId, Device, DevicesController } from "@nmshd/transport";
+import { CoreId, Device, DeviceController, DevicesController } from "@nmshd/transport";
 import { Inject } from "typescript-ioc";
 import { DeviceDTO } from "../../../types";
 import { DeviceIdString, RuntimeErrors, SchemaRepository, SchemaValidator, UseCase } from "../../common";
@@ -16,7 +16,11 @@ class Validator extends SchemaValidator<GetDeviceRequest> {
 }
 
 export class GetDeviceUseCase extends UseCase<GetDeviceRequest, DeviceDTO> {
-    public constructor(@Inject private readonly devicesController: DevicesController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly devicesController: DevicesController,
+        @Inject private readonly deviceController: DeviceController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 
@@ -27,6 +31,9 @@ export class GetDeviceUseCase extends UseCase<GetDeviceRequest, DeviceDTO> {
             return Result.fail(RuntimeErrors.general.recordNotFound(Device));
         }
 
-        return Result.ok(DeviceMapper.toDeviceDTO(device));
+        const currentDevice = this.deviceController.device;
+        const isCurrentDevice = device.id.equals(currentDevice.id);
+
+        return Result.ok(DeviceMapper.toDeviceDTO(device, isCurrentDevice));
     }
 }

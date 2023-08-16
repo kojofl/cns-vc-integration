@@ -1,4 +1,5 @@
 import { serialize, type, validate } from "@js-soft/ts-serval"
+import { CoreDate, ICoreDate } from "@nmshd/transport"
 import { AbstractAttributeQuery, AbstractAttributeQueryJSON, IAbstractAttributeQuery } from "./AbstractAttributeQuery"
 import { AttributeValues } from "./AttributeValueTypes"
 
@@ -6,11 +7,15 @@ export interface IdentityAttributeQueryJSON extends AbstractAttributeQueryJSON {
     "@type": "IdentityAttributeQuery"
     valueType: AttributeValues.Identity.TypeName
     tags?: string[]
+    validFrom?: string
+    validTo?: string
 }
 
 export interface IIdentityAttributeQuery extends IAbstractAttributeQuery {
     valueType: AttributeValues.Identity.TypeName
     tags?: string[]
+    validFrom?: ICoreDate
+    validTo?: ICoreDate
 }
 
 @type("IdentityAttributeQuery")
@@ -27,6 +32,14 @@ export class IdentityAttributeQuery extends AbstractAttributeQuery implements II
     @serialize({ type: String })
     @validate({ nullable: true, customValidator: IdentityAttributeQuery.validateTags })
     public tags?: string[]
+
+    @serialize()
+    @validate({ nullable: true })
+    public validFrom?: CoreDate
+
+    @serialize()
+    @validate({ nullable: true })
+    public validTo?: CoreDate
 
     public static from(
         value: IIdentityAttributeQuery | Omit<IdentityAttributeQueryJSON, "@type">

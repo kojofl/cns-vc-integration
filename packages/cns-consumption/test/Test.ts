@@ -7,6 +7,7 @@ import { DecideRequestParametersValidatorTests } from "./modules/requests/Decide
 import { GenericRequestItemProcessorTests } from "./modules/requests/GenericRequestItemProcessor.test"
 import { IncomingRequestControllerTests } from "./modules/requests/IncomingRequestsController.test"
 import { CreateAttributeRequestItemProcessorTests } from "./modules/requests/itemProcessors/createAttribute/CreateAttributeRequestItemProcessor.test"
+import { FreeTextRequestItemProcessorTest } from "./modules/requests/itemProcessors/freeText/FreeTextRequestItemProcessor.test"
 import { ProposeAttributeRequestItemProcessorTests } from "./modules/requests/itemProcessors/proposeAttribute/ProposeAttributeRequestItemProcessor.test"
 import { ReadAttributeRequestItemProcessorTests } from "./modules/requests/itemProcessors/readAttribute/ReadAttributeRequestItemProcessor.test"
 import { RegisterAttributeListenerRequestItemProcessorTests } from "./modules/requests/itemProcessors/registerAttributeListener/RegisterAttributeListenerRequestItemProcessor.test"
@@ -64,6 +65,7 @@ export class Test {
         new GenericRequestItemProcessorTests(config, databaseConnection, logger).run()
         new AttributeListenersControllerTest(config, databaseConnection, logger).run()
         new RegisterAttributeListenerRequestItemProcessorTests(config, databaseConnection, logger).run()
+        new FreeTextRequestItemProcessorTest(config, databaseConnection, logger).run()
     }
 
     public static runUnitTests(logger: ILoggerFactory): void {

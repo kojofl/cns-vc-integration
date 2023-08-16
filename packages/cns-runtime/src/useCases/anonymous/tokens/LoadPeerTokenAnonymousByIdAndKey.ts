@@ -18,7 +18,10 @@ class Validator extends SchemaValidator<LoadPeerTokenAnonymousByIdAndKeyRequest>
 }
 
 export class LoadPeerTokenAnonymousByIdAndKeyUseCase extends UseCase<LoadPeerTokenAnonymousByIdAndKeyRequest, TokenDTO> {
-    public constructor(@Inject private readonly anonymousTokenController: AnonymousTokenController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly anonymousTokenController: AnonymousTokenController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

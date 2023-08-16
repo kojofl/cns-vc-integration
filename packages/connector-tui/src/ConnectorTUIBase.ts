@@ -10,7 +10,10 @@ export interface ConnectorTUIChoice extends prompts.Choice {
 export class ConnectorTUIBase {
   protected choices: ConnectorTUIChoice[] = []
 
-  public constructor(protected connectorClient: ConnectorClient, protected connectorAddress: string, protected did: string) {}
+  public constructor(
+    protected connectorClient: ConnectorClient,
+    protected connectorAddress: string
+  ) {}
 
   protected async selectRelationship(prompt: string, status: ConnectorRelationshipStatus = ConnectorRelationshipStatus.ACTIVE): Promise<ConnectorRelationship | undefined> {
     const choices = await this.getRelationshipChoices(status, true)
@@ -34,80 +37,6 @@ export class ConnectorTUIBase {
     }
 
     return recipients
-  }
-
-  protected async selectAttributes(prompt: string): Promise<string | undefined> {
-    const choices = await this.getAttributeChoices()
-    if (!choices) return
-
-    const recipientsResult = await prompts({ message: prompt, type: "select", name: "attributes", choices })
-
-    const attribute = recipientsResult.attributes as string | undefined
-    if (!attribute || attribute.length === 0) {
-      console.log("No attributes selected")
-      return
-    }
-
-    return attribute
-  }
-
-  protected async selectVerifiableAttribute(prompt: string): Promise<string | undefined> {
-    const choices = await this.getVerifiableAttributeChoices()
-    if (!choices) return
-
-    const recipientsResult = await prompts({ message: prompt, type: "select", name: "attributes", choices })
-
-    const attribute = recipientsResult.attributes as string | undefined
-    if (!attribute || attribute.length === 0) {
-      console.log("No attributes selected")
-      return
-    }
-
-    return attribute
-  }
-
-  private async getAttributeChoices() {
-    const attributesResult = await this.connectorClient.attributes.getAttributes({})
-    if (attributesResult.isError) {
-      console.error(attributesResult.error)
-      return
-    }
-    const attributes = attributesResult.result
-    const filteredAttributes = attributes.filter((attr) => attr.content["@type"] === "IdentityAttribute" && (attr.content as any).proof === undefined && !attr.shareInfo)
-    if (attributes.length === 0) {
-      console.log("No attributes found")
-      return
-    }
-    const choices = filteredAttributes.map((attr) => {
-      return {
-        title: attr.content.value["@type"],
-        value: attr.id,
-      }
-    })
-
-    return choices
-  }
-
-  private async getVerifiableAttributeChoices() {
-    const attributesResult = await this.connectorClient.attributes.getAttributes({})
-    if (attributesResult.isError) {
-      console.error(attributesResult.error)
-      return
-    }
-    const attributes = attributesResult.result
-    const filteredAttributes = attributes.filter((attr) => attr.content["@type"] === "IdentityAttribute" && (attr.content as any).proof !== undefined && !attr.shareInfo)
-    if (attributes.length === 0) {
-      console.log("No attributes found")
-      return
-    }
-    const choices = filteredAttributes.map((attr) => {
-      return {
-        title: attr.content.value["@type"],
-        value: attr.id,
-      }
-    })
-
-    return choices
   }
 
   private async getRelationshipChoices(status: ConnectorRelationshipStatus, returnRelationship: boolean) {

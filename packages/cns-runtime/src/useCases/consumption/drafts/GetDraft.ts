@@ -17,7 +17,10 @@ class Validator extends SchemaValidator<GetDraftRequest> {
 }
 
 export class GetDraftUseCase extends UseCase<GetDraftRequest, DraftDTO> {
-    public constructor(@Inject private readonly draftController: DraftsController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly draftController: DraftsController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

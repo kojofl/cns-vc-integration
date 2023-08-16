@@ -55,7 +55,10 @@ export class RESTClient {
         return id.toString()
     }
 
-    public constructor(protected readonly config: IConfig, protected requestConfig: AxiosRequestConfig = {}) {
+    public constructor(
+        protected readonly config: IConfig,
+        protected requestConfig: AxiosRequestConfig = {}
+    ) {
         const defaults: AxiosRequestConfig = {
             baseURL: config.baseUrl,
 

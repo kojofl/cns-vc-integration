@@ -17,7 +17,10 @@ class Validator extends SchemaValidator<GetAttributeListenerRequest> {
 }
 
 export class GetAttributeListenerUseCase extends UseCase<GetAttributeListenerRequest, LocalAttributeListenerDTO> {
-    public constructor(@Inject private readonly attributeListenersController: AttributeListenersController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly attributeListenersController: AttributeListenersController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

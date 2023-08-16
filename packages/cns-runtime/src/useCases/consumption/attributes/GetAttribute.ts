@@ -16,7 +16,10 @@ class Validator extends SchemaValidator<GetAttributeRequest> {
     }
 }
 export class GetAttributeUseCase extends UseCase<GetAttributeRequest, LocalAttributeDTO> {
-    public constructor(@Inject private readonly attributeController: AttributesController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly attributeController: AttributesController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

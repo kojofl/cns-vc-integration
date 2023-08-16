@@ -10,7 +10,7 @@ export enum RelationshipDirection {
 export interface RelationshipDVO extends DataViewObject {
     type: "RelationshipDVO";
     status: string;
-    direction: string;
+    direction: RelationshipDirection;
     statusText: string;
     isPinned: boolean;
     theme?: RelationshipTheme;

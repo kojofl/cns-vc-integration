@@ -5,5 +5,5 @@ npm ci
 npm run lint:prettier
 npm run lint:eslint
 npx license-check
-npx better-npm-audit audit --exclude 1070256
+npx better-npm-audit audit
 npm run build:ci

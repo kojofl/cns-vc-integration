@@ -1,4 +1,4 @@
-import { IdentityAttributeJSON, RelationshipAttributeCreationHintsJSON, RelationshipAttributeJSON, RenderHintsJSON, ValueHintsJSON } from "@nmshd/content";
+import { IdentityAttributeJSON, IQLQuery, RelationshipAttributeCreationHintsJSON, RelationshipAttributeJSON, RenderHintsJSON, ValueHintsJSON } from "@nmshd/content";
 import { DataViewObject } from "../DataViewObject";
 import { IdentityDVO } from "../transport";
 
@@ -64,5 +64,10 @@ export interface ThirdPartyRelationshipAttributeQueryDVO extends AttributeQueryD
     key: string;
     owner: IdentityDVO;
     thirdParty: IdentityDVO[];
+    isProcessed: false;
+}
+
+export interface IQLQueryDVO extends AttributeQueryDVO, Pick<IQLQuery, "queryString"> {
+    type: "IQLQueryDVO";
     isProcessed: false;
 }

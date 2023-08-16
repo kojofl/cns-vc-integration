@@ -3,21 +3,23 @@ import {
     AbstractAttributeValue,
     AbstractComplexValue,
     AttributeValues,
-    IdentityAttribute,
-    IdentityAttributeQuery,
+    IIQLQuery,
     IIdentityAttributeQuery,
     IRelationshipAttributeQuery,
     IThirdPartyRelationshipAttributeQuery,
+    IdentityAttribute,
+    IdentityAttributeQuery,
     RelationshipAttributeJSON,
     RelationshipAttributeQuery,
     ThirdPartyRelationshipAttributeQuery
 } from "@nmshd/content"
+import * as Iql from "@nmshd/iql"
 import {
     CoreAddress,
     CoreDate,
-    CoreErrors as TransportCoreErrors,
     CoreId,
-    SynchronizedCollection
+    SynchronizedCollection,
+    CoreErrors as TransportCoreErrors
 } from "@nmshd/transport"
 import { nameof } from "ts-simple-nameof"
 import {
@@ -172,6 +174,26 @@ export class AttributesController extends ConsumptionBaseController {
 
     public async getValidLocalAttributes(query?: any, hideTechnical = false): Promise<LocalAttribute[]> {
         return await this.getLocalAttributes(query, hideTechnical, true)
+    }
+
+    public async executeIQLQuery(query: IIQLQuery): Promise<LocalAttribute[]> {
+        /* Fetch subset of attributes relevant for IQL queries. We filter for
+         * local identity attributes. */
+        const envelopedAttributes: any[] = (await this.attributes.find()).filter((e) => {
+            return e["@type"] === "LocalAttribute" && e.content["@type"] === "IdentityAttribute"
+        })
+
+        /* Remove envelope from attributes and execute query. IQL makes no use
+         * of the envelope data. */
+        const attributes: Iql.AttributeView[] = envelopedAttributes.map((e) => {
+            return e.content
+        }) as Iql.AttributeView[]
+        const indices = Iql.execute(query.queryString, attributes)
+
+        /* Map matched indices back to their respective attributes and return. */
+        const matchedAttributes = indices.map((ii) => envelopedAttributes[ii])
+        const result = this.parseArray(matchedAttributes, LocalAttribute)
+        return result
     }
 
     public async executeRelationshipAttributeQuery(

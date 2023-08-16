@@ -1,9 +1,9 @@
 import { ISerializable, Serializable, serialize, type, validate } from "@js-soft/ts-serval"
-import { CoreAddress, ICoreAddress } from "@nmshd/transport"
+import { CoreAddress, CoreDate, ICoreAddress, ICoreDate } from "@nmshd/transport"
 import { AbstractAttributeQuery, AbstractAttributeQueryJSON, IAbstractAttributeQuery } from "./AbstractAttributeQuery"
 import { AttributeValues } from "./AttributeValueTypes"
-import { IValueHints, ValueHints, ValueHintsJSON } from "./hints"
 import { RelationshipAttributeConfidentiality } from "./RelationshipAttributeConfidentiality"
+import { IValueHints, ValueHints, ValueHintsJSON } from "./hints"
 import { PROPRIETARY_ATTRIBUTE_MAX_DESCRIPTION_LENGTH } from "./types/proprietary/ProprietaryAttributeValue"
 
 export interface RelationshipAttributeCreationHintsJSON {
@@ -77,12 +77,16 @@ export interface RelationshipAttributeQueryJSON extends AbstractAttributeQueryJS
     key: string
     owner: string
     attributeCreationHints: RelationshipAttributeCreationHintsJSON
+    validFrom?: string
+    validTo?: string
 }
 
 export interface IRelationshipAttributeQuery extends IAbstractAttributeQuery {
     key: string
     owner: ICoreAddress
     attributeCreationHints: IRelationshipAttributeCreationHints
+    validFrom?: ICoreDate
+    validTo?: ICoreDate
 }
 
 @type("RelationshipAttributeQuery")
@@ -98,6 +102,14 @@ export class RelationshipAttributeQuery extends AbstractAttributeQuery implement
     @serialize()
     @validate()
     public attributeCreationHints: RelationshipAttributeCreationHints
+
+    @serialize()
+    @validate({ nullable: true })
+    public validFrom?: CoreDate
+
+    @serialize()
+    @validate({ nullable: true })
+    public validTo?: CoreDate
 
     public static from(
         value: IRelationshipAttributeQuery | Omit<RelationshipAttributeQueryJSON, "@type">

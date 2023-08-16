@@ -1,14 +1,16 @@
 import {
+    IQLQuery,
     IdentityAttributeQuery,
     RelationshipAttributeQuery,
     ThirdPartyRelationshipAttributeQuery
 } from "@nmshd/content"
+import { validate as iqlValidate } from "@nmshd/iql"
 import { CoreAddress } from "@nmshd/transport"
 import { CoreErrors } from "../../../../consumption"
 import { ValidationResult } from "../ValidationResult"
 
 export default function validateQuery(
-    query: IdentityAttributeQuery | RelationshipAttributeQuery | ThirdPartyRelationshipAttributeQuery,
+    query: IdentityAttributeQuery | RelationshipAttributeQuery | ThirdPartyRelationshipAttributeQuery | IQLQuery,
     sender: CoreAddress,
     recipient?: CoreAddress
 ): ValidationResult {
@@ -21,6 +23,15 @@ export default function validateQuery(
         if (query.owner.equals(sender)) {
             return ValidationResult.error(
                 CoreErrors.requests.invalidRequestItem("Cannot query own Attributes from a third party.")
+            )
+        }
+    } else if (query instanceof IQLQuery) {
+        const validationResult = iqlValidate(query.queryString)
+        if (!validationResult.isValid) {
+            return ValidationResult.error(
+                CoreErrors.requests.invalidRequestItem(
+                    `IQL query syntax error at character ${validationResult.error?.location.start.column}`
+                )
             )
         }
     }

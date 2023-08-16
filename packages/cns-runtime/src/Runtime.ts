@@ -104,7 +104,11 @@ export abstract class Runtime<TConfig extends RuntimeConfig = RuntimeConfig> {
 
     private _eventProxy: EventProxy;
 
-    public constructor(protected runtimeConfig: TConfig, protected loggerFactory: ILoggerFactory, eventBus?: EventBus) {
+    public constructor(
+        protected runtimeConfig: TConfig,
+        protected loggerFactory: ILoggerFactory,
+        eventBus?: EventBus
+    ) {
         this._logger = this.loggerFactory.getLogger(this.constructor.name);
 
         this._eventBus =

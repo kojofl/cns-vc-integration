@@ -11,6 +11,7 @@ import {
     IdentityAttribute,
     IdentityAttributeJSON,
     IdentityAttributeQueryJSON,
+    IQLQueryJSON,
     MailJSON,
     MiddleNameJSON,
     ProposeAttributeAcceptResponseItemJSON,
@@ -87,6 +88,7 @@ import {
     PeerRelationshipAttributeDVO,
     ProcessedAttributeQueryDVO,
     ProcessedIdentityAttributeQueryDVO,
+    ProcessedIQLQueryDVO,
     ProcessedRelationshipAttributeQueryDVO,
     ProcessedThirdPartyRelationshipAttributeQueryDVO,
     RelationshipSettingDVO,
@@ -108,6 +110,7 @@ import {
     DraftIdentityAttributeDVO,
     DraftRelationshipAttributeDVO,
     IdentityAttributeQueryDVO,
+    IQLQueryDVO,
     RelationshipAttributeQueryDVO,
     ThirdPartyRelationshipAttributeQueryDVO
 } from "./content/AttributeDVOs";
@@ -1063,7 +1066,9 @@ export class DataViewExpander {
         return await Promise.all(attributesPromise);
     }
 
-    public async expandAttributeQuery(query: IdentityAttributeQueryJSON | RelationshipAttributeQueryJSON | ThirdPartyRelationshipAttributeQueryJSON): Promise<AttributeQueryDVO> {
+    public async expandAttributeQuery(
+        query: IdentityAttributeQueryJSON | RelationshipAttributeQueryJSON | ThirdPartyRelationshipAttributeQueryJSON | IQLQueryJSON
+    ): Promise<AttributeQueryDVO> {
         switch (query["@type"]) {
             case "IdentityAttributeQuery":
                 return this.expandIdentityAttributeQuery(query);
@@ -1071,6 +1076,8 @@ export class DataViewExpander {
                 return await this.expandRelationshipAttributeQuery(query);
             case "ThirdPartyRelationshipAttributeQuery":
                 return await this.expandThirdPartyRelationshipAttributeQuery(query);
+            case "IQLQuery":
+                return this.expandIQLQuery(query);
             default:
                 throw new Error("Wrong attribute query");
         }
@@ -1100,7 +1107,7 @@ export class DataViewExpander {
     public async expandRelationshipAttributeQuery(query: RelationshipAttributeQueryJSON): Promise<RelationshipAttributeQueryDVO> {
         const valueType = query.attributeCreationHints.valueType;
         let name = "i18n://dvo.attributeQuery.name.RelationshipAttributeQuery";
-        let description = "i18n://dvo.attributeQuery.name.RelationshipAttributeQuery";
+        let description = "i18n://dvo.attributeQuery.description.RelationshipAttributeQuery";
         if (query.attributeCreationHints.title) {
             name = query.attributeCreationHints.title;
         }
@@ -1132,7 +1139,7 @@ export class DataViewExpander {
 
     public async expandThirdPartyRelationshipAttributeQuery(query: ThirdPartyRelationshipAttributeQueryJSON): Promise<ThirdPartyRelationshipAttributeQueryDVO> {
         const name = "i18n://dvo.attributeQuery.name.ThirdPartyRelationshipAttributeQuery";
-        const description = "i18n://dvo.attributeQuery.name.ThirdPartyRelationshipAttributeQuery";
+        const description = "i18n://dvo.attributeQuery.description.ThirdPartyRelationshipAttributeQuery";
 
         const thirdParty = await Promise.all(query.thirdParty.map((tp) => this.expandAddress(tp)));
         return {
@@ -1145,6 +1152,20 @@ export class DataViewExpander {
             owner: await this.expandAddress(query.owner),
             thirdParty,
             key: query.key,
+            isProcessed: false
+        };
+    }
+
+    public expandIQLQuery(query: IQLQueryJSON): IQLQueryDVO {
+        const name = "i18n://dvo.attributeQuery.name.IQLQuery";
+        const description = "i18n://dvo.attributeQuery.description.IQLQuery";
+
+        return {
+            type: "IQLQueryDVO",
+            id: "",
+            name,
+            description,
+            queryString: query.queryString,
             isProcessed: false
         };
     }
@@ -1174,7 +1195,7 @@ export class DataViewExpander {
     }
 
     public async processAttributeQuery(
-        attributeQuery: IdentityAttributeQueryJSON | RelationshipAttributeQueryJSON | ThirdPartyRelationshipAttributeQueryJSON
+        attributeQuery: IdentityAttributeQueryJSON | RelationshipAttributeQueryJSON | ThirdPartyRelationshipAttributeQueryJSON | IQLQueryJSON
     ): Promise<ProcessedAttributeQueryDVO> {
         switch (attributeQuery["@type"]) {
             case "IdentityAttributeQuery":
@@ -1183,6 +1204,8 @@ export class DataViewExpander {
                 return await this.processRelationshipAttributeQuery(attributeQuery);
             case "ThirdPartyRelationshipAttributeQuery":
                 return await this.processThirdPartyRelationshipAttributeQuery(attributeQuery);
+            case "IQLQuery":
+                return await this.processIQLQuery(attributeQuery);
             default:
                 throw new Error("Wrong attribute query");
         }
@@ -1236,6 +1259,25 @@ export class DataViewExpander {
             type: "ProcessedThirdPartyRelationshipAttributeQueryDVO",
             results: matchedAttributeDVOs as (OwnRelationshipAttributeDVO | PeerRelationshipAttributeDVO)[],
             isProcessed: true
+        };
+    }
+
+    public async processIQLQuery(query: IQLQueryJSON): Promise<ProcessedIQLQueryDVO> {
+        const matchedAttributeDTOResult = await this.consumption.attributes.executeIQLQuery({ query });
+        const matchedAttributeDVOs = await this.expandLocalAttributeDTOs(matchedAttributeDTOResult.value);
+
+        const { valueType, renderHints, valueHints } = matchedAttributeDVOs.every((dvo) => dvo.valueType === matchedAttributeDVOs[0].valueType)
+            ? { valueType: matchedAttributeDVOs[0].valueType, renderHints: matchedAttributeDVOs[0].renderHints, valueHints: matchedAttributeDVOs[0].valueHints }
+            : { valueType: undefined, renderHints: undefined, valueHints: undefined };
+
+        return {
+            ...this.expandIQLQuery(query),
+            type: "ProcessedIQLQueryDVO",
+            results: matchedAttributeDVOs as RepositoryAttributeDVO[],
+            isProcessed: true,
+            valueType,
+            renderHints,
+            valueHints
         };
     }
 

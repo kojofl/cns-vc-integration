@@ -52,6 +52,7 @@ jobs:
       - uses: js-soft/ferretdb-github-action@1.0.2
         with:
           ferretdb-telemetry: "enabled"
+          ferretdb-version: latest
       - run: npm ci
       - run: npm run build:schemas
       - run: npm run test:ci:ferretdb

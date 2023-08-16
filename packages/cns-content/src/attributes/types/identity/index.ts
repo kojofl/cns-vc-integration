@@ -1,2 +1,3 @@
 export * from "./DisplayName"
-export * from "./FileReference"
+export * from "./IdentityFileReference"
+export * from "./SchematizedXML"

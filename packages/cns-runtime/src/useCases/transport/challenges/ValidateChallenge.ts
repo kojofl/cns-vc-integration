@@ -69,7 +69,10 @@ class Validator extends SchemaValidator<ValidateChallengeRequest> {
 }
 
 export class ValidateChallengeUseCase extends UseCase<ValidateChallengeRequest, ValidateChallengeResponse> {
-    public constructor(@Inject private readonly challengeController: ChallengeController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly challengeController: ChallengeController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

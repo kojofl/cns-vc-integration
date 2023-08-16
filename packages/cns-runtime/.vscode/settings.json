@@ -51,5 +51,8 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports": true
     },
-    "files.eol": "\n"
+    "files.eol": "\n",
+    "typescript.unstable": {
+        "organizeImportsIgnoreCase": true
+    }
 }

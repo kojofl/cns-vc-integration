@@ -22,7 +22,11 @@ export interface DownloadAttachmentResponse {
 }
 
 export class DownloadAttachmentUseCase extends UseCase<DownloadAttachmentRequest, DownloadAttachmentResponse> {
-    public constructor(@Inject private readonly messageController: MessageController, @Inject private readonly fileController: FileController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly messageController: MessageController,
+        @Inject private readonly fileController: FileController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

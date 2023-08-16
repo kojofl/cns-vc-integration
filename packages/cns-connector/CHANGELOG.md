@@ -1,5 +1,54 @@
 # Changelog
 
+## 3.5.0
+
+-> SDK 2.2.1
+
+-   upgrade the runtime version to 2.6.1
+    -   support for the new [FreeTextRequestItem](https://enmeshed.eu/integrate/data-model-request-items#freetextrequestitem)
+    -   support for the AttributeValue [Statement](https://enmeshed.eu/integrate/data-model-attribute-values#statement)
+
+## 3.4.0
+
+-> SDK 2.2.0
+
+-   expose new IQL query type via the Connector API
+    -   `POST /api/v2/Attributes/ValidateIQLQuery` to validate an IQL query
+    -   `POST /api/v2/Attributes/ExecuteIQLQuery` to execute an IQL query
+-   upgrade the runtime version to 2.5.2
+
+## 3.3.10
+
+-   (helm chart) set defaults for the liveness and readiness probes
+-   make health check more robust and performant
+
+## 3.3.9
+
+-   Docker images are now provided for the following architectures:
+    -   `linux/amd64`
+    -   `linux/arm64`
+    -   `linux/arm64/v8`
+    -   `linux/arm/v7`
+
+## 3.3.8
+
+-> SDK 2.1.8
+
+-   upgrade libraries
+-   upgrade the runtime to version 2.4.7
+
+## 3.3.7
+
+-   use fully qualified app name in the helm chart
+
+## 3.3.6
+
+-   bump npm packages
+
+## 3.3.5
+
+-   upgrade nodejs to 18.16.0
+
 ## 3.3.4
 
 -   the helm chart now allows to configure the image of the `ferretdb` sidecar (use `ferretdb.image` in the config file)

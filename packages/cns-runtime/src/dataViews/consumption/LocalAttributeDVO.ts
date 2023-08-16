@@ -139,3 +139,11 @@ export interface ProcessedThirdPartyRelationshipAttributeQueryDVO extends Proces
     renderHints?: RenderHintsJSON;
     valueHints?: ValueHintsJSON;
 }
+
+export interface ProcessedIQLQueryDVO extends ProcessedAttributeQueryDVO {
+    type: "ProcessedIQLQueryDVO";
+    results: RepositoryAttributeDVO[];
+    valueType?: string;
+    renderHints?: RenderHintsJSON;
+    valueHints?: ValueHintsJSON;
+}

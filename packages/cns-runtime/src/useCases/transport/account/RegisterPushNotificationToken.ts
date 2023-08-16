@@ -16,7 +16,10 @@ class Validator extends SchemaValidator<RegisterPushNotificationTokenRequest> {
 }
 
 export class RegisterPushNotificationTokenUseCase extends UseCase<RegisterPushNotificationTokenRequest, void> {
-    public constructor(@Inject private readonly accountController: AccountController, @Inject validator: Validator) {
+    public constructor(
+        @Inject private readonly accountController: AccountController,
+        @Inject validator: Validator
+    ) {
         super(validator);
     }
 

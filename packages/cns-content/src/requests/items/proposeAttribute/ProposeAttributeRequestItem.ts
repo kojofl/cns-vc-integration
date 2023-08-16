@@ -7,6 +7,9 @@ import {
     IdentityAttributeQueryJSON,
     IIdentityAttribute,
     IIdentityAttributeQuery,
+    IIQLQuery,
+    IQLQuery,
+    IQLQueryJSON,
     IRelationshipAttribute,
     IRelationshipAttributeQuery,
     RelationshipAttribute,
@@ -18,20 +21,20 @@ import { IRequestItem, RequestItem, RequestItemJSON } from "../../RequestItem"
 
 export interface ProposeAttributeRequestItemJSON extends RequestItemJSON {
     "@type": "ProposeAttributeRequestItem"
-    query: IdentityAttributeQueryJSON | RelationshipAttributeQueryJSON
+    query: IdentityAttributeQueryJSON | RelationshipAttributeQueryJSON | IQLQueryJSON
     attribute: IdentityAttributeJSON | RelationshipAttributeJSON
 }
 
 export interface IProposeAttributeRequestItem extends IRequestItem {
-    query: IIdentityAttributeQuery | IRelationshipAttributeQuery
+    query: IIdentityAttributeQuery | IRelationshipAttributeQuery | IIQLQuery
     attribute: IIdentityAttribute | IRelationshipAttribute
 }
 
 @type("ProposeAttributeRequestItem")
 export class ProposeAttributeRequestItem extends RequestItem implements IProposeAttributeRequestItem {
-    @serialize({ unionTypes: [IdentityAttributeQuery, RelationshipAttributeQuery] })
+    @serialize({ unionTypes: [IdentityAttributeQuery, RelationshipAttributeQuery, IQLQuery] })
     @validate()
-    public query: IdentityAttributeQuery | RelationshipAttributeQuery
+    public query: IdentityAttributeQuery | RelationshipAttributeQuery | IQLQuery
 
     @serialize({ unionTypes: [IdentityAttribute, RelationshipAttribute] })
     @validate()
@@ -61,6 +64,7 @@ export class ProposeAttributeRequestItem extends RequestItem implements IPropose
             }
         }
 
+        // IQL queries might also be possible for Relationship Attributes in the future
         if (value.attribute instanceof RelationshipAttribute && !(value.query instanceof RelationshipAttributeQuery)) {
             throw new ValidationError(
                 ProposeAttributeRequestItem.name,
@@ -69,11 +73,14 @@ export class ProposeAttributeRequestItem extends RequestItem implements IPropose
             )
         }
 
-        if (value.attribute instanceof IdentityAttribute && !(value.query instanceof IdentityAttributeQuery)) {
+        if (
+            value.attribute instanceof IdentityAttribute &&
+            !(value.query instanceof IdentityAttributeQuery || value.query instanceof IQLQuery)
+        ) {
             throw new ValidationError(
                 ProposeAttributeRequestItem.name,
                 "",
-                "When proposing an IdentityAttribute, the corresponding query has to be a IdentityAttributeQuery."
+                "When proposing an IdentityAttribute, the corresponding query has to be a IdentityAttributeQuery or IQLQuery"
             )
         }
 

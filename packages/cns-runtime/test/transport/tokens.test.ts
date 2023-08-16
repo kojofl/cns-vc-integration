@@ -1,3 +1,4 @@
+import { CoreDate } from "@nmshd/transport";
 import { GetTokensQuery, OwnerRestriction, TransportServices } from "../../src";
 import { exchangeToken, QueryParamConditions, RuntimeServiceProvider, uploadOwnToken } from "../lib";
 
@@ -11,6 +12,29 @@ beforeAll(async () => {
     transportServices2 = runtimeServices[1].transport;
 }, 30000);
 afterAll(() => serviceProvider.stop());
+
+describe("Tokens", () => {
+    test("create own Token", async () => {
+        const response = await transportServices1.tokens.createOwnToken({
+            content: { key: "value" },
+            expiresAt: CoreDate.utc().add({ minutes: 10 }).toISOString(),
+            ephemeral: false
+        });
+        expect(response).toBeSuccessful();
+    });
+
+    test("create ephemeral Token", async () => {
+        const response = await transportServices1.tokens.createOwnToken({
+            content: { key: "value" },
+            expiresAt: CoreDate.utc().add({ minutes: 10 }).toISOString(),
+            ephemeral: true
+        });
+        expect(response).toBeSuccessful();
+
+        const getTokenResponse = await transportServices1.tokens.getToken({ id: response.value.id });
+        expect(getTokenResponse).toBeAnError("Token not found. Make sure the ID exists and the record is not expired.", "error.runtime.recordNotFound");
+    });
+});
 
 describe("Tokens errors", () => {
     test("create a token with 'expiresAt' set to undefined", async () => {

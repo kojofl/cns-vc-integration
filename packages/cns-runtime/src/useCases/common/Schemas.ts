@@ -110,88 +110,6 @@ export const CreateAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -286,9 +204,6 @@ export const CreateAttributeRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -854,92 +769,6 @@ export const CreateAttributeRequest: any = {
             ],
             "additionalProperties": false
         },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
-            ],
-            "additionalProperties": false
-        },
         "AttributeValues.Identity.Uneditable.Json": {
             "anyOf": [
                 {
@@ -1494,88 +1323,6 @@ export const CreateAttributeRequest: any = {
                 },
                 "owner": {
                     "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
                 },
                 "validFrom": {
                     "type": "string"
@@ -2280,12 +2027,6 @@ export const ExecuteIdentityAttributeQueryRequest: any = {
         "IIdentityAttributeQuery": {
             "type": "object",
             "properties": {
-                "validFrom": {
-                    "$ref": "#/definitions/ICoreDate"
-                },
-                "validTo": {
-                    "$ref": "#/definitions/ICoreDate"
-                },
                 "valueType": {
                     "$ref": "#/definitions/AttributeValues.Identity.TypeName"
                 },
@@ -2294,22 +2035,16 @@ export const ExecuteIdentityAttributeQueryRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "$ref": "#/definitions/ICoreDate"
+                },
+                "validTo": {
+                    "$ref": "#/definitions/ICoreDate"
                 }
             },
             "required": [
                 "valueType"
-            ],
-            "additionalProperties": false
-        },
-        "ICoreDate": {
-            "type": "object",
-            "properties": {
-                "date": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "date"
             ],
             "additionalProperties": false
         },
@@ -2345,8 +2080,7 @@ export const ExecuteIdentityAttributeQueryRequest: any = {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website",
-                "VerifiableCredential"
+                "Website"
             ]
         },
         "AttributeValues.Identity.Uneditable.TypeName": {
@@ -2374,6 +2108,18 @@ export const ExecuteIdentityAttributeQueryRequest: any = {
                 "ZipCode"
             ]
         },
+        "ICoreDate": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date"
+            ],
+            "additionalProperties": false
+        },
         "IdentityAttributeQueryJSON": {
             "type": "object",
             "properties": {
@@ -2387,12 +2133,6 @@ export const ExecuteIdentityAttributeQueryRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "valueType": {
                     "$ref": "#/definitions/AttributeValues.Identity.TypeName"
                 },
@@ -2401,11 +2141,78 @@ export const ExecuteIdentityAttributeQueryRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
                 "@type",
                 "valueType"
+            ],
+            "additionalProperties": false
+        }
+    }
+}
+
+export const ExecuteIQLQueryRequest: any = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/ExecuteIQLQueryRequest",
+    "definitions": {
+        "ExecuteIQLQueryRequest": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IIQLQuery"
+                        },
+                        {
+                            "$ref": "#/definitions/IQLQueryJSON"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "query"
+            ],
+            "additionalProperties": false
+        },
+        "IIQLQuery": {
+            "type": "object",
+            "properties": {
+                "queryString": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "queryString"
+            ],
+            "additionalProperties": false
+        },
+        "IQLQueryJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "IQLQuery"
+                },
+                "@context": {
+                    "type": "string"
+                },
+                "@version": {
+                    "type": "string"
+                },
+                "queryString": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@type",
+                "queryString"
             ],
             "additionalProperties": false
         }
@@ -2438,12 +2245,6 @@ export const ExecuteRelationshipAttributeQueryRequest: any = {
         "IRelationshipAttributeQuery": {
             "type": "object",
             "properties": {
-                "validFrom": {
-                    "$ref": "#/definitions/ICoreDate"
-                },
-                "validTo": {
-                    "$ref": "#/definitions/ICoreDate"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -2452,24 +2253,18 @@ export const ExecuteRelationshipAttributeQueryRequest: any = {
                 },
                 "attributeCreationHints": {
                     "$ref": "#/definitions/IRelationshipAttributeCreationHints"
+                },
+                "validFrom": {
+                    "$ref": "#/definitions/ICoreDate"
+                },
+                "validTo": {
+                    "$ref": "#/definitions/ICoreDate"
                 }
             },
             "required": [
                 "key",
                 "owner",
                 "attributeCreationHints"
-            ],
-            "additionalProperties": false
-        },
-        "ICoreDate": {
-            "type": "object",
-            "properties": {
-                "date": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "date"
             ],
             "additionalProperties": false
         },
@@ -2502,6 +2297,12 @@ export const ExecuteRelationshipAttributeQueryRequest: any = {
                 },
                 "confidentiality": {
                     "$ref": "#/definitions/RelationshipAttributeConfidentiality"
+                },
+                "validFrom": {
+                    "$ref": "#/definitions/ICoreDate"
+                },
+                "validTo": {
+                    "$ref": "#/definitions/ICoreDate"
                 }
             },
             "required": [
@@ -2594,6 +2395,18 @@ export const ExecuteRelationshipAttributeQueryRequest: any = {
                 "protected"
             ]
         },
+        "ICoreDate": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date"
+            ],
+            "additionalProperties": false
+        },
         "RelationshipAttributeQueryJSON": {
             "type": "object",
             "properties": {
@@ -2607,12 +2420,6 @@ export const ExecuteRelationshipAttributeQueryRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -2621,6 +2428,12 @@ export const ExecuteRelationshipAttributeQueryRequest: any = {
                 },
                 "attributeCreationHints": {
                     "$ref": "#/definitions/RelationshipAttributeCreationHintsJSON"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -2648,6 +2461,12 @@ export const ExecuteRelationshipAttributeQueryRequest: any = {
                 },
                 "confidentiality": {
                     "$ref": "#/definitions/RelationshipAttributeConfidentiality"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -2756,12 +2575,6 @@ export const ExecuteThirdPartyRelationshipAttributeQueryRequest: any = {
         "IThirdPartyRelationshipAttributeQuery": {
             "type": "object",
             "properties": {
-                "validFrom": {
-                    "$ref": "#/definitions/ICoreDate"
-                },
-                "validTo": {
-                    "$ref": "#/definitions/ICoreDate"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -2773,24 +2586,18 @@ export const ExecuteThirdPartyRelationshipAttributeQueryRequest: any = {
                     "items": {
                         "$ref": "#/definitions/ICoreAddress"
                     }
+                },
+                "validFrom": {
+                    "$ref": "#/definitions/ICoreDate"
+                },
+                "validTo": {
+                    "$ref": "#/definitions/ICoreDate"
                 }
             },
             "required": [
                 "key",
                 "owner",
                 "thirdParty"
-            ],
-            "additionalProperties": false
-        },
-        "ICoreDate": {
-            "type": "object",
-            "properties": {
-                "date": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "date"
             ],
             "additionalProperties": false
         },
@@ -2803,6 +2610,18 @@ export const ExecuteThirdPartyRelationshipAttributeQueryRequest: any = {
             },
             "required": [
                 "address"
+            ],
+            "additionalProperties": false
+        },
+        "ICoreDate": {
+            "type": "object",
+            "properties": {
+                "date": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date"
             ],
             "additionalProperties": false
         },
@@ -2819,12 +2638,6 @@ export const ExecuteThirdPartyRelationshipAttributeQueryRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -2836,6 +2649,12 @@ export const ExecuteThirdPartyRelationshipAttributeQueryRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -3670,9 +3489,6 @@ export const CanCreateOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/SucceedAttributeRequestItemJSON"
-                },
-                {
-                    "$ref": "#/definitions/RequestVerifiableAttributeRequestItemJSON"
                 }
             ]
         },
@@ -3781,88 +3597,6 @@ export const CanCreateOutgoingRequestRequest: any = {
                 },
                 "owner": {
                     "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
                 },
                 "validFrom": {
                     "type": "string"
@@ -4492,88 +4226,6 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -4668,9 +4320,6 @@ export const CanCreateOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -5233,92 +4882,6 @@ export const CanCreateOutgoingRequestRequest: any = {
             "required": [
                 "@type",
                 "value"
-            ],
-            "additionalProperties": false
-        },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
             ],
             "additionalProperties": false
         },
@@ -5956,6 +5519,9 @@ export const CanCreateOutgoingRequestRequest: any = {
                         },
                         {
                             "$ref": "#/definitions/RelationshipAttributeQueryJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/IQLQueryJSON"
                         }
                     ]
                 },
@@ -5991,12 +5557,6 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "valueType": {
                     "$ref": "#/definitions/AttributeValues.Identity.TypeName"
                 },
@@ -6005,6 +5565,12 @@ export const CanCreateOutgoingRequestRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -6045,8 +5611,7 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website",
-                "VerifiableCredential"
+                "Website"
             ]
         },
         "AttributeValues.Identity.Uneditable.TypeName": {
@@ -6087,12 +5652,6 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -6101,6 +5660,12 @@ export const CanCreateOutgoingRequestRequest: any = {
                 },
                 "attributeCreationHints": {
                     "$ref": "#/definitions/RelationshipAttributeCreationHintsJSON"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -6128,6 +5693,12 @@ export const CanCreateOutgoingRequestRequest: any = {
                 },
                 "confidentiality": {
                     "$ref": "#/definitions/RelationshipAttributeConfidentiality"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -6154,6 +5725,29 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "ProprietaryJSON",
                 "Consent"
             ]
+        },
+        "IQLQueryJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "IQLQuery"
+                },
+                "@context": {
+                    "type": "string"
+                },
+                "@version": {
+                    "type": "string"
+                },
+                "queryString": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@type",
+                "queryString"
+            ],
+            "additionalProperties": false
         },
         "ReadAttributeRequestItemJSON": {
             "type": "object",
@@ -6198,6 +5792,9 @@ export const CanCreateOutgoingRequestRequest: any = {
                         },
                         {
                             "$ref": "#/definitions/ThirdPartyRelationshipAttributeQueryJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/IQLQueryJSON"
                         }
                     ]
                 }
@@ -6222,12 +5819,6 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -6239,6 +5830,12 @@ export const CanCreateOutgoingRequestRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -6452,61 +6049,6 @@ export const CanCreateOutgoingRequestRequest: any = {
                 "newAttribute",
                 "succeededAttribute",
                 "succeededId"
-            ],
-            "additionalProperties": false
-        },
-        "RequestVerifiableAttributeRequestItemJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "RequestVerifiableAttributeRequestItem"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string",
-                    "description": "The human-readable title of this item."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The human-readable description of this item."
-                },
-                "metadata": {
-                    "type": "object",
-                    "description": "This property can be used to add some arbitrary metadata to this item. The content of this property will be copied into the response on the side of the recipient, so the sender can use it to identify the group content as they receive the response."
-                },
-                "mustBeAccepted": {
-                    "type": "boolean",
-                    "description": "If set to `true`, the recipient has to accept this group if he wants to accept the Request. If set to `false`, the recipient can decide whether he wants to accept it or not.\n\nCaution: this setting does not take effect in case it is inside of a\n {@link  RequestItemGroupJSON RequestItemGroup } , which is not accepted by the recipient, since a  {@link  RequestItemJSON RequestItem }  can only be accepted if the parent group is accepted as well."
-                },
-                "requireManualDecision": {
-                    "type": "boolean",
-                    "description": "If set to `true`, it advices the recipient of this RequestItem to carefully consider their decision and especially do not decide based on some automation rules."
-                },
-                "attribute": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/IdentityAttributeJSON"
-                        },
-                        {
-                            "$ref": "#/definitions/RelationshipAttributeJSON"
-                        }
-                    ]
-                },
-                "did": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "attribute",
-                "did",
-                "mustBeAccepted"
             ],
             "additionalProperties": false
         },
@@ -6937,88 +6479,6 @@ export const CompleteOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -7113,9 +6573,6 @@ export const CompleteOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -7681,92 +7138,6 @@ export const CompleteOutgoingRequestRequest: any = {
             ],
             "additionalProperties": false
         },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
-            ],
-            "additionalProperties": false
-        },
         "AttributeValues.Identity.Uneditable.Json": {
             "anyOf": [
                 {
@@ -8321,88 +7692,6 @@ export const CompleteOutgoingRequestRequest: any = {
                 },
                 "owner": {
                     "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
                 },
                 "validFrom": {
                     "type": "string"
@@ -9475,88 +8764,6 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
                 "owner": {
                     "type": "string"
                 },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -9651,9 +8858,6 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -10219,92 +9423,6 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
             ],
             "additionalProperties": false
         },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
-            ],
-            "additionalProperties": false
-        },
         "AttributeValues.Identity.Uneditable.Json": {
             "anyOf": [
                 {
@@ -10859,88 +9977,6 @@ export const CreateAndCompleteOutgoingRequestFromRelationshipTemplateResponseReq
                 },
                 "owner": {
                     "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
                 },
                 "validFrom": {
                     "type": "string"
@@ -11853,9 +10889,6 @@ export const CreateOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/SucceedAttributeRequestItemJSON"
-                },
-                {
-                    "$ref": "#/definitions/RequestVerifiableAttributeRequestItemJSON"
                 }
             ]
         },
@@ -11964,88 +10997,6 @@ export const CreateOutgoingRequestRequest: any = {
                 },
                 "owner": {
                     "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
                 },
                 "validFrom": {
                     "type": "string"
@@ -12675,88 +11626,6 @@ export const CreateOutgoingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -12851,9 +11720,6 @@ export const CreateOutgoingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -13416,92 +12282,6 @@ export const CreateOutgoingRequestRequest: any = {
             "required": [
                 "@type",
                 "value"
-            ],
-            "additionalProperties": false
-        },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
             ],
             "additionalProperties": false
         },
@@ -14139,6 +12919,9 @@ export const CreateOutgoingRequestRequest: any = {
                         },
                         {
                             "$ref": "#/definitions/RelationshipAttributeQueryJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/IQLQueryJSON"
                         }
                     ]
                 },
@@ -14174,12 +12957,6 @@ export const CreateOutgoingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "valueType": {
                     "$ref": "#/definitions/AttributeValues.Identity.TypeName"
                 },
@@ -14188,6 +12965,12 @@ export const CreateOutgoingRequestRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -14228,8 +13011,7 @@ export const CreateOutgoingRequestRequest: any = {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website",
-                "VerifiableCredential"
+                "Website"
             ]
         },
         "AttributeValues.Identity.Uneditable.TypeName": {
@@ -14270,12 +13052,6 @@ export const CreateOutgoingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -14284,6 +13060,12 @@ export const CreateOutgoingRequestRequest: any = {
                 },
                 "attributeCreationHints": {
                     "$ref": "#/definitions/RelationshipAttributeCreationHintsJSON"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -14311,6 +13093,12 @@ export const CreateOutgoingRequestRequest: any = {
                 },
                 "confidentiality": {
                     "$ref": "#/definitions/RelationshipAttributeConfidentiality"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -14337,6 +13125,29 @@ export const CreateOutgoingRequestRequest: any = {
                 "ProprietaryJSON",
                 "Consent"
             ]
+        },
+        "IQLQueryJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "IQLQuery"
+                },
+                "@context": {
+                    "type": "string"
+                },
+                "@version": {
+                    "type": "string"
+                },
+                "queryString": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@type",
+                "queryString"
+            ],
+            "additionalProperties": false
         },
         "ReadAttributeRequestItemJSON": {
             "type": "object",
@@ -14381,6 +13192,9 @@ export const CreateOutgoingRequestRequest: any = {
                         },
                         {
                             "$ref": "#/definitions/ThirdPartyRelationshipAttributeQueryJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/IQLQueryJSON"
                         }
                     ]
                 }
@@ -14405,12 +13219,6 @@ export const CreateOutgoingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -14422,6 +13230,12 @@ export const CreateOutgoingRequestRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -14635,61 +13449,6 @@ export const CreateOutgoingRequestRequest: any = {
                 "newAttribute",
                 "succeededAttribute",
                 "succeededId"
-            ],
-            "additionalProperties": false
-        },
-        "RequestVerifiableAttributeRequestItemJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "RequestVerifiableAttributeRequestItem"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string",
-                    "description": "The human-readable title of this item."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The human-readable description of this item."
-                },
-                "metadata": {
-                    "type": "object",
-                    "description": "This property can be used to add some arbitrary metadata to this item. The content of this property will be copied into the response on the side of the recipient, so the sender can use it to identify the group content as they receive the response."
-                },
-                "mustBeAccepted": {
-                    "type": "boolean",
-                    "description": "If set to `true`, the recipient has to accept this group if he wants to accept the Request. If set to `false`, the recipient can decide whether he wants to accept it or not.\n\nCaution: this setting does not take effect in case it is inside of a\n {@link  RequestItemGroupJSON RequestItemGroup } , which is not accepted by the recipient, since a  {@link  RequestItemJSON RequestItem }  can only be accepted if the parent group is accepted as well."
-                },
-                "requireManualDecision": {
-                    "type": "boolean",
-                    "description": "If set to `true`, it advices the recipient of this RequestItem to carefully consider their decision and especially do not decide based on some automation rules."
-                },
-                "attribute": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/IdentityAttributeJSON"
-                        },
-                        {
-                            "$ref": "#/definitions/RelationshipAttributeJSON"
-                        }
-                    ]
-                },
-                "did": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "attribute",
-                "did",
-                "mustBeAccepted"
             ],
             "additionalProperties": false
         },
@@ -15331,9 +14090,6 @@ export const ReceivedIncomingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/SucceedAttributeRequestItemJSON"
-                },
-                {
-                    "$ref": "#/definitions/RequestVerifiableAttributeRequestItemJSON"
                 }
             ]
         },
@@ -15442,88 +14198,6 @@ export const ReceivedIncomingRequestRequest: any = {
                 },
                 "owner": {
                     "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
                 },
                 "validFrom": {
                     "type": "string"
@@ -16153,88 +14827,6 @@ export const ReceivedIncomingRequestRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -16329,9 +14921,6 @@ export const ReceivedIncomingRequestRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -16894,92 +15483,6 @@ export const ReceivedIncomingRequestRequest: any = {
             "required": [
                 "@type",
                 "value"
-            ],
-            "additionalProperties": false
-        },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
             ],
             "additionalProperties": false
         },
@@ -17617,6 +16120,9 @@ export const ReceivedIncomingRequestRequest: any = {
                         },
                         {
                             "$ref": "#/definitions/RelationshipAttributeQueryJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/IQLQueryJSON"
                         }
                     ]
                 },
@@ -17652,12 +16158,6 @@ export const ReceivedIncomingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "valueType": {
                     "$ref": "#/definitions/AttributeValues.Identity.TypeName"
                 },
@@ -17666,6 +16166,12 @@ export const ReceivedIncomingRequestRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -17706,8 +16212,7 @@ export const ReceivedIncomingRequestRequest: any = {
                 "Pseudonym",
                 "Sex",
                 "StreetAddress",
-                "Website",
-                "VerifiableCredential"
+                "Website"
             ]
         },
         "AttributeValues.Identity.Uneditable.TypeName": {
@@ -17748,12 +16253,6 @@ export const ReceivedIncomingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -17762,6 +16261,12 @@ export const ReceivedIncomingRequestRequest: any = {
                 },
                 "attributeCreationHints": {
                     "$ref": "#/definitions/RelationshipAttributeCreationHintsJSON"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -17789,6 +16294,12 @@ export const ReceivedIncomingRequestRequest: any = {
                 },
                 "confidentiality": {
                     "$ref": "#/definitions/RelationshipAttributeConfidentiality"
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -17815,6 +16326,29 @@ export const ReceivedIncomingRequestRequest: any = {
                 "ProprietaryJSON",
                 "Consent"
             ]
+        },
+        "IQLQueryJSON": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "IQLQuery"
+                },
+                "@context": {
+                    "type": "string"
+                },
+                "@version": {
+                    "type": "string"
+                },
+                "queryString": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@type",
+                "queryString"
+            ],
+            "additionalProperties": false
         },
         "ReadAttributeRequestItemJSON": {
             "type": "object",
@@ -17859,6 +16393,9 @@ export const ReceivedIncomingRequestRequest: any = {
                         },
                         {
                             "$ref": "#/definitions/ThirdPartyRelationshipAttributeQueryJSON"
+                        },
+                        {
+                            "$ref": "#/definitions/IQLQueryJSON"
                         }
                     ]
                 }
@@ -17883,12 +16420,6 @@ export const ReceivedIncomingRequestRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
                 "key": {
                     "type": "string"
                 },
@@ -17900,6 +16431,12 @@ export const ReceivedIncomingRequestRequest: any = {
                     "items": {
                         "type": "string"
                     }
+                },
+                "validFrom": {
+                    "type": "string"
+                },
+                "validTo": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -18116,61 +16653,6 @@ export const ReceivedIncomingRequestRequest: any = {
             ],
             "additionalProperties": false
         },
-        "RequestVerifiableAttributeRequestItemJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "RequestVerifiableAttributeRequestItem"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string",
-                    "description": "The human-readable title of this item."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The human-readable description of this item."
-                },
-                "metadata": {
-                    "type": "object",
-                    "description": "This property can be used to add some arbitrary metadata to this item. The content of this property will be copied into the response on the side of the recipient, so the sender can use it to identify the group content as they receive the response."
-                },
-                "mustBeAccepted": {
-                    "type": "boolean",
-                    "description": "If set to `true`, the recipient has to accept this group if he wants to accept the Request. If set to `false`, the recipient can decide whether he wants to accept it or not.\n\nCaution: this setting does not take effect in case it is inside of a\n {@link  RequestItemGroupJSON RequestItemGroup } , which is not accepted by the recipient, since a  {@link  RequestItemJSON RequestItem }  can only be accepted if the parent group is accepted as well."
-                },
-                "requireManualDecision": {
-                    "type": "boolean",
-                    "description": "If set to `true`, it advices the recipient of this RequestItem to carefully consider their decision and especially do not decide based on some automation rules."
-                },
-                "attribute": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/IdentityAttributeJSON"
-                        },
-                        {
-                            "$ref": "#/definitions/RelationshipAttributeJSON"
-                        }
-                    ]
-                },
-                "did": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "attribute",
-                "did",
-                "mustBeAccepted"
-            ],
-            "additionalProperties": false
-        },
         "MessageIdString": {
             "type": "string",
             "pattern": "MSG[A-Za-z0-9]{17}"
@@ -18323,88 +16805,6 @@ export const SucceedAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -18499,9 +16899,6 @@ export const SucceedAttributeRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -19067,92 +17464,6 @@ export const SucceedAttributeRequest: any = {
             ],
             "additionalProperties": false
         },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
-            ],
-            "additionalProperties": false
-        },
         "AttributeValues.Identity.Uneditable.Json": {
             "anyOf": [
                 {
@@ -19707,88 +18018,6 @@ export const SucceedAttributeRequest: any = {
                 },
                 "owner": {
                     "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
                 },
                 "validFrom": {
                     "type": "string"
@@ -20456,88 +18685,6 @@ export const UpdateAttributeRequest: any = {
                 "owner": {
                     "type": "string"
                 },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
                 "validFrom": {
                     "type": "string"
                 },
@@ -20632,9 +18779,6 @@ export const UpdateAttributeRequest: any = {
                 },
                 {
                     "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
                 }
             ]
         },
@@ -21200,92 +19344,6 @@ export const UpdateAttributeRequest: any = {
             ],
             "additionalProperties": false
         },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
-            ],
-            "additionalProperties": false
-        },
         "AttributeValues.Identity.Uneditable.Json": {
             "anyOf": [
                 {
@@ -21840,88 +19898,6 @@ export const UpdateAttributeRequest: any = {
                 },
                 "owner": {
                     "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
                 },
                 "validFrom": {
                     "type": "string"
@@ -22538,4248 +20514,47 @@ export const UpdateAttributeRequest: any = {
     }
 }
 
-export const CreateVerifiableAttributeRequest: any = {
+export const ValidateIQLQueryRequest: any = {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$ref": "#/definitions/CreateVerifiableAttributeRequest",
+    "$ref": "#/definitions/ValidateIQLQueryRequest",
     "definitions": {
-        "CreateVerifiableAttributeRequest": {
+        "ValidateIQLQueryRequest": {
             "type": "object",
             "properties": {
-                "content": {
+                "query": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/IdentityAttributeJSON"
+                            "$ref": "#/definitions/IIQLQuery"
                         },
                         {
-                            "$ref": "#/definitions/RelationshipAttributeJSON"
+                            "$ref": "#/definitions/IQLQueryJSON"
                         }
                     ]
-                },
-                "subjectDid": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "content",
-                "subjectDid"
-            ],
-            "additionalProperties": false
-        },
-        "IdentityAttributeJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "IdentityAttribute"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "owner": {
-                    "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
-                "value": {
-                    "$ref": "#/definitions/AttributeValues.Identity.Json"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            },
-            "required": [
-                "@type",
-                "owner",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "AttributeValues.Identity.Json": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/AttributeValues.Identity.Editable.Json"
-                },
-                {
-                    "$ref": "#/definitions/AttributeValues.Identity.Uneditable.Json"
-                }
-            ]
-        },
-        "AttributeValues.Identity.Editable.Json": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/AffiliationJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthDateJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthPlaceJSON"
-                },
-                {
-                    "$ref": "#/definitions/CitizenshipJSON"
-                },
-                {
-                    "$ref": "#/definitions/CommunicationLanguageJSON"
-                },
-                {
-                    "$ref": "#/definitions/DeliveryBoxAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/DisplayNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/EMailAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/FaxNumberJSON"
-                },
-                {
-                    "$ref": "#/definitions/FileReferenceJSON"
-                },
-                {
-                    "$ref": "#/definitions/JobTitleJSON"
-                },
-                {
-                    "$ref": "#/definitions/NationalityJSON"
-                },
-                {
-                    "$ref": "#/definitions/PersonNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/PhoneNumberJSON"
-                },
-                {
-                    "$ref": "#/definitions/PostOfficeBoxAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/PseudonymJSON"
-                },
-                {
-                    "$ref": "#/definitions/SexJSON"
-                },
-                {
-                    "$ref": "#/definitions/StreetAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
-                }
-            ]
-        },
-        "AffiliationJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Affiliation"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "organization": {
-                    "type": "string"
-                },
-                "role": {
-                    "type": "string"
-                },
-                "unit": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "organization"
-            ],
-            "additionalProperties": false
-        },
-        "BirthDateJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthDate"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "day": {
-                    "type": "number"
-                },
-                "month": {
-                    "type": "number"
-                },
-                "year": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "@type",
-                "day",
-                "month",
-                "year"
-            ],
-            "additionalProperties": false
-        },
-        "BirthNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthPlaceJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthPlace"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "country": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "city",
-                "country"
-            ],
-            "additionalProperties": false
-        },
-        "CitizenshipJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Citizenship"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "CommunicationLanguageJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "CommunicationLanguage"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "DeliveryBoxAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "DeliveryBoxAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "recipient": {
-                    "type": "string"
-                },
-                "userId": {
-                    "type": "string"
-                },
-                "deliveryBoxId": {
-                    "type": "string"
-                },
-                "zipCode": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "country": {
-                    "type": "string"
-                },
-                "phoneNumber": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "city",
-                "country",
-                "deliveryBoxId",
-                "recipient",
-                "userId",
-                "zipCode"
-            ],
-            "additionalProperties": false
-        },
-        "DisplayNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "DisplayName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "EMailAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "EMailAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "FaxNumberJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "FaxNumber"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "FileReferenceJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "FileReference"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "JobTitleJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "JobTitle"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "NationalityJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Nationality"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "PersonNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "PersonName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "givenName": {
-                    "type": "string"
-                },
-                "middleName": {
-                    "type": "string"
-                },
-                "surname": {
-                    "type": "string"
-                },
-                "honorificSuffix": {
-                    "type": "string"
-                },
-                "honorificPrefix": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "givenName",
-                "surname"
-            ],
-            "additionalProperties": false
-        },
-        "PhoneNumberJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "PhoneNumber"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "PostOfficeBoxAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "PostOfficeBoxAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "recipient": {
-                    "type": "string"
-                },
-                "boxId": {
-                    "type": "string"
-                },
-                "zipCode": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "country": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "boxId",
-                "city",
-                "country",
-                "recipient",
-                "zipCode"
-            ],
-            "additionalProperties": false
-        },
-        "PseudonymJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Pseudonym"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "SexJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Sex"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "StreetAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "StreetAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "recipient": {
-                    "type": "string"
-                },
-                "street": {
-                    "type": "string"
-                },
-                "houseNo": {
-                    "type": "string"
-                },
-                "zipCode": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "country": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "city",
-                "country",
-                "houseNo",
-                "recipient",
-                "street",
-                "zipCode"
-            ],
-            "additionalProperties": false
-        },
-        "WebsiteJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Website"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
-            ],
-            "additionalProperties": false
-        },
-        "AttributeValues.Identity.Uneditable.Json": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/AffiliationOrganizationJSON"
-                },
-                {
-                    "$ref": "#/definitions/AffiliationRoleJSON"
-                },
-                {
-                    "$ref": "#/definitions/AffiliationUnitJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthCityJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthCountryJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthDayJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthMonthJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthStateJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthYearJSON"
-                },
-                {
-                    "$ref": "#/definitions/CityJSON"
-                },
-                {
-                    "$ref": "#/definitions/CountryJSON"
-                },
-                {
-                    "$ref": "#/definitions/GivenNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/HonorificPrefixJSON"
-                },
-                {
-                    "$ref": "#/definitions/HonorificSuffixJSON"
-                },
-                {
-                    "$ref": "#/definitions/HouseNumberJSON"
-                },
-                {
-                    "$ref": "#/definitions/MiddleNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/StateJSON"
-                },
-                {
-                    "$ref": "#/definitions/StreetJSON"
-                },
-                {
-                    "$ref": "#/definitions/SurnameJSON"
-                },
-                {
-                    "$ref": "#/definitions/ZipCodeJSON"
-                }
-            ]
-        },
-        "AffiliationOrganizationJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "AffiliationOrganization"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "AffiliationRoleJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "AffiliationRole"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "AffiliationUnitJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "AffiliationUnit"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthCityJSON": {
-            "type": "object",
-            "properties": {
-                "value": {
-                    "type": "string"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "@type": {
-                    "type": "string",
-                    "const": "BirthCity"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthCountryJSON": {
-            "type": "object",
-            "properties": {
-                "value": {
-                    "type": "string"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "@type": {
-                    "type": "string",
-                    "const": "BirthCountry"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthDayJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthDay"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthMonthJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthMonth"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number",
-                    "enum": [
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
-                        6,
-                        7,
-                        8,
-                        9,
-                        10,
-                        11,
-                        12
-                    ],
-                    "description": "Month values: 1 (january) - 12 (december)"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthStateJSON": {
-            "type": "object",
-            "properties": {
-                "value": {
-                    "type": "string"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "@type": {
-                    "type": "string",
-                    "const": "BirthState"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthYearJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthYear"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "CityJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "City"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "CountryJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Country"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "GivenNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "GivenName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "HonorificPrefixJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "HonorificPrefix"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "HonorificSuffixJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "HonorificSuffix"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "HouseNumberJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "HouseNumber"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "MiddleNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "MiddleName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "StateJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "State"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "StreetJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Street"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "SurnameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Surname"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ZipCodeJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ZipCode"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "RelationshipAttributeJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "RelationshipAttribute"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "owner": {
-                    "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
-                "value": {
-                    "$ref": "#/definitions/AttributeValues.Relationship.Json"
-                },
-                "key": {
-                    "type": "string"
-                },
-                "isTechnical": {
-                    "type": "boolean"
-                },
-                "confidentiality": {
-                    "$ref": "#/definitions/RelationshipAttributeConfidentiality"
-                }
-            },
-            "required": [
-                "@type",
-                "confidentiality",
-                "key",
-                "owner",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "AttributeValues.Relationship.Json": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/ProprietaryBooleanJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryCountryJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryEMailAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryFileReferenceJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryFloatJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryHEXColorJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryIntegerJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryLanguageJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryPhoneNumberJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryStringJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryURLJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryJSONJSON"
-                },
-                {
-                    "$ref": "#/definitions/ConsentJSON"
-                }
-            ]
-        },
-        "ProprietaryBooleanJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryBoolean"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "boolean"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ValueHintsOverrideJSON": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ValueHints"
-                },
-                "editHelp": {
-                    "type": "string"
-                },
-                "min": {
-                    "type": "number"
-                },
-                "max": {
-                    "type": "number"
-                },
-                "pattern": {
-                    "type": "string"
-                },
-                "values": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ValueHintsValueJSON"
-                    }
-                },
-                "defaultValue": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "propertyHints": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/ValueHintsJSON"
-                    }
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                }
-            }
-        },
-        "ValueHintsValueJSON": {
-            "type": "object",
-            "properties": {
-                "key": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "displayName": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "key",
-                "displayName"
-            ],
-            "additionalProperties": false
-        },
-        "ValueHintsJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ValueHints"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "editHelp": {
-                    "type": "string"
-                },
-                "min": {
-                    "type": "number"
-                },
-                "max": {
-                    "type": "number"
-                },
-                "pattern": {
-                    "type": "string"
-                },
-                "values": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ValueHintsValueJSON"
-                    }
-                },
-                "defaultValue": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "propertyHints": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/ValueHintsJSON"
-                    }
-                }
-            },
-            "required": [
-                "@type"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryCountryJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryCountry"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryEMailAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryEMailAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryFileReferenceJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryFileReference"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryFloatJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryFloat"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryHEXColorJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryHEXColor"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryIntegerJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryInteger"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryLanguageJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryLanguage"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryPhoneNumberJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryPhoneNumber"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryStringJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryString"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryURLJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryURL"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryJSONJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryJSON"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "value": {}
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ConsentJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "consent": {
-                    "type": "string"
-                },
-                "link": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "consent"
-            ],
-            "additionalProperties": false
-        },
-        "RelationshipAttributeConfidentiality": {
-            "type": "string",
-            "enum": [
-                "public",
-                "private",
-                "protected"
-            ]
-        }
-    }
-}
-
-export const CreateVerifiableCredentialRequest: any = {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$ref": "#/definitions/CreateVerifiableCredentialRequest",
-    "definitions": {
-        "CreateVerifiableCredentialRequest": {
-            "type": "object",
-            "properties": {
-                "content": {},
-                "subjectDid": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "content",
-                "subjectDid"
-            ],
-            "additionalProperties": false
-        }
-    }
-}
-
-export const VerifyVerifiableCredentialRequest: any = {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$ref": "#/definitions/VerifyVerifiableCredentialRequest",
-    "definitions": {
-        "VerifyVerifiableCredentialRequest": {
-            "type": "object",
-            "properties": {
-                "attribute": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/IdentityAttributeJSON"
-                        },
-                        {
-                            "$ref": "#/definitions/RelationshipAttributeJSON"
-                        }
-                    ]
-                },
-                "validIssuers": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            },
-            "required": [
-                "attribute"
-            ],
-            "additionalProperties": false
-        },
-        "IdentityAttributeJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "IdentityAttribute"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "owner": {
-                    "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
-                "value": {
-                    "$ref": "#/definitions/AttributeValues.Identity.Json"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            },
-            "required": [
-                "@type",
-                "owner",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "AttributeValues.Identity.Json": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/AttributeValues.Identity.Editable.Json"
-                },
-                {
-                    "$ref": "#/definitions/AttributeValues.Identity.Uneditable.Json"
-                }
-            ]
-        },
-        "AttributeValues.Identity.Editable.Json": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/AffiliationJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthDateJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthPlaceJSON"
-                },
-                {
-                    "$ref": "#/definitions/CitizenshipJSON"
-                },
-                {
-                    "$ref": "#/definitions/CommunicationLanguageJSON"
-                },
-                {
-                    "$ref": "#/definitions/DeliveryBoxAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/DisplayNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/EMailAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/FaxNumberJSON"
-                },
-                {
-                    "$ref": "#/definitions/FileReferenceJSON"
-                },
-                {
-                    "$ref": "#/definitions/JobTitleJSON"
-                },
-                {
-                    "$ref": "#/definitions/NationalityJSON"
-                },
-                {
-                    "$ref": "#/definitions/PersonNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/PhoneNumberJSON"
-                },
-                {
-                    "$ref": "#/definitions/PostOfficeBoxAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/PseudonymJSON"
-                },
-                {
-                    "$ref": "#/definitions/SexJSON"
-                },
-                {
-                    "$ref": "#/definitions/StreetAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/WebsiteJSON"
-                },
-                {
-                    "$ref": "#/definitions/VerifiableCredentialJSON"
-                }
-            ]
-        },
-        "AffiliationJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Affiliation"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "organization": {
-                    "type": "string"
-                },
-                "role": {
-                    "type": "string"
-                },
-                "unit": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "organization"
-            ],
-            "additionalProperties": false
-        },
-        "BirthDateJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthDate"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "day": {
-                    "type": "number"
-                },
-                "month": {
-                    "type": "number"
-                },
-                "year": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "@type",
-                "day",
-                "month",
-                "year"
-            ],
-            "additionalProperties": false
-        },
-        "BirthNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthPlaceJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthPlace"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "country": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "city",
-                "country"
-            ],
-            "additionalProperties": false
-        },
-        "CitizenshipJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Citizenship"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "CommunicationLanguageJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "CommunicationLanguage"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "DeliveryBoxAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "DeliveryBoxAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "recipient": {
-                    "type": "string"
-                },
-                "userId": {
-                    "type": "string"
-                },
-                "deliveryBoxId": {
-                    "type": "string"
-                },
-                "zipCode": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "country": {
-                    "type": "string"
-                },
-                "phoneNumber": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "city",
-                "country",
-                "deliveryBoxId",
-                "recipient",
-                "userId",
-                "zipCode"
-            ],
-            "additionalProperties": false
-        },
-        "DisplayNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "DisplayName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "EMailAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "EMailAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "FaxNumberJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "FaxNumber"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "FileReferenceJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "FileReference"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "JobTitleJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "JobTitle"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "NationalityJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Nationality"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "PersonNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "PersonName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "givenName": {
-                    "type": "string"
-                },
-                "middleName": {
-                    "type": "string"
-                },
-                "surname": {
-                    "type": "string"
-                },
-                "honorificSuffix": {
-                    "type": "string"
-                },
-                "honorificPrefix": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "givenName",
-                "surname"
-            ],
-            "additionalProperties": false
-        },
-        "PhoneNumberJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "PhoneNumber"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "PostOfficeBoxAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "PostOfficeBoxAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "recipient": {
-                    "type": "string"
-                },
-                "boxId": {
-                    "type": "string"
-                },
-                "zipCode": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "country": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "boxId",
-                "city",
-                "country",
-                "recipient",
-                "zipCode"
-            ],
-            "additionalProperties": false
-        },
-        "PseudonymJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Pseudonym"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "SexJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Sex"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "StreetAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "StreetAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "recipient": {
-                    "type": "string"
-                },
-                "street": {
-                    "type": "string"
-                },
-                "houseNo": {
-                    "type": "string"
-                },
-                "zipCode": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "country": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "city",
-                "country",
-                "houseNo",
-                "recipient",
-                "street",
-                "zipCode"
-            ],
-            "additionalProperties": false
-        },
-        "WebsiteJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Website"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "VerifiableCredentialJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "VerifiableCredential"
-                },
-                "@context": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "id": {
-                    "type": "string"
-                },
-                "type": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    ]
-                },
-                "issuer": {
-                    "type": "string"
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "expirationDate": {
-                    "type": "string"
-                },
-                "credentialSubject": {
-                    "type": "object"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "type": {
-                            "type": "string"
-                        },
-                        "created": {
-                            "type": "string"
-                        },
-                        "proofPurpose": {
-                            "type": "string"
-                        },
-                        "verificationMethod": {
-                            "type": "string"
-                        },
-                        "jws": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "type",
-                        "created",
-                        "proofPurpose",
-                        "verificationMethod"
-                    ]
-                }
-            },
-            "required": [
-                "@type",
-                "@context",
-                "type",
-                "issuer",
-                "validFrom",
-                "credentialSubject",
-                "proof"
-            ],
-            "additionalProperties": false
-        },
-        "AttributeValues.Identity.Uneditable.Json": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/AffiliationOrganizationJSON"
-                },
-                {
-                    "$ref": "#/definitions/AffiliationRoleJSON"
-                },
-                {
-                    "$ref": "#/definitions/AffiliationUnitJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthCityJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthCountryJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthDayJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthMonthJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthStateJSON"
-                },
-                {
-                    "$ref": "#/definitions/BirthYearJSON"
-                },
-                {
-                    "$ref": "#/definitions/CityJSON"
-                },
-                {
-                    "$ref": "#/definitions/CountryJSON"
-                },
-                {
-                    "$ref": "#/definitions/GivenNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/HonorificPrefixJSON"
-                },
-                {
-                    "$ref": "#/definitions/HonorificSuffixJSON"
-                },
-                {
-                    "$ref": "#/definitions/HouseNumberJSON"
-                },
-                {
-                    "$ref": "#/definitions/MiddleNameJSON"
-                },
-                {
-                    "$ref": "#/definitions/StateJSON"
-                },
-                {
-                    "$ref": "#/definitions/StreetJSON"
-                },
-                {
-                    "$ref": "#/definitions/SurnameJSON"
-                },
-                {
-                    "$ref": "#/definitions/ZipCodeJSON"
-                }
-            ]
-        },
-        "AffiliationOrganizationJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "AffiliationOrganization"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "AffiliationRoleJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "AffiliationRole"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "AffiliationUnitJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "AffiliationUnit"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthCityJSON": {
-            "type": "object",
-            "properties": {
-                "value": {
-                    "type": "string"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "@type": {
-                    "type": "string",
-                    "const": "BirthCity"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthCountryJSON": {
-            "type": "object",
-            "properties": {
-                "value": {
-                    "type": "string"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "@type": {
-                    "type": "string",
-                    "const": "BirthCountry"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthDayJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthDay"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthMonthJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthMonth"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number",
-                    "enum": [
-                        1,
-                        2,
-                        3,
-                        4,
-                        5,
-                        6,
-                        7,
-                        8,
-                        9,
-                        10,
-                        11,
-                        12
-                    ],
-                    "description": "Month values: 1 (january) - 12 (december)"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthStateJSON": {
-            "type": "object",
-            "properties": {
-                "value": {
-                    "type": "string"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "@type": {
-                    "type": "string",
-                    "const": "BirthState"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "BirthYearJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "BirthYear"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "CityJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "City"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "CountryJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Country"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "GivenNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "GivenName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "HonorificPrefixJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "HonorificPrefix"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "HonorificSuffixJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "HonorificSuffix"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "HouseNumberJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "HouseNumber"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "MiddleNameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "MiddleName"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "StateJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "State"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "StreetJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Street"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "SurnameJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "Surname"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ZipCodeJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ZipCode"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "@type",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "RelationshipAttributeJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "RelationshipAttribute"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "owner": {
-                    "type": "string"
-                },
-                "proof": {
-                    "type": "object",
-                    "properties": {
-                        "@context": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "type": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            ]
-                        },
-                        "issuer": {
-                            "type": "string"
-                        },
-                        "issuanceDate": {
-                            "type": "string"
-                        },
-                        "expirationDate": {
-                            "type": "string"
-                        },
-                        "credentialSubject": {},
-                        "proof": {
-                            "type": "object",
-                            "properties": {
-                                "type": {
-                                    "type": "string"
-                                },
-                                "created": {
-                                    "type": "string"
-                                },
-                                "verificationMethod": {
-                                    "type": "string"
-                                },
-                                "cryptosuite": {
-                                    "type": "string"
-                                },
-                                "proofPurpose": {
-                                    "type": "string"
-                                },
-                                "proofValue": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "type",
-                                "created",
-                                "verificationMethod",
-                                "cryptosuite",
-                                "proofPurpose",
-                                "proofValue"
-                            ],
-                            "additionalProperties": false
-                        }
-                    },
-                    "required": [
-                        "@context",
-                        "type",
-                        "issuer",
-                        "issuanceDate",
-                        "credentialSubject",
-                        "proof"
-                    ],
-                    "additionalProperties": false
-                },
-                "validFrom": {
-                    "type": "string"
-                },
-                "validTo": {
-                    "type": "string"
-                },
-                "value": {
-                    "$ref": "#/definitions/AttributeValues.Relationship.Json"
-                },
-                "key": {
-                    "type": "string"
-                },
-                "isTechnical": {
-                    "type": "boolean"
-                },
-                "confidentiality": {
-                    "$ref": "#/definitions/RelationshipAttributeConfidentiality"
-                }
-            },
-            "required": [
-                "@type",
-                "confidentiality",
-                "key",
-                "owner",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "AttributeValues.Relationship.Json": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/ProprietaryBooleanJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryCountryJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryEMailAddressJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryFileReferenceJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryFloatJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryHEXColorJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryIntegerJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryLanguageJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryPhoneNumberJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryStringJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryURLJSON"
-                },
-                {
-                    "$ref": "#/definitions/ProprietaryJSONJSON"
-                },
-                {
-                    "$ref": "#/definitions/ConsentJSON"
-                }
-            ]
-        },
-        "ProprietaryBooleanJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryBoolean"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "boolean"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ValueHintsOverrideJSON": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ValueHints"
-                },
-                "editHelp": {
-                    "type": "string"
-                },
-                "min": {
-                    "type": "number"
-                },
-                "max": {
-                    "type": "number"
-                },
-                "pattern": {
-                    "type": "string"
-                },
-                "values": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ValueHintsValueJSON"
-                    }
-                },
-                "defaultValue": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "propertyHints": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/ValueHintsJSON"
-                    }
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                }
-            }
-        },
-        "ValueHintsValueJSON": {
-            "type": "object",
-            "properties": {
-                "key": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "displayName": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "key",
-                "displayName"
-            ],
-            "additionalProperties": false
-        },
-        "ValueHintsJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ValueHints"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "editHelp": {
-                    "type": "string"
-                },
-                "min": {
-                    "type": "number"
-                },
-                "max": {
-                    "type": "number"
-                },
-                "pattern": {
-                    "type": "string"
-                },
-                "values": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ValueHintsValueJSON"
-                    }
-                },
-                "defaultValue": {
-                    "type": [
-                        "string",
-                        "number",
-                        "boolean"
-                    ]
-                },
-                "propertyHints": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#/definitions/ValueHintsJSON"
-                    }
-                }
-            },
-            "required": [
-                "@type"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryCountryJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryCountry"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryEMailAddressJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryEMailAddress"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryFileReferenceJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryFileReference"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryFloatJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryFloat"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryHEXColorJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryHEXColor"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryIntegerJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryInteger"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "number"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryLanguageJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryLanguage"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryPhoneNumberJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryPhoneNumber"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
-                }
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ProprietaryStringJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryString"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
                 }
             },
             "required": [
-                "@type",
-                "title",
-                "value"
+                "query"
             ],
             "additionalProperties": false
         },
-        "ProprietaryURLJSON": {
+        "IIQLQuery": {
             "type": "object",
             "properties": {
-                "@type": {
-                    "type": "string",
-                    "const": "ProprietaryURL"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
+                "queryString": {
                     "type": "string"
-                },
-                "valueHintsOverride": {
-                    "$ref": "#/definitions/ValueHintsOverrideJSON"
                 }
             },
             "required": [
-                "@type",
-                "title",
-                "value"
+                "queryString"
             ],
             "additionalProperties": false
         },
-        "ProprietaryJSONJSON": {
+        "IQLQueryJSON": {
             "type": "object",
             "properties": {
                 "@type": {
                     "type": "string",
-                    "const": "ProprietaryJSON"
-                },
-                "@context": {
-                    "type": "string"
-                },
-                "@version": {
-                    "type": "string"
-                },
-                "title": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "value": {}
-            },
-            "required": [
-                "@type",
-                "title",
-                "value"
-            ],
-            "additionalProperties": false
-        },
-        "ConsentJSON": {
-            "type": "object",
-            "properties": {
-                "@type": {
-                    "type": "string"
+                    "const": "IQLQuery"
                 },
                 "@context": {
                     "type": "string"
@@ -26787,26 +20562,15 @@ export const VerifyVerifiableCredentialRequest: any = {
                 "@version": {
                     "type": "string"
                 },
-                "consent": {
+                "queryString": {
                     "type": "string"
-                },
-                "link": {
-                    "type": "string"
                 }
             },
             "required": [
                 "@type",
-                "consent"
+                "queryString"
             ],
             "additionalProperties": false
-        },
-        "RelationshipAttributeConfidentiality": {
-            "type": "string",
-            "enum": [
-                "public",
-                "private",
-                "protected"
-            ]
         }
     }
 }
